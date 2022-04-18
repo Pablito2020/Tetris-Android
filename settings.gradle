@@ -1,0 +1,23 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url = uri("https://maven.pkg.github.com/Pablito2020/Tetris")
+            credentials {
+                username = "Pablito2020"
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
+rootProject.name = "Tetris"
+include ':app'
