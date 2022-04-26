@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.pablo.tetris.databinding.ActivityMainBinding
 import com.pablo.tetris.presentation.game.GameActivity
+import com.pablo.tetris.presentation.getButtons
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.startButton.setOnClickListener(this)
+        binding.root.getButtons().forEach { it.setOnClickListener(this) }
     }
 
     private fun hideStatusBar() {

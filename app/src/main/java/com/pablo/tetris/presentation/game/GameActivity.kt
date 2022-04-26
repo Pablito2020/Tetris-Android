@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.game.colors.VibrantColorChooser
+import com.pablo.tetris.presentation.getButtons
 
 
 class GameActivity : AppCompatActivity(), View.OnClickListener {
@@ -16,24 +17,25 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        gameFacade = GameFacade(ghost = true)
-        gameFacade.start()
+        setUpGame()
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        adapter =
-            GameAdapter(gameFacade.getGrid().flatMap { it.toList() }, this, VibrantColorChooser())
+        setUpGridView()
+        binding.root.getButtons().forEach { it.setOnClickListener(this) }
+    }
+
+    private fun setUpGame() {
+        gameFacade = GameFacade(ghost = true)
+        gameFacade.start()
+    }
+
+    private fun setUpGridView() {
+        val colorChooser = VibrantColorChooser()
+        adapter = GameAdapter(getFlatGrid(),this, colorChooser)
         binding.GameGrid.adapter = adapter
-        setUpButtons()
     }
 
-    private fun setUpButtons() {
-        binding.DownButton.setOnClickListener(this)
-        binding.LeftButton.setOnClickListener(this)
-        binding.RightButton.setOnClickListener(this)
-        binding.RotateLeft.setOnClickListener(this)
-        binding.RotateRight.setOnClickListener(this)
-    }
-
+    private fun getFlatGrid() = gameFacade.getGrid().flatMap { it.toList() }
 
     override fun onClick(p0: View) {
         when (p0.id) {
