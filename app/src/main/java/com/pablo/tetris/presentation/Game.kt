@@ -1,4 +1,4 @@
-package com.pablo.tetris
+package com.pablo.tetris.presentation
 
 import GameFacade
 import android.content.Context
@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import board.Cell
+import com.pablo.tetris.R
 import com.pablo.tetris.databinding.ActivityGameBinding
 import game.GameCell
 
