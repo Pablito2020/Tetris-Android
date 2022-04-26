@@ -25,7 +25,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="32dp"
         android:text="Left"
-        app:layout_constraintBottom_toTopOf="@+id/RotateLeft"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/RightButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,14 +62,13 @@
         android:id="@+id/RotateLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="84dp"
         android:text="RotateL"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DownButton"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/LeftButton"
+        app:layout_constraintVertical_bias="0.345" />
 
     <Button
         android:id="@+id/RotateRight"
@@ -78,8 +77,8 @@
         android:text="RotateR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintHorizontal_bias="0.774"
         app:layout_constraintStart_toEndOf="@+id/RotateLeft"
         app:layout_constraintTop_toBottomOf="@+id/RightButton"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintVertical_bias="0.345" />
 </androidx.constraintlayout.widget.ConstraintLayout>
