@@ -7,6 +7,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import com.pablo.tetris.R
+import com.pablo.tetris.presentation.game.colors.ColorCellChooser
 import game.GameCell
 
 class GameAdapter(

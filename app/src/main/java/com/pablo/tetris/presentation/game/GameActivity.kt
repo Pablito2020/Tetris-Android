@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.pablo.tetris.databinding.ActivityGameBinding
+import com.pablo.tetris.presentation.game.colors.VibrantColorChooser
 
 
 class GameActivity : AppCompatActivity(), View.OnClickListener {
