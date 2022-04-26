@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.game.colors.VibrantColorChooser
-import com.pablo.tetris.presentation.getButtons
+import com.pablo.tetris.presentation.getImageButtons
 
 
 class GameActivity : AppCompatActivity(), View.OnClickListener {
@@ -21,7 +21,7 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpGridView()
-        binding.root.getButtons().forEach { it.setOnClickListener(this) }
+        binding.root.getImageButtons().forEach { it.setOnClickListener(this) }
     }
 
     private fun setUpGame() {
@@ -31,7 +31,7 @@ class GameActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setUpGridView() {
         val colorChooser = VibrantColorChooser()
-        adapter = GameAdapter(getFlatGrid(),this, colorChooser)
+        adapter = GameAdapter(getFlatGrid(), this, colorChooser)
         binding.GameGrid.adapter = adapter
     }
 

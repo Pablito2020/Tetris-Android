@@ -2,19 +2,27 @@ package com.pablo.tetris.presentation
 
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.core.view.children
 
 /**
  * Gets all the buttons recursively from a ViewGroup
  */
-fun ViewGroup.getButtons(): List<Button> = getButtonsRecursive(this)
+fun ViewGroup.getButtons(): List<Button> =
+    getButtonsRecursive(this) { it is Button }.map { it as Button }
 
-internal fun getButtonsRecursive(viewGroup: ViewGroup): List<Button> {
-    val result = ArrayList<Button>()
+/**
+ * Gets all the image buttons recursively from a ViewGroup
+ */
+fun ViewGroup.getImageButtons(): List<ImageButton> =
+    getButtonsRecursive(this) { it is ImageButton }.map { it as ImageButton }
+
+internal fun getButtonsRecursive(viewGroup: ViewGroup, strategy: (Any) -> Boolean): List<Any> {
+    val result = ArrayList<Any>()
     for (view in viewGroup.children) {
         if (view is ViewGroup)
-            result.addAll(getButtonsRecursive(view))
-        else if (view is Button)
+            result.addAll(getButtonsRecursive(view, strategy))
+        else if (strategy(view))
             result.add(view)
     }
     return result

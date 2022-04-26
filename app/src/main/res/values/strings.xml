@@ -3,4 +3,9 @@
     <string name="help_button">Help</string>
     <string name="start_button">Start</string>
     <string name="quit_button">Quit</string>
+    <string name="LeftButtonDesc">Move the block to the left</string>
+    <string name="DownButtonDesc">Move the block down</string>
+    <string name="RightButtonDesc">Move the block to the right</string>
+    <string name="RotateLeftDesc">Rotate the block to the left</string>
+    <string name="RotateRightDesc">Rotate the block to the right</string>
 </resources>
