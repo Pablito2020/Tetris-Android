@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun startGameActivity() {
-        val game = Intent(this, Game::class.java)
+        val game = Intent(this, GameActivity::class.java)
         startActivity(game)
     }
 

@@ -15,7 +15,7 @@ import com.pablo.tetris.databinding.ActivityGameBinding
 import game.GameCell
 
 
-class Game : AppCompatActivity(), View.OnClickListener {
+class GameActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityGameBinding
     private lateinit var gameFacade: GameFacade
