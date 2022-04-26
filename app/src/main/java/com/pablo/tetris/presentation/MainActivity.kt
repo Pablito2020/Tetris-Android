@@ -8,6 +8,7 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.pablo.tetris.databinding.ActivityMainBinding
+import com.pablo.tetris.presentation.game.GameActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 

@@ -1,4 +1,4 @@
-package com.pablo.tetris.presentation
+package com.pablo.tetris.presentation.game
 
 import GameFacade
 import android.content.Context
