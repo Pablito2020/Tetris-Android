@@ -22,6 +22,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         setContentView(binding.root)
         setUpGridView()
         binding.root.getImageButtons().forEach { it.setOnClickListener(this) }
+        setUpDropBlock()
     }
 
     private fun setUpGame() {
@@ -35,6 +36,19 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         binding.GameGrid.adapter = adapter
     }
 
+    private fun setUpDropBlock() {
+        binding.DownButton.setOnLongClickListener {
+            gameFacade.dropBlock()
+            changeGrid()
+            true
+        }
+    }
+
+    private fun changeGrid() {
+        adapter.gameCells = getFlatGrid()
+        adapter.notifyDataSetChanged()
+    }
+
     private fun getFlatGrid() = gameFacade.getGrid().flatMap { it.toList() }
 
     override fun onClick(p0: View) {
@@ -45,8 +59,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
             binding.RotateLeft.id -> gameFacade.rotateLeft()
             binding.RotateRight.id -> gameFacade.rotateRight()
         }
-        adapter.gameCells = gameFacade.getGrid().flatMap { it.toList() }
-        adapter.notifyDataSetChanged()
+        changeGrid()
     }
 
 }
