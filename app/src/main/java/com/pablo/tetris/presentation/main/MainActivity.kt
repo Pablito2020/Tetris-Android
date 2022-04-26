@@ -1,4 +1,4 @@
-package com.pablo.tetris.presentation
+package com.pablo.tetris.presentation.main
 
 import android.content.Intent
 import android.os.Bundle
