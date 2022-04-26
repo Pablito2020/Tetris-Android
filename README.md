@@ -4,7 +4,7 @@ This repository contains the source code for the Tetris game for Android.
 
 ## Summary
 
-  - [Dependencies](#denpendencies-)
+  - [Dependencies](#dependencies-)
   - [License](#license-)
   - [Contributing](#contributing-)
 
