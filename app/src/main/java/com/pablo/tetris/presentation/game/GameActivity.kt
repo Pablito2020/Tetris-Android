@@ -3,13 +3,13 @@ package com.pablo.tetris.presentation.game
 import GameFacade
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import com.pablo.tetris.databinding.ActivityGameBinding
+import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.game.colors.VibrantColorChooser
 import com.pablo.tetris.presentation.getImageButtons
 
 
-class GameActivity : AppCompatActivity(), View.OnClickListener {
+class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityGameBinding
     private lateinit var gameFacade: GameFacade
