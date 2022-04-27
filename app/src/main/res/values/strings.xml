@@ -8,4 +8,11 @@
     <string name="RightButtonDesc">Move the block to the right</string>
     <string name="RotateLeftDesc">Rotate the block to the left</string>
     <string name="RotateRightDesc">Rotate the block to the right</string>
+    <string name="DayAndHourText">Day and Hour</string>
+    <string name="valuesOfLogText">Values of the Log:</string>
+    <string name="emailDestination">Email Destination:</string>
+    <string name="sendEmailButton">Send Email</string>
+    <string name="newGameButton">New Game</string>
+    <string name="exitButton">Exit</string>
+    <string name="emailHint">jhondoe@gmail.com</string>
 </resources>

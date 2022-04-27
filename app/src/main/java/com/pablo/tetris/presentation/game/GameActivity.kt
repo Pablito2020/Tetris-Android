@@ -1,11 +1,12 @@
 package com.pablo.tetris.presentation.game
 
 import GameFacade
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
+import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.colors.VibrantColorChooser
 import com.pablo.tetris.presentation.getImageButtons
 import kotlinx.coroutines.MainScope
@@ -54,8 +55,8 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private fun setUpDownCoroutine() {
         MainScope().launch {
             while (!gameViewModel.gameFacade.value!!.hasFinished()) {
-                delay(1000)
                 gameViewModel.down()
+                delay(1000)
             }
         }
     }
@@ -70,19 +71,20 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     private fun finishGame() {
-        Toast.makeText(this, "Game Over", Toast.LENGTH_LONG).show()
+        val finish = Intent(this, FinishedActivity::class.java)
+        startActivity(finish)
         finish()
     }
 
     private fun getFlatGrid() = gameViewModel.gameFacade.value!!.getGrid().flatMap { it.toList() }
 
     override fun onClick(p0: View) = when (p0.id) {
-        binding.DownButton.id -> gameViewModel.down()
-        binding.LeftButton.id -> gameViewModel.left()
-        binding.RightButton.id -> gameViewModel.right()
-        binding.RotateLeft.id -> gameViewModel.rotateLeft()
-        binding.RotateRight.id -> gameViewModel.rotateRight()
-        else -> throw UnsupportedOperationException("Unknown button")
+            binding.DownButton.id -> gameViewModel.down()
+            binding.LeftButton.id -> gameViewModel.left()
+            binding.RightButton.id -> gameViewModel.right()
+            binding.RotateLeft.id -> gameViewModel.rotateLeft()
+            binding.RotateRight.id -> gameViewModel.rotateRight()
+            else -> throw UnsupportedOperationException("Unknown button")
     }
 
 }

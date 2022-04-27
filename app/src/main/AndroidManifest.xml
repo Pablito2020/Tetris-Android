@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tetris">
         <activity
+            android:name=".presentation.finished.FinishedActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.game.GameActivity"
             android:exported="false" />
         <activity
