@@ -7,16 +7,16 @@
     tools:context=".presentation.game.GameActivity">
 
     <GridView
-        android:id = "@+id/GameGrid"
+        android:id="@+id/GameGrid"
         android:layout_width="310dp"
         android:layout_height="620dp"
+        android:numColumns="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:numColumns="10"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintVertical_bias="0.118" />
 
     <ImageButton
         android:id="@+id/LeftButton"
@@ -86,5 +86,57 @@
         app:layout_constraintTop_toBottomOf="@+id/RightButton"
         app:layout_constraintVertical_bias="0.202"
         android:contentDescription="@string/RotateRightDesc" />
+
+    <TextView
+        android:id="@+id/PointsTextString"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="337dp"
+        android:text="@string/PointsText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/GameGrid"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.411" />
+
+    <TextView
+        android:id="@+id/PointsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.407"
+        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintTop_toBottomOf="@+id/PointsTextString"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/nextBlockText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:text="@string/NextBlock"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.113" />
+
+    <ImageView
+        android:id="@+id/NextBlockImage"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintTop_toBottomOf="@+id/nextBlockText"
+        app:srcCompat="@drawable/down"
+        android:contentDescription="@string/NextBlockDesc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

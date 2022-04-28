@@ -15,4 +15,7 @@
     <string name="newGameButton">New Game</string>
     <string name="exitButton">Exit</string>
     <string name="emailHint">jhondoe@gmail.com</string>
+    <string name="NextBlock">Next Block:</string>
+    <string name="NextBlockDesc">Shows the next block</string>
+    <string name="PointsText">Points:</string>
 </resources>

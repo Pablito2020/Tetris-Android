@@ -50,6 +50,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private fun updateGrid() {
         adapter.gameCells = getFlatGrid()
         adapter.notifyDataSetChanged()
+        binding.PointsText.text = gameViewModel.gameFacade.value!!.getScore().value.toString()
     }
 
     private fun setUpDownCoroutine() {
