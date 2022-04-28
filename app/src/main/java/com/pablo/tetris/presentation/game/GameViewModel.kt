@@ -4,14 +4,9 @@ import GameFacade
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class GameViewModel(gameFacadeConst: GameFacade): ViewModel() {
+class GameViewModel: ViewModel() {
 
-    val gameFacade = MutableLiveData(gameFacadeConst)
-
-    fun start() {
-        gameFacade.value?.start()
-        gameFacade.postValue(gameFacade.value)
-    }
+    val gameFacade: MutableLiveData<GameFacade> = MutableLiveData(null)
 
     fun left() {
         gameFacade.value?.left()
@@ -41,6 +36,13 @@ class GameViewModel(gameFacadeConst: GameFacade): ViewModel() {
     fun dropBlock() {
         gameFacade.value?.dropBlock()
         gameFacade.postValue(gameFacade.value)
+    }
+
+    fun setUp(gameFacade: GameFacade) {
+        if (this.gameFacade.value == null) {
+            gameFacade.start()
+            this.gameFacade.value = gameFacade
+        }
     }
 
 }
