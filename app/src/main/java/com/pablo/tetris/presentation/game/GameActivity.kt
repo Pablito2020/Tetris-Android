@@ -12,9 +12,13 @@ import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.grid.GameAdapter
 import com.pablo.tetris.presentation.game.grid.orientation.ItemFactory
 import com.pablo.tetris.presentation.game.grid.colors.VibrantColorChooser
+import com.pablo.tetris.presentation.game.grid.style.Style
+import com.pablo.tetris.presentation.game.grid.style.StyleCreator
+import com.pablo.tetris.presentation.game.grid.style.StyleFactory
 import com.pablo.tetris.presentation.getImageButtons
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.reflect.typeOf
 
 
 class GameActivity : HideStatusBarActivity(), View.OnClickListener {
@@ -22,11 +26,13 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private lateinit var gameViewModel: GameViewModel
     private lateinit var binding: ActivityGameBinding
     private lateinit var adapter: GameAdapter
+    private lateinit var style: StyleCreator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        style = StyleFactory.getStyleCreator(Style.SATURATED)
         setUpUpdateObserver()
         setUpGridView()
         setUpButtons()
@@ -34,9 +40,8 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     private fun setUpGridView() {
-        val colorChooser = VibrantColorChooser()
         val item = ItemFactory.getItem(resources.configuration.orientation)
-        adapter = GameAdapter(getFlatGrid(), this, colorChooser, item)
+        adapter = GameAdapter(getFlatGrid(), this, style.getColorCellChooser(), item)
         binding.GameGrid.adapter = adapter
     }
 
@@ -49,6 +54,8 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         adapter.gameCells = getFlatGrid()
         adapter.notifyDataSetChanged()
         binding.PointsText.text = gameViewModel.gameFacade.value!!.getScore().value.toString()
+        val typeOfBlock = gameViewModel.gameFacade.value!!.getNextBlock()
+        binding.NextBlockImage.setImageResource(style.getBlockCreator().getImageId(typeOfBlock))
     }
 
     private fun setUpDownCoroutine() {
