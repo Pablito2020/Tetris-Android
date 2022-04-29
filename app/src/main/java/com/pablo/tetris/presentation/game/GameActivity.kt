@@ -11,14 +11,11 @@ import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.grid.GameAdapter
 import com.pablo.tetris.presentation.game.grid.orientation.ItemFactory
-import com.pablo.tetris.presentation.game.grid.colors.VibrantColorChooser
 import com.pablo.tetris.presentation.game.grid.style.Style
 import com.pablo.tetris.presentation.game.grid.style.StyleCreator
 import com.pablo.tetris.presentation.game.grid.style.StyleFactory
 import com.pablo.tetris.presentation.getImageButtons
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.reflect.typeOf
 
 
 class GameActivity : HideStatusBarActivity(), View.OnClickListener {
@@ -32,16 +29,27 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        style = StyleFactory.getStyleCreator(Style.SATURATED)
-        setUpUpdateObserver()
+        setUpViewModel()
         setUpGridView()
         setUpButtons()
-        setUpDownCoroutine()
+        lifecycleScope.launch { gameViewModel.run() }
+    }
+
+    private fun setUpViewModel() {
+        gameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+        gameViewModel.setUp(GameFacade(ghost = true))
+        gameViewModel.gameFacade.observe(this) {
+            if (!it.hasFinished())
+                updateScreen()
+            else
+                finishGame()
+        }
     }
 
     private fun setUpGridView() {
+        style = StyleFactory.getStyleCreator(Style.SATURATED)
         val item = ItemFactory.getItem(resources.configuration.orientation)
-        adapter = GameAdapter(getFlatGrid(), this, style.getColorCellChooser(), item)
+        adapter = GameAdapter(gameViewModel.getGrid(), this, style.getColorCellChooser(), item)
         binding.GameGrid.adapter = adapter
     }
 
@@ -50,32 +58,12 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         binding.DownButton.setOnLongClickListener { gameViewModel.dropBlock();true }
     }
 
-    private fun updateGrid() {
-        adapter.gameCells = getFlatGrid()
+    private fun updateScreen() {
+        adapter.gameCells = gameViewModel.getGrid()
         adapter.notifyDataSetChanged()
-        binding.PointsText.text = gameViewModel.gameFacade.value!!.getScore().value.toString()
-        val typeOfBlock = gameViewModel.gameFacade.value!!.getNextBlock()
+        binding.PointsText.text = gameViewModel.getPoints()
+        val typeOfBlock = gameViewModel.getNextBlock()
         binding.NextBlockImage.setImageResource(style.getBlockCreator().getImageId(typeOfBlock))
-    }
-
-    private fun setUpDownCoroutine() {
-        lifecycleScope.launch {
-            while (!gameViewModel.gameFacade.value!!.hasFinished()) {
-                gameViewModel.down()
-                delay(1000)
-            }
-        }
-    }
-
-    private fun setUpUpdateObserver() {
-        gameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
-        gameViewModel.setUp(GameFacade(ghost = true))
-        gameViewModel.gameFacade.observe(this) {
-            if (!it.hasFinished())
-                updateGrid()
-            else
-                finishGame()
-        }
     }
 
     private fun finishGame() {
@@ -83,8 +71,6 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         startActivity(finish)
         finish()
     }
-
-    private fun getFlatGrid() = gameViewModel.gameFacade.value!!.getGrid().flatMap { it.toList() }
 
     override fun onClick(p0: View) = when (p0.id) {
         binding.DownButton.id -> gameViewModel.down()
