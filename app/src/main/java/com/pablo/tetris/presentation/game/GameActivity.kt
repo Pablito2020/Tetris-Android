@@ -33,7 +33,8 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     private fun setUpGridView() {
         val colorChooser = VibrantColorChooser()
-        adapter = GameAdapter(getFlatGrid(), this, colorChooser)
+        val item = ItemFactory.getItem(resources.configuration.orientation)
+        adapter = GameAdapter(getFlatGrid(), this, colorChooser, item)
         binding.GameGrid.adapter = adapter
     }
 
