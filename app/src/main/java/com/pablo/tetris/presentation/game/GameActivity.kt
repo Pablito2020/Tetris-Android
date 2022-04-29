@@ -10,7 +10,6 @@ import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.grid.GameAdapter
-import com.pablo.tetris.presentation.game.grid.orientation.ItemFactory
 import com.pablo.tetris.presentation.game.grid.style.Style
 import com.pablo.tetris.presentation.game.grid.style.StyleCreator
 import com.pablo.tetris.presentation.game.grid.style.StyleFactory
@@ -47,9 +46,8 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     private fun setUpGridView() {
-        style = StyleFactory.getStyleCreator(Style.SATURATED)
-        val item = ItemFactory.getItem(resources.configuration.orientation)
-        adapter = GameAdapter(gameViewModel.getGrid(), this, style.getColorCellChooser(), item)
+        style = StyleFactory.getStyleCreator(Style.SATURATED, this, resources.configuration.orientation)
+        adapter = GameAdapter(gameViewModel.getGrid(), style.getColorCellChooser())
         binding.GameGrid.adapter = adapter
     }
 
