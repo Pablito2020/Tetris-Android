@@ -1,4 +1,4 @@
-package com.pablo.tetris.presentation.game
+package com.pablo.tetris.presentation.game.grid
 
 import android.content.Context
 import android.view.View
@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
-import com.pablo.tetris.R
-import com.pablo.tetris.presentation.game.colors.ColorCellChooser
-import com.pablo.tetris.presentation.game.colors.VibrantColorChooser
+import com.pablo.tetris.presentation.game.grid.orientation.ItemGetter
+import com.pablo.tetris.presentation.game.grid.colors.ColorCellChooser
+import com.pablo.tetris.presentation.game.grid.colors.VibrantColorChooser
 import game.GameCell
 
 class GameAdapter(

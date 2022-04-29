@@ -1,4 +1,4 @@
-package com.pablo.tetris.presentation.game.colors
+package com.pablo.tetris.presentation.game.grid.colors
 
 import game.GameCell
 

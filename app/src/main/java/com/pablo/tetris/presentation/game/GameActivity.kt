@@ -9,7 +9,9 @@ import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
-import com.pablo.tetris.presentation.game.colors.VibrantColorChooser
+import com.pablo.tetris.presentation.game.grid.GameAdapter
+import com.pablo.tetris.presentation.game.grid.orientation.ItemFactory
+import com.pablo.tetris.presentation.game.grid.colors.VibrantColorChooser
 import com.pablo.tetris.presentation.getImageButtons
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

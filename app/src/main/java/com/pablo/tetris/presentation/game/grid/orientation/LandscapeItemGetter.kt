@@ -1,10 +1,8 @@
-package com.pablo.tetris.presentation.game
+package com.pablo.tetris.presentation.game.grid.orientation
 
 import com.pablo.tetris.R
 
-class LandscapeItemGetter: ItemGetter {
-
+class LandscapeItemGetter : ItemGetter {
     override fun getLayoutItem() = R.layout.grid_item_small
-
     override fun getIdItem() = R.id.grid_item_small
 }

@@ -1,4 +1,4 @@
-package com.pablo.tetris.presentation.game.colors
+package com.pablo.tetris.presentation.game.grid.colors
 
 import board.Cell
 import com.pablo.tetris.R
@@ -6,10 +6,10 @@ import game.GameCell
 
 class VibrantColorChooser: ColorCellChooser {
 
-    override fun getColorForCell(gameCell: GameCell): Int {
-        if (gameCell.isGhostBlockCell)
+    override fun getColorForCell(cell: GameCell): Int {
+        if (cell.isGhostBlockCell)
             return R.color.vibrant_gray
-        return when (gameCell.cell) {
+        return when (cell.cell) {
             Cell.EMPTY -> R.color.black
             Cell.I_BLOCK -> R.color.vibrant_yellow
             Cell.J_BLOCK -> R.color.vibrant_blue
