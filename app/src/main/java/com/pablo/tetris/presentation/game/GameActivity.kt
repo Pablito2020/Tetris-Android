@@ -46,7 +46,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     private fun setUpGridView() {
-        style = StyleFactory.getStyleCreator(Style.SATURATED, this, resources.configuration.orientation)
+        style = StyleFactory.getStyleCreator(Style.NEON, this, resources.configuration.orientation)
         adapter = GameAdapter(gameViewModel.getGrid(), style.getColorCellChooser())
         binding.GameGrid.adapter = adapter
     }

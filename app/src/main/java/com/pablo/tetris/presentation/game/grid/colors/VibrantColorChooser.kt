@@ -2,6 +2,7 @@ package com.pablo.tetris.presentation.game.grid.colors
 
 import android.content.Context
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import board.Cell
@@ -11,7 +12,7 @@ import game.GameCell
 
 class VibrantColorChooser(private val context: Context, private val layout: OrientedLayout): ColorCellChooser {
 
-    override fun paint(gameCell: GameCell, p1: View?): View {
+    override fun paint(gameCell: GameCell, p1: View?, p2: ViewGroup?): View {
         val view = p1 ?: View.inflate(context, layout.getLayoutItem(), null)
         val cell: TextView = view.findViewById(layout.getIdItem())
         cell.background = AppCompatResources.getDrawable(context, this.getColorForCell(gameCell))

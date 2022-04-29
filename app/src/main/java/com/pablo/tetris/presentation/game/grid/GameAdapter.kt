@@ -17,6 +17,6 @@ class GameAdapter(
 
     override fun getItemId(p0: Int): Long = p0.toLong()
 
-    override fun getView(p0: Int, p1: View?, p2: ViewGroup?) = colorChooser.paint(gameCells[p0], p1)
+    override fun getView(p0: Int, p1: View?, p2: ViewGroup?) = colorChooser.paint(gameCells[p0], p1, p2)
 
 }
