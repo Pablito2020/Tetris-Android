@@ -13,117 +13,99 @@
         android:numColumns="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/LeftButton"
         android:layout_width="73dp"
         android:layout_height="68dp"
-        android:layout_marginStart="132dp"
         android:contentDescription="@string/LeftButtonDesc"
         android:src="@drawable/left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.038"
-        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.769" />
+        app:layout_constraintVertical_bias="0.874" />
 
     <ImageButton
         android:id="@+id/DownButton"
         android:layout_width="72dp"
         android:layout_height="63dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginBottom="84dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="244dp"
         android:contentDescription="@string/DownButtonDesc"
         android:src="@drawable/down"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/GameGrid"
         app:layout_constraintTop_toBottomOf="@+id/NextBlockImage"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.136" />
 
     <ImageButton
         android:id="@+id/RightButton"
         android:layout_width="71dp"
         android:layout_height="67dp"
+        android:layout_marginStart="264dp"
         android:contentDescription="@string/RightButtonDesc"
         android:src="@drawable/right"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/RotateRight"
-        app:layout_constraintHorizontal_bias="0.961"
         app:layout_constraintStart_toEndOf="@+id/GameGrid"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.767" />
+        app:layout_constraintVertical_bias="0.886" />
 
     <ImageButton
         android:id="@+id/RotateLeft"
         android:layout_width="67dp"
         android:layout_height="68dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="28dp"
         android:contentDescription="@string/RotateLeftDesc"
         android:src="@drawable/rotateleft"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/LeftButton"
-        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintStart_toEndOf="@+id/LeftButton"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.769" />
+        app:layout_constraintVertical_bias="0.874" />
 
     <ImageButton
         android:id="@+id/RotateRight"
         android:layout_width="69dp"
         android:layout_height="62dp"
-        android:layout_marginEnd="36dp"
         android:contentDescription="@string/RotateRightDesc"
         android:src="@drawable/rotateright"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/RightButton"
+        app:layout_constraintHorizontal_bias="0.815"
         app:layout_constraintStart_toEndOf="@+id/GameGrid"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.756" />
+        app:layout_constraintVertical_bias="0.888" />
 
     <TextView
         android:id="@+id/PointsTextString"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="337dp"
         android:text="@string/PointsText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
-        app:layout_constraintStart_toStartOf="@+id/GameGrid"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418" />
+        app:layout_constraintVertical_bias="0.339" />
 
     <TextView
         android:id="@+id/PointsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PointsTextString"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/nextBlockText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:text="@string/NextBlock"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toEndOf="@+id/GameGrid"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109" />
+        app:layout_constraintVertical_bias="0.02" />
 
     <ImageView
         android:id="@+id/NextBlockImage"
@@ -134,10 +116,23 @@
         android:contentDescription="@string/NextBlockDesc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintHorizontal_bias="0.396"
         app:layout_constraintStart_toEndOf="@+id/GameGrid"
         app:layout_constraintTop_toBottomOf="@+id/nextBlockText"
-        app:layout_constraintVertical_bias="0.031"
+        app:layout_constraintVertical_bias="0.025"
         app:srcCompat="@drawable/down" />
+
+    <TextView
+        android:id="@+id/nextBlockText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:text="@string/NextBlock"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.331" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
