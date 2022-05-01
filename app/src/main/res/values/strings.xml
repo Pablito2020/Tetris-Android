@@ -21,4 +21,7 @@
     <string name="checkbox_music">Music</string>
     <string name="checkbox_ghostblock">Ghost Block</string>
     <string name="theme_text">Theme</string>
+    <string name="difficulty_setting_text">Difficulty:</string>
+    <string name="name_text">Name:</string>
+    <string name="hint_name">jhondoe</string>
 </resources>
