@@ -30,7 +30,7 @@ class VibrantColorChooser(private val context: Context, private val layout: Orie
             Cell.SQUARE_BLOCK -> R.color.vibrant_green
             Cell.S_BLOCK -> R.color.vibrant_red
             Cell.T_BLOCK -> R.color.vibrant_magenta
-            Cell.Z_BLOCK -> R.color.vibrant_white
+            Cell.Z_BLOCK -> R.color.vibrant_purple
         }
     }
 
