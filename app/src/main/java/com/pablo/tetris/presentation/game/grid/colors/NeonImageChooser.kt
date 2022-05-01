@@ -32,7 +32,7 @@ class NeonImageChooser(private val context: Context, private val layout: Oriente
             Cell.I_BLOCK -> R.drawable.cyancellneon
             Cell.J_BLOCK -> R.drawable.greencellneon
             Cell.L_BLOCK -> R.drawable.orangecellneon
-            Cell.SQUARE_BLOCK -> R.drawable.pinkcellneon
+            Cell.SQUARE_BLOCK -> R.drawable.bluecellneon
             Cell.S_BLOCK -> R.drawable.purplecellneon
             Cell.T_BLOCK -> R.drawable.redcellneon
             Cell.Z_BLOCK -> R.drawable.yellowcellneon
