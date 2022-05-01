@@ -1,13 +1,15 @@
 package com.pablo.tetris.presentation.settings
 
-import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.databinding.ActivitySettingsBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
+import com.pablo.tetris.presentation.game.grid.style.Style
 import kotlinx.coroutines.flow.collect
 
 class SettingsActivity : HideStatusBarActivity() {
@@ -20,7 +22,6 @@ class SettingsActivity : HideStatusBarActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this).get(SettingsModel::class.java)
-        val context: Context = this
         lifecycleScope.launchWhenCreated {
             viewModel.results.collect {
                 binding.editTextTextPersonName.error = it.nameError
@@ -40,6 +41,17 @@ class SettingsActivity : HideStatusBarActivity() {
         binding.StartButton.setOnClickListener {
             viewModel.collect()
         }
-    }
+        binding.ThemeSpinner.adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            Style.values().map { it.name.lowercase() },
+        )
+        binding.ThemeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                viewModel.update(DataValue.Theme(p2))
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+        }
 
+    }
 }

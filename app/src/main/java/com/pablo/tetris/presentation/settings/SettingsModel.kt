@@ -29,6 +29,9 @@ class SettingsModel(
             is DataValue.HasGhost -> {
                 state = state.copy(isGhostBlock = value.hasGhost)
             }
+            is DataValue.Theme -> {
+                state = state.copy(themeIndex = value.themeIndex)
+            }
         }
     }
 
