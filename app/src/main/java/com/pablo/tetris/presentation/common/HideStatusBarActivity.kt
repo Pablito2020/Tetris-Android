@@ -21,4 +21,9 @@ open class HideStatusBarActivity : AppCompatActivity() {
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
     }
 
+    override fun onResume() {
+        super.onResume()
+        hideStatusBar()
+    }
+
 }
