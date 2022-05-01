@@ -18,4 +18,7 @@
     <string name="NextBlock">Next Block:</string>
     <string name="NextBlockDesc">Shows the next block</string>
     <string name="PointsText">Points:</string>
+    <string name="checkbox_music">Music</string>
+    <string name="checkbox_ghostblock">Ghost Block</string>
+    <string name="theme_text">Theme</string>
 </resources>

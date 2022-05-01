@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.View
 import com.pablo.tetris.databinding.ActivityMainBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
-import com.pablo.tetris.presentation.game.GameActivity
 import com.pablo.tetris.presentation.getButtons
+import com.pablo.tetris.presentation.settings.SettingsActivity
 
 class MainActivity : HideStatusBarActivity(), View.OnClickListener {
 
@@ -21,13 +21,13 @@ class MainActivity : HideStatusBarActivity(), View.OnClickListener {
 
     override fun onClick(p0: View) {
         when (p0.id) {
-            binding.startButton.id -> startGameActivity()
+            binding.startButton.id -> startSettingsActivity()
             else -> TODO("More buttons need to go here")
         }
     }
 
-    private fun startGameActivity() {
-        val game = Intent(this, GameActivity::class.java)
+    private fun startSettingsActivity() {
+        val game = Intent(this, SettingsActivity::class.java)
         startActivity(game)
     }
 
