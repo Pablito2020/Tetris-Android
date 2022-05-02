@@ -19,6 +19,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private lateinit var binding: ActivityGameBinding
     private lateinit var adapter: GameAdapter
     private val factory = SettingsFactory
+    private lateinit var musicService: Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         setUpViewModel()
         setUpGridView()
         setUpButtons()
+        setUpMusic()
         lifecycleScope.launch { gameViewModel.run() }
     }
 
@@ -67,6 +69,11 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         )
     }
 
+    private fun setUpMusic() {
+        musicService = factory.getMusicService(this)
+        startService(musicService)
+    }
+
     private fun finishGame() {
         val finish = Intent(this, FinishedActivity::class.java)
         startActivity(finish)
@@ -80,6 +87,11 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         binding.RotateLeft.id -> gameViewModel.rotateLeft()
         binding.RotateRight.id -> gameViewModel.rotateRight()
         else -> throw UnsupportedOperationException("Unknown button")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopService(musicService)
     }
 
 }

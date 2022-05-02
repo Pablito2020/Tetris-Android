@@ -3,8 +3,11 @@ package com.pablo.tetris.presentation.game
 import GameFacade
 import android.content.Context
 import android.content.Intent
+import com.pablo.tetris.R
 import com.pablo.tetris.domain.game.BlockGeneratorFactory
+import com.pablo.tetris.infra.music.TetrisMusicService
 import com.pablo.tetris.presentation.common.GAME_INFORMATION
+import com.pablo.tetris.presentation.common.MUSIC_RESOURCE_ID
 import com.pablo.tetris.presentation.game.grid.style.Style
 import com.pablo.tetris.presentation.game.grid.style.StyleCreator
 import com.pablo.tetris.presentation.game.grid.style.StyleFactory
@@ -25,6 +28,13 @@ object SettingsFactory {
 
     fun getStyle(context: Context, orientation: Int): StyleCreator {
         return StyleFactory.getStyleCreator(Style.values()[data.themeIndex], context, orientation)
+    }
+
+    fun getMusicService(context: Context): Intent {
+        val resourceId = if (data.hasMusic) R.raw.tetristheme else null
+        return Intent(context, TetrisMusicService::class.java).apply {
+            putExtra(MUSIC_RESOURCE_ID, resourceId)
+        }
     }
 
 }
