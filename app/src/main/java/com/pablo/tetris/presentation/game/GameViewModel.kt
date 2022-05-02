@@ -10,6 +10,7 @@ internal const val BLOCK_DOWN_MILLISECONDS = 1000L
 class GameViewModel : ViewModel() {
 
     val gameFacade: MutableLiveData<GameFacade> = MutableLiveData(null)
+    val lengthSong: MutableLiveData<Int> = MutableLiveData(0)
 
     fun setUp(gameFacade: GameFacade) {
         if (this.gameFacade.value == null) {
