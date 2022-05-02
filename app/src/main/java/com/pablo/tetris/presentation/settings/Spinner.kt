@@ -1,6 +1,6 @@
 package com.pablo.tetris.presentation.settings
 
-import android.R
+import android.R.layout.simple_spinner_dropdown_item
 import android.content.Context
 import android.view.View
 import android.widget.AdapterView
@@ -12,7 +12,7 @@ class Spinner(private val viewModel: SettingsModel) : AdapterView.OnItemSelected
     object Adapter {
         fun get(context: Context) = ArrayAdapter(
             context,
-            R.layout.simple_spinner_dropdown_item,
+            simple_spinner_dropdown_item,
             Style.values().map { it.name.lowercase() })
     }
 
