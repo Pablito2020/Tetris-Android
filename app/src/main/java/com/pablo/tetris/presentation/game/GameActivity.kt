@@ -10,6 +10,7 @@ import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.grid.GameAdapter
 import com.pablo.tetris.presentation.getImageButtons
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 
@@ -20,6 +21,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private lateinit var adapter: GameAdapter
     private val factory = SettingsFactory
     private lateinit var musicService: Intent
+    private lateinit var moveBlockDown: Job
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +32,6 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         setUpGridView()
         setUpButtons()
         setUpMusic()
-        lifecycleScope.launch { gameViewModel.run() }
     }
 
     private fun setUpViewModel() {
@@ -71,7 +72,6 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     private fun setUpMusic() {
         musicService = factory.getMusicService(this)
-        startService(musicService)
     }
 
     private fun finishGame() {
@@ -92,6 +92,18 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     override fun onDestroy() {
         super.onDestroy()
         stopService(musicService)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        moveBlockDown.cancel()
+        stopService(musicService)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        startService(musicService)
+        moveBlockDown = lifecycleScope.launch { gameViewModel.run() }
     }
 
 }
