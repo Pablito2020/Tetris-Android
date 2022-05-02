@@ -6,8 +6,8 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.databinding.ActivitySettingsBinding
-import com.pablo.tetris.domain.Level
 import com.pablo.tetris.presentation.common.GAME_INFORMATION
+import com.pablo.tetris.domain.game.Level
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.game.GameActivity
 import kotlinx.coroutines.flow.collect

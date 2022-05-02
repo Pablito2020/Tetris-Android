@@ -1,7 +1,7 @@
 package com.pablo.tetris.presentation.settings
 
-import com.pablo.tetris.domain.Level
 import java.io.Serializable
+import com.pablo.tetris.domain.game.Level
 
 data class SettingsData(
     val name: String = "",

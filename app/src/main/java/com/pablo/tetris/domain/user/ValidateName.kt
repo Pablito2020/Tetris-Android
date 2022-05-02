@@ -1,4 +1,4 @@
-package com.pablo.tetris.domain
+package com.pablo.tetris.domain.user
 
 class ValidateName {
 

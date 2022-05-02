@@ -1,4 +1,4 @@
-package com.pablo.tetris.domain
+package com.pablo.tetris.domain.game
 
 enum class Level {
     LOW,

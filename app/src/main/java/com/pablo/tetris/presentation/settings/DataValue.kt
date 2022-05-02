@@ -5,5 +5,5 @@ sealed class DataValue {
     data class HasGhost(val hasGhost: Boolean) : DataValue()
     data class HasMusic(val hasMusic: Boolean) : DataValue()
     data class Theme(val themeIndex: Int) : DataValue()
-    data class Level(val level: com.pablo.tetris.domain.Level) : DataValue()
+    data class Level(val level: com.pablo.tetris.domain.game.Level) : DataValue()
 }
