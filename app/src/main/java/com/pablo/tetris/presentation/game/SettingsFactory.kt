@@ -31,9 +31,12 @@ object SettingsFactory {
     }
 
     fun getMusicService(context: Context): Intent {
-        val resourceId = if (data.hasMusic) R.raw.tetristheme else null
-        return Intent(context, TetrisMusicService::class.java).apply {
-            putExtra(MUSIC_RESOURCE_ID, resourceId)
+        if (data.hasMusic) {
+            return Intent(context, TetrisMusicService::class.java).apply {
+                putExtra(MUSIC_RESOURCE_ID, R.raw.tetristheme)
+            }
+        } else {
+            return Intent(context, TetrisMusicService::class.java)
         }
     }
 
