@@ -1,6 +1,7 @@
 package com.pablo.tetris.presentation.settings
 
 import com.pablo.tetris.domain.Level
+import java.io.Serializable
 
 data class SettingsData(
     val name: String = "",
@@ -9,4 +10,4 @@ data class SettingsData(
     val hasMusic: Boolean = true,
     val themeIndex: Int = 0,
     val level: Level = Level.MEDIUM,
-)
+): Serializable
