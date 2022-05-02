@@ -1,12 +1,10 @@
 package com.pablo.tetris.presentation.game
 
 import android.content.Intent
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.pablo.tetris.R
 import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
@@ -22,7 +20,6 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private lateinit var binding: ActivityGameBinding
     private lateinit var adapter: GameAdapter
     private val factory = SettingsFactory
-    private lateinit var musicPlayer : MediaPlayer
     private lateinit var moveBlockDown: Job
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +27,6 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
         factory.fromIntent(intent)
-        musicPlayer = MediaPlayer.create(this, R.raw.tetristheme)
-        musicPlayer.isLooping = true
         setUpViewModel()
         setUpGridView()
         setUpButtons()
@@ -40,6 +35,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private fun setUpViewModel() {
         gameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
         gameViewModel.setUp(factory.getFacade())
+        gameViewModel.setUpMusic(factory.hasMusic(), this)
         gameViewModel.gameFacade.observe(this) {
             if (!it.hasFinished())
                 updateScreen()
@@ -91,14 +87,12 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     override fun onPause() {
         super.onPause()
         moveBlockDown.cancel()
-        musicPlayer.pause()
-        gameViewModel.lengthSong.value = musicPlayer.currentPosition
+        gameViewModel.pauseMusic()
     }
 
     override fun onResume() {
         super.onResume()
-        musicPlayer.seekTo(gameViewModel.lengthSong.value!!)
-        musicPlayer.start()
+        gameViewModel.startMusic()
         moveBlockDown = lifecycleScope.launch { gameViewModel.run() }
     }
 
