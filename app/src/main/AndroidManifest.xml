@@ -4,11 +4,12 @@
 
     <application
         android:allowBackup="true"
+        android:name = ".presentation.common.TetrisThemeApp"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Tetris">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".presentation.settings.SettingsActivity"
             android:exported="false" />
@@ -27,11 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name=".infra.music.TetrisMusicService"
-            android:enabled="true"
-            android:exported="false" />
 
     </application>
 
