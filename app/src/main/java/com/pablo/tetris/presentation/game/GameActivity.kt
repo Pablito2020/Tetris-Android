@@ -1,6 +1,5 @@
 package com.pablo.tetris.presentation.game
 
-import GameFacade
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -10,9 +9,6 @@ import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.grid.GameAdapter
-import com.pablo.tetris.presentation.game.grid.style.Style
-import com.pablo.tetris.presentation.game.grid.style.StyleCreator
-import com.pablo.tetris.presentation.game.grid.style.StyleFactory
 import com.pablo.tetris.presentation.getImageButtons
 import kotlinx.coroutines.launch
 
@@ -22,12 +18,13 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private lateinit var gameViewModel: GameViewModel
     private lateinit var binding: ActivityGameBinding
     private lateinit var adapter: GameAdapter
-    private lateinit var style: StyleCreator
+    private val factory = SettingsFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        factory.fromIntent(intent)
         setUpViewModel()
         setUpGridView()
         setUpButtons()
@@ -36,7 +33,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     private fun setUpViewModel() {
         gameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
-        gameViewModel.setUp(GameFacade(ghost = true))
+        gameViewModel.setUp(factory.getFacade())
         gameViewModel.gameFacade.observe(this) {
             if (!it.hasFinished())
                 updateScreen()
@@ -46,8 +43,9 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     private fun setUpGridView() {
-        style = StyleFactory.getStyleCreator(Style.NEON, this, resources.configuration.orientation)
-        adapter = GameAdapter(gameViewModel.getGrid(), style.getColorCellChooser())
+        val cellColors =
+            factory.getStyle(this, resources.configuration.orientation).getColorCellChooser()
+        adapter = GameAdapter(gameViewModel.getGrid(), cellColors)
         binding.GameGrid.adapter = adapter
     }
 
@@ -61,7 +59,12 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         adapter.notifyDataSetChanged()
         binding.PointsText.text = gameViewModel.getPoints()
         val typeOfBlock = gameViewModel.getNextBlock()
-        binding.NextBlockImage.setImageResource(style.getBlockCreator().getImageId(typeOfBlock))
+        binding.NextBlockImage.setImageResource(
+            factory.getStyle(
+                this,
+                resources.configuration.orientation
+            ).getBlockCreator().getImageId(typeOfBlock)
+        )
     }
 
     private fun finishGame() {
