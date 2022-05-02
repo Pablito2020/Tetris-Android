@@ -9,7 +9,7 @@
     <GridView
         android:id="@+id/GameGrid"
         android:layout_width="197dp"
-        android:layout_height="411dp"
+        android:layout_height="wrap_content"
         android:numColumns="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/grid_item_image_small"
         android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_height="19.5dp"
         tools:ignore="ContentDescription" />
 
 </LinearLayout>
