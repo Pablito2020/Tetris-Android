@@ -24,4 +24,7 @@
     <string name="difficulty_setting_text">Difficulty:</string>
     <string name="name_text">Name:</string>
     <string name="hint_name">jhondoe</string>
+    <string name="LowLevelButton">Low</string>
+    <string name="MediumLevelButton">Medium</string>
+    <string name="HighLevelButton">High</string>
 </resources>

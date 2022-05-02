@@ -8,6 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.databinding.ActivitySettingsBinding
+import com.pablo.tetris.domain.Level
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.game.grid.style.Style
 import kotlinx.coroutines.flow.collect
@@ -52,6 +53,14 @@ class SettingsActivity : HideStatusBarActivity() {
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {}
         }
-
+        binding.LowLevel.setOnClickListener {
+            viewModel.update(DataValue.Level(Level.LOW))
+        }
+        binding.MediumLevelButton.setOnClickListener {
+            viewModel.update(DataValue.Level(Level.MEDIUM))
+        }
+        binding.HighLevelButton.setOnClickListener {
+            viewModel.update(DataValue.Level(Level.HIGH))
+        }
     }
 }

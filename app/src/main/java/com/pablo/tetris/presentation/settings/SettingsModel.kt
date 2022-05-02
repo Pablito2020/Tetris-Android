@@ -32,6 +32,9 @@ class SettingsModel(
             is DataValue.Theme -> {
                 state = state.copy(themeIndex = value.themeIndex)
             }
+            is DataValue.Level -> {
+                state = state.copy(level = value.level)
+            }
         }
     }
 
