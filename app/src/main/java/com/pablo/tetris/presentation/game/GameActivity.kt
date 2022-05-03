@@ -122,7 +122,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     private fun getPauseButtonResource() =
-        if (gameViewModel.gamePaused.value!!) android.R.drawable.ic_media_play else android.R.drawable.ic_media_pause
+        if (gameViewModel.gamePaused.value!!) R.drawable.play_icon else R.drawable.pause_icon
 
     private fun waitAndInformAboutResume() {
         val millisecondsDelay = 1500L

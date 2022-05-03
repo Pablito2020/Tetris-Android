@@ -31,6 +31,7 @@
         <!-- Customize your theme here. -->
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
         <!-- For text input fields -->
         <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
         <!-- For radio buttons -->
