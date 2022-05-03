@@ -2,9 +2,12 @@ package com.pablo.tetris.presentation.game
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.pablo.tetris.R
 import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
@@ -54,6 +57,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private fun setUpButtons() {
         binding.root.getImageButtons().forEach { it.setOnClickListener(this) }
         binding.DownButton.setOnLongClickListener { gameViewModel.dropBlock();true }
+        binding.pauseButton.setImageResource(getPauseButtonResource())
     }
 
     private fun updateScreen() {
@@ -78,19 +82,66 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         binding.RightButton.id -> gameViewModel.right()
         binding.RotateLeft.id -> gameViewModel.rotateLeft()
         binding.RotateRight.id -> gameViewModel.rotateRight()
+        binding.pauseButton.id -> {
+            if (gameViewModel.gamePaused.value!!) {
+                gameViewModel.gamePaused.value = false
+                waitAndInformAboutResume()
+                resumeGame()
+            } else {
+                pauseGame()
+                gameViewModel.gamePaused.value = true
+            }
+            binding.pauseButton.setImageResource(getPauseButtonResource())
+        }
         else -> throw UnsupportedOperationException("Unknown button")
     }
 
     override fun onPause() {
         super.onPause()
-        moveBlockDown.cancel()
-        gameViewModel.pauseMusic()
+        pauseGame()
     }
 
     override fun onResume() {
         super.onResume()
-        gameViewModel.startMusic()
-        moveBlockDown = lifecycleScope.launch { gameViewModel.run() }
+        resumeGame()
+    }
+
+    private fun resumeGame() {
+        if (!gameViewModel.gamePaused.value!!) {
+            gameViewModel.startMusic()
+            moveBlockDown = lifecycleScope.launch { gameViewModel.run() }
+        }
+    }
+
+    private fun pauseGame() {
+        if (!gameViewModel.gamePaused.value!!) {
+            moveBlockDown.cancel()
+            gameViewModel.pauseMusic()
+        }
+    }
+
+    private fun getPauseButtonResource() =
+        if (gameViewModel.gamePaused.value!!) android.R.drawable.ic_media_play else android.R.drawable.ic_media_pause
+
+    private fun waitAndInformAboutResume() {
+        val millisecondsDelay = 1500L
+        val waitingSeconds = 3
+        (waitingSeconds downTo 1).forEach { displayToast(it); Thread.sleep(millisecondsDelay) }
+    }
+
+    private fun displayToast(iteration: Int) {
+        val toastDurationInMilliSeconds = 1000L
+        val toast = Toast.makeText(this, "${getString(R.string.resumingin)} $iteration", Toast.LENGTH_SHORT)
+        val toastCountDown = object : CountDownTimer(toastDurationInMilliSeconds, toastDurationInMilliSeconds) {
+                override fun onTick(millisUntilFinished: Long) {
+                    toast.show()
+                }
+                override fun onFinish() {
+                    toast.cancel()
+                }
+            }
+        toast.show()
+        toastCountDown.start()
     }
 
 }

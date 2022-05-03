@@ -27,4 +27,6 @@
     <string name="LowLevelButton">Low</string>
     <string name="MediumLevelButton">Medium</string>
     <string name="HighLevelButton">High</string>
+    <string name="pause_info">pause the current status of the game</string>
+    <string name="resumingin">Resuming in:</string>
 </resources>

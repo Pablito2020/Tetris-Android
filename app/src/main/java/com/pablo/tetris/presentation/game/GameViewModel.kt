@@ -15,6 +15,7 @@ class GameViewModel : ViewModel() {
     val gameFacade: MutableLiveData<GameFacade> = MutableLiveData(null)
     private val lengthSong: MutableLiveData<Int> = MutableLiveData(0)
     val song: MutableLiveData<MediaPlayer> = MutableLiveData(null)
+    val gamePaused: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun setUp(gameFacade: GameFacade) {
         if (this.gameFacade.value == null) {
@@ -31,33 +32,45 @@ class GameViewModel : ViewModel() {
     }
 
     fun left() {
-        gameFacade.value?.left()
-        gameFacade.postValue(gameFacade.value)
+        if (!gamePaused.value!!) {
+            gameFacade.value?.left()
+            gameFacade.postValue(gameFacade.value)
+        }
     }
 
     fun right() {
-        gameFacade.value?.right()
-        gameFacade.postValue(gameFacade.value)
+        if (!gamePaused.value!!) {
+            gameFacade.value?.right()
+            gameFacade.postValue(gameFacade.value)
+        }
     }
 
     fun down() {
-        gameFacade.value?.down()
-        gameFacade.postValue(gameFacade.value)
+        if (!gamePaused.value!!) {
+            gameFacade.value?.down()
+            gameFacade.postValue(gameFacade.value)
+        }
     }
 
     fun rotateLeft() {
-        gameFacade.value?.rotateLeft()
-        gameFacade.postValue(gameFacade.value)
+        if (!gamePaused.value!!) {
+            gameFacade.value?.rotateLeft()
+            gameFacade.postValue(gameFacade.value)
+        }
     }
 
     fun rotateRight() {
-        gameFacade.value?.rotateRight()
-        gameFacade.postValue(gameFacade.value)
+        if (!gamePaused.value!!) {
+            gameFacade.value?.rotateRight()
+            gameFacade.postValue(gameFacade.value)
+        }
     }
 
     fun dropBlock() {
-        gameFacade.value?.dropBlock()
-        gameFacade.postValue(gameFacade.value)
+        if (!gamePaused.value!!) {
+            gameFacade.value?.dropBlock()
+            gameFacade.postValue(gameFacade.value)
+        }
     }
 
     fun getGrid() = gameFacade.value!!.getGrid().flatMap { it.toList() }
@@ -74,7 +87,7 @@ class GameViewModel : ViewModel() {
     }
 
     fun pauseMusic() {
-        if (song.value != null) {
+        if (song.value != null && song.value!!.isPlaying) {
             song.value?.pause()
             lengthSong.value = song.value?.currentPosition
         }
