@@ -2,9 +2,7 @@ package com.pablo.tetris.presentation.game
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.R
@@ -12,6 +10,7 @@ import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.grid.GameAdapter
+import com.pablo.tetris.presentation.game.toast.oneSecondToast
 import com.pablo.tetris.presentation.getImageButtons
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -82,17 +81,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         binding.RightButton.id -> gameViewModel.right()
         binding.RotateLeft.id -> gameViewModel.rotateLeft()
         binding.RotateRight.id -> gameViewModel.rotateRight()
-        binding.pauseButton.id -> {
-            if (gameViewModel.gamePaused.value!!) {
-                gameViewModel.gamePaused.value = false
-                waitAndInformAboutResume()
-                resumeGame()
-            } else {
-                pauseGame()
-                gameViewModel.gamePaused.value = true
-            }
-            binding.pauseButton.setImageResource(getPauseButtonResource())
-        }
+        binding.pauseButton.id -> pauseButtonClicked()
         else -> throw UnsupportedOperationException("Unknown button")
     }
 
@@ -120,6 +109,18 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         }
     }
 
+    private fun pauseButtonClicked() {
+        if (gameViewModel.gamePaused.value!!) {
+            gameViewModel.gamePaused.value = false
+            waitAndInformAboutResume()
+            resumeGame()
+        } else {
+            pauseGame()
+            gameViewModel.gamePaused.value = true
+        }
+        binding.pauseButton.setImageResource(getPauseButtonResource())
+    }
+
     private fun getPauseButtonResource() =
         if (gameViewModel.gamePaused.value!!) android.R.drawable.ic_media_play else android.R.drawable.ic_media_pause
 
@@ -130,18 +131,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     private fun displayToast(iteration: Int) {
-        val toastDurationInMilliSeconds = 1000L
-        val toast = Toast.makeText(this, "${getString(R.string.resumingin)} $iteration", Toast.LENGTH_SHORT)
-        val toastCountDown = object : CountDownTimer(toastDurationInMilliSeconds, toastDurationInMilliSeconds) {
-                override fun onTick(millisUntilFinished: Long) {
-                    toast.show()
-                }
-                override fun onFinish() {
-                    toast.cancel()
-                }
-            }
-        toast.show()
-        toastCountDown.start()
+        oneSecondToast(this, "${getString(R.string.resumingin)} $iteration")
     }
 
 }
