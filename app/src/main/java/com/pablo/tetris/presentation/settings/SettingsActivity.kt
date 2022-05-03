@@ -29,7 +29,7 @@ class SettingsActivity : HideStatusBarActivity() {
         viewModel = ViewModelProvider(this).get(SettingsModel::class.java)
         lifecycleScope.launchWhenCreated {
             viewModel.results.collect {
-                binding.editTextTextPersonName.error = it.nameError
+                binding.editTextPersonName.error = it.nameError
                 if (it.nameError == null) {
                     val intent = Intent(this@SettingsActivity, GameActivity::class.java).apply {
                         putExtra(GAME_INFORMATION, it)
@@ -41,7 +41,7 @@ class SettingsActivity : HideStatusBarActivity() {
     }
 
     fun setUpComponents() {
-        binding.editTextTextPersonName.addTextChangedListener { viewModel.update(DataValue.Name(it.toString())) }
+        binding.editTextPersonName.addTextChangedListener { viewModel.update(DataValue.Name(it.toString())) }
         binding.CheckBoxGhostBlock.setOnClickListener { viewModel.update(DataValue.HasGhost(binding.CheckBoxGhostBlock.isChecked)) }
         binding.MusicCheckbox.setOnClickListener { viewModel.update(DataValue.HasMusic(binding.MusicCheckbox.isChecked)) }
         binding.StartButton.setOnClickListener { viewModel.collect() }

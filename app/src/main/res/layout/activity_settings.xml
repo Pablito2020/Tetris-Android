@@ -6,149 +6,170 @@
     android:layout_height="match_parent"
     tools:context=".presentation.settings.SettingsActivity">
 
-    <Spinner
-        android:id="@+id/ThemeSpinner"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/DayAndHourText"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/difficulty_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/theme_text"
-        app:layout_constraintVertical_bias="0.126" />
 
-    <CheckBox
-        android:id="@+id/CheckBoxGhostBlock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/checkbox_ghostblock"
-        app:layout_constraintBottom_toTopOf="@+id/MusicCheckbox"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="311dp"
+        android:layout_height="61dp"
+        android:hint="@string/name_text"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073">
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutcheckboxes"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintVertical_bias="0.141">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
+        <CheckBox
+            android:id="@+id/CheckBoxGhostBlock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/checkbox_ghostblock"
+            app:layout_constraintBottom_toTopOf="@+id/MusicCheckbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+            app:layout_constraintVertical_bias="0.258" />
+
+        <CheckBox
+            android:id="@+id/MusicCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/checkbox_music"
+            app:layout_constraintBottom_toTopOf="@+id/layoutspinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CheckBoxGhostBlock"
+            app:layout_constraintVertical_bias="0.258" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutdifficulty"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:checkedButton="@id/MediumLevelButton"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/StartButton"
+        android:orientation="vertical"
+        android:padding="10dip"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/difficulty_text"
-        app:layout_constraintVertical_bias="0.222">
+        app:layout_constraintTop_toBottomOf="@+id/layoutcheckboxes"
+        app:layout_constraintVertical_bias="0.17">
 
-        <RadioButton
-            android:id="@+id/LowLevel"
+        <TextView
+            android:id="@+id/difficulty_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:text="@string/LowLevelButton" />
+            android:text="@string/difficulty_setting_text" />
 
-        <RadioButton
-            android:id="@+id/MediumLevelButton"
+        <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checkedButton="@id/MediumLevelButton"
+            android:minWidth="48dp"
             android:minHeight="48dp"
-            android:text="@string/MediumLevelButton" />
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/HighLevelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:text="@string/HighLevelButton" />
-    </RadioGroup>
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/LowLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@string/LowLevelButton" />
 
-    <TextView
-        android:id="@+id/theme_text"
-        android:layout_width="wrap_content"
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/MediumLevelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@string/MediumLevelButton" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/HighLevelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@string/HighLevelButton" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutspinner"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:text="@string/theme_text"
-        app:layout_constraintBottom_toTopOf="@+id/ThemeSpinner"
+        android:baselineAligned="true"
+        android:orientation="vertical"
+        android:padding="10dip"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MusicCheckbox"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutdifficulty"
+        app:layout_constraintVertical_bias="0.164">
+
+        <TextView
+            android:id="@+id/theme_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:text="@string/theme_text"
+            app:layout_constraintBottom_toTopOf="@+id/ThemeSpinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/MusicCheckbox"
+            app:layout_constraintVertical_bias="0.976" />
+
+        <Spinner
+            android:id="@+id/ThemeSpinner"
+            android:layout_width="409dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/DayAndHourText"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/difficulty_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/theme_text"
+            app:layout_constraintVertical_bias="0.126" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/StartButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/start_button"
-        android:textColor="#212121"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
-    <TextView
-        android:id="@+id/name_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/name_text"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.524"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044"
-        app:layout_constraintVertical_chainStyle="spread" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/hint_name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        app:layout_constraintBottom_toTopOf="@+id/CheckBoxGhostBlock"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_text"
-        app:layout_constraintVertical_bias="0.005" />
-
-    <CheckBox
-        android:id="@+id/MusicCheckbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="@string/checkbox_music"
-        app:layout_constraintBottom_toTopOf="@+id/theme_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CheckBoxGhostBlock"
-        app:layout_constraintVertical_bias="0.258" />
-
-    <TextView
-        android:id="@+id/difficulty_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:text="@string/difficulty_setting_text"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ThemeSpinner"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutspinner"
+        app:layout_constraintVertical_bias="0.384"
+        >
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
