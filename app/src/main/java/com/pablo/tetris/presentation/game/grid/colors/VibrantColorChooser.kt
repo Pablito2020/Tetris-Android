@@ -16,6 +16,8 @@ class VibrantColorChooser(private val context: Context, private val layout: Orie
         val view = p1 ?: View.inflate(context, layout.getLayoutItem(), null)
         val cell: TextView = view.findViewById(layout.getIdItem())
         cell.background = AppCompatResources.getDrawable(context, this.getColorForCell(gameCell))
+        cell.height = p2!!.height / 20
+        cell.width = p2.width / 10
         return view
     }
 

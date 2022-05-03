@@ -21,6 +21,9 @@ class NeonImageChooser(private val context: Context, private val layout: Oriente
             convertView = layoutInflater.inflate(layout.getLayoutItem(), null)
         val imageView: ImageView = convertView!!.findViewById(layout.getIdItem())
         imageView.setImageResource(getResourceForCell(gameCell))
+        val params = imageView.layoutParams
+        params.width = parent!!.width / 10
+        params.height = parent.height / 20
         return convertView
     }
 
