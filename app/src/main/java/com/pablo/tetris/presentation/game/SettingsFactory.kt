@@ -23,8 +23,8 @@ object SettingsFactory {
         return GameFacade(blockGenerator = generator, ghost = data.isGhostBlock)
     }
 
-    fun getStyle(context: Context, orientation: Int): StyleCreator {
-        return StyleFactory.getStyleCreator(Style.values()[data.themeIndex], context, orientation)
+    fun getStyle(context: Context): StyleCreator {
+        return StyleFactory.getStyleCreator(Style.values()[data.themeIndex], context)
     }
 
     fun hasMusic() = data.hasMusic

@@ -46,7 +46,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     private fun setUpGridView() {
         val cellColors =
-            factory.getStyle(this, resources.configuration.orientation).getColorCellChooser()
+            factory.getStyle(this).getColorCellChooser()
         adapter = GameAdapter(gameViewModel.getGrid(), cellColors)
         binding.GameGrid.adapter = adapter
     }
@@ -62,10 +62,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         binding.PointsText.text = gameViewModel.getPoints()
         val typeOfBlock = gameViewModel.getNextBlock()
         binding.NextBlockImage.setImageResource(
-            factory.getStyle(
-                this,
-                resources.configuration.orientation
-            ).getBlockCreator().getImageId(typeOfBlock)
+            factory.getStyle(this).getBlockCreator().getImageId(typeOfBlock)
         )
     }
 

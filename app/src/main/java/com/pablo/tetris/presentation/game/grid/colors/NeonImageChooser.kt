@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import board.Cell
 import com.pablo.tetris.R
-import com.pablo.tetris.presentation.game.grid.orientation.layout.OrientedLayout
 import game.GameCell
 
 
-class NeonImageChooser(private val context: Context, private val layout: OrientedLayout) :
+class NeonImageChooser(private val context: Context) :
     ColorCellChooser {
 
     override fun paint(gameCell: GameCell, convertView: View?, parent: ViewGroup?): View {
         var convertView = convertView
-        val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val layoutInflater =
+            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         if (convertView == null)
-            convertView = layoutInflater.inflate(layout.getLayoutItem(), null)
-        val imageView: ImageView = convertView!!.findViewById(layout.getIdItem())
+            convertView = layoutInflater.inflate(R.layout.grid_item_image, null)
+        val imageView: ImageView = convertView!!.findViewById(R.id.grid_item_image)
         imageView.setImageResource(getResourceForCell(gameCell))
         val params = imageView.layoutParams
         params.width = parent!!.width / 10
