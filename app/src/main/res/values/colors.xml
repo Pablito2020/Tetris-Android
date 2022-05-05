@@ -17,11 +17,11 @@
     <color name="vibrant_green">#4caf50</color>
     <color name="vibrant_magenta">#e91e63</color>
 
-    <color name="md_theme_light_primary">#286B2A</color>
+    <color name="md_theme_light_primary">#643DAA</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
-    <color name="md_theme_light_primaryContainer">#ABF5A3</color>
-    <color name="md_theme_light_onPrimaryContainer">#012104</color>
-    <color name="md_theme_light_secondary">#00639C</color>
+    <color name="md_theme_light_primaryContainer">#79639D</color>
+    <color name="md_theme_light_onPrimaryContainer">#200254</color>
+    <color name="md_theme_light_secondary">#9766A0</color>
     <color name="md_theme_light_onSecondary">#FFFFFF</color>
     <color name="md_theme_light_secondaryContainer">#CCE5FF</color>
     <color name="md_theme_light_onSecondaryContainer">#001D33</color>
