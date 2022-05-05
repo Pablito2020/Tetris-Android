@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pablo.tetris.R
 import com.pablo.tetris.domain.game.speed.SpeedStrategy
+import com.pablo.tetris.infra.logs.LoggerGetter
 import kotlinx.coroutines.delay
 
 class GameViewModel : ViewModel() {
@@ -36,6 +37,7 @@ class GameViewModel : ViewModel() {
         if (!gamePaused.value!!) {
             gameFacade.value?.left()
             gameFacade.postValue(gameFacade.value)
+            LoggerGetter.get().add("left movement")
         }
     }
 
@@ -43,6 +45,7 @@ class GameViewModel : ViewModel() {
         if (!gamePaused.value!!) {
             gameFacade.value?.right()
             gameFacade.postValue(gameFacade.value)
+            LoggerGetter.get().add("right movement")
         }
     }
 
@@ -50,6 +53,7 @@ class GameViewModel : ViewModel() {
         if (!gamePaused.value!!) {
             gameFacade.value?.down()
             gameFacade.postValue(gameFacade.value)
+            LoggerGetter.get().add("down movement")
         }
     }
 
@@ -57,6 +61,7 @@ class GameViewModel : ViewModel() {
         if (!gamePaused.value!!) {
             gameFacade.value?.rotateLeft()
             gameFacade.postValue(gameFacade.value)
+            LoggerGetter.get().add("rotate left movement")
         }
     }
 
@@ -64,6 +69,7 @@ class GameViewModel : ViewModel() {
         if (!gamePaused.value!!) {
             gameFacade.value?.rotateRight()
             gameFacade.postValue(gameFacade.value)
+            LoggerGetter.get().add("rotate right movement")
         }
     }
 
@@ -71,6 +77,7 @@ class GameViewModel : ViewModel() {
         if (!gamePaused.value!!) {
             gameFacade.value?.dropBlock()
             gameFacade.postValue(gameFacade.value)
+            LoggerGetter.get().add("dropped block")
         }
     }
 
