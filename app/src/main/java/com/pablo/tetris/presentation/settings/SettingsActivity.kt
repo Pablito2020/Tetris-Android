@@ -32,6 +32,7 @@ class SettingsActivity : HideStatusBarActivity() {
                 binding.editTextPersonName.error = it.nameError
                 if (it.nameError == null) {
                     val intent = Intent(this@SettingsActivity, GameActivity::class.java).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         putExtra(GAME_INFORMATION, it)
                     }
                     startActivity(intent)

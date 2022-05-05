@@ -67,7 +67,9 @@ class FinishedActivity : HideStatusBarActivity() {
                 Intent(
                     this,
                     SettingsActivity::class.java
-                )
+                ).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                }
             )
         }
     }

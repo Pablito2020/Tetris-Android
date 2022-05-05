@@ -80,6 +80,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     private fun finishGame() {
         val finish = Intent(this@GameActivity, FinishedActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             putExtra(GAME_RESULT, GameResult(score = model.getPoints(), date = Calendar.getInstance().time.toString()))
         }
         startActivity(finish)

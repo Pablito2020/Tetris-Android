@@ -1,6 +1,8 @@
 package com.pablo.tetris.presentation.main
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.view.View
 import com.pablo.tetris.databinding.ActivityMainBinding
@@ -27,7 +29,9 @@ class MainActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     private fun startSettingsActivity() {
-        val game = Intent(this, SettingsActivity::class.java)
+        val game = Intent(this, SettingsActivity::class.java).apply {
+            addFlags(FLAG_ACTIVITY_NEW_TASK or FLAG_ACTIVITY_CLEAR_TASK)
+        }
         startActivity(game)
     }
 
