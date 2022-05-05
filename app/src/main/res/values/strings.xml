@@ -32,4 +32,7 @@
     <string name="opening_mail">Opening mail app</string>
     <string name="error_opening_mail">Error opening mail app!</string>
     <string name="score">Score:</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="quitAppMessage">Do you want to quit Tetris?</string>
 </resources>
