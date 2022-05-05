@@ -8,6 +8,8 @@ import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.databinding.ActivityFinishedBinding
 import com.pablo.tetris.infra.logs.LoggerGetter
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
+import com.pablo.tetris.presentation.finished.sendmail.EmailData
+import com.pablo.tetris.presentation.finished.sendmail.EmailSender
 import kotlinx.coroutines.flow.collect
 
 class FinishedActivity : HideStatusBarActivity() {
@@ -28,8 +30,14 @@ class FinishedActivity : HideStatusBarActivity() {
         lifecycleScope.launchWhenCreated {
             model.results.collect {
                 binding.emailEditText.error = it.emailError
-                if (it.emailError == null)
-                    TODO("SEND EMAIL HERE")
+                if (it.emailError == null) {
+                    val data = EmailData(
+                        destinationEmail = it.email,
+                        text = getLogMessage(),
+                        subject = "TODO: HERE SHOULD BE DATE"
+                    )
+                    EmailSender(this@FinishedActivity, data).send()
+                }
             }
         }
     }
@@ -45,5 +53,7 @@ class FinishedActivity : HideStatusBarActivity() {
         super.onDestroy()
         LoggerGetter.get().clear()
     }
+
+    private fun getLogMessage() = LoggerGetter.get().getLog().joinToString(separator = "\n")
 
 }
