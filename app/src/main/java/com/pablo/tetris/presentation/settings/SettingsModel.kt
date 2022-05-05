@@ -10,11 +10,9 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
-class SettingsModel(
-    private val nameValidator: ValidateName = ValidateName()
-): ViewModel() {
+class SettingsModel: ViewModel() {
 
-    var state by mutableStateOf(SettingsData())
+    private var state by mutableStateOf(SettingsData())
     private val resultEventChannel = Channel<SettingsData>()
     val results = resultEventChannel.receiveAsFlow()
 
@@ -39,11 +37,11 @@ class SettingsModel(
     }
 
     fun collect() {
-        val nameResult = nameValidator.execute(state.name)
-        if (!nameResult.success)
-            state = state.copy(nameError = nameResult.errorMessage)
+        val nameResult = ValidateName(state.name).execute()
+        state = if (!nameResult.success)
+            state.copy(nameError = nameResult.errorMessage)
         else
-            state = state.copy(nameError = null)
+            state.copy(nameError = null)
         viewModelScope.launch {
             resultEventChannel.send(state)
         }

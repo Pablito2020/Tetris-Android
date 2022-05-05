@@ -1,8 +1,8 @@
 package com.pablo.tetris.domain.user
 
-class ValidateName {
+class ValidateName(private val name: String): Validator {
 
-    fun execute(name: String): ValidationResult {
+    override fun execute(): ValidationResult {
         if (name.isBlank())
             return ValidationResult(false, "Name cannot be empty")
         if (name.contains(" "))
