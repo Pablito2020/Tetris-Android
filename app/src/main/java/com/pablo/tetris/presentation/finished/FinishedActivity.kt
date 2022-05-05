@@ -56,6 +56,7 @@ class FinishedActivity : HideStatusBarActivity() {
         binding.SendEmailButton.setOnClickListener { model.collect() }
         binding.emailEditText.addTextChangedListener { model.update(it.toString()) }
         binding.time.text = gameResult.date
+        binding.score.text = gameResult.score
     }
 
     override fun onDestroy() {
