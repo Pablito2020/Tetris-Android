@@ -36,7 +36,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     private fun setUpViewModel() {
         gameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
-        gameViewModel.setUp(factory.getFacade())
+        gameViewModel.setUp(factory.getFacade(), factory.getSpeedStrategy())
         gameViewModel.setUpMusic(factory.hasMusic(), this)
         gameViewModel.gameFacade.observe(this) {
             if (!it.hasFinished())

@@ -6,28 +6,29 @@ import android.media.MediaPlayer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.pablo.tetris.R
+import com.pablo.tetris.domain.game.speed.SpeedStrategy
 import kotlinx.coroutines.delay
-
-internal const val BLOCK_DOWN_MILLISECONDS = 1000L
 
 class GameViewModel : ViewModel() {
 
     val gameFacade: MutableLiveData<GameFacade> = MutableLiveData(null)
     private val lengthSong: MutableLiveData<Int> = MutableLiveData(0)
-    val song: MutableLiveData<MediaPlayer> = MutableLiveData(null)
+    private val song: MutableLiveData<MediaPlayer> = MutableLiveData(null)
     val gamePaused: MutableLiveData<Boolean> = MutableLiveData(false)
+    private lateinit var speedStrategy: SpeedStrategy
 
-    fun setUp(gameFacade: GameFacade) {
+    fun setUp(gameFacade: GameFacade, speed: SpeedStrategy) {
         if (this.gameFacade.value == null) {
             gameFacade.start()
             this.gameFacade.value = gameFacade
         }
+        this.speedStrategy = speed
     }
 
     suspend fun run() {
         while (!gameFacade.value!!.hasFinished()) {
             down()
-            delay(BLOCK_DOWN_MILLISECONDS)
+            delay(speedStrategy.getSpeedInMilliseconds(gameFacade.value!!.getScore()))
         }
     }
 

@@ -1,8 +1,9 @@
-package com.pablo.tetris.domain.game
+package com.pablo.tetris.domain.game.blocks
 
 import block_factory.AllBlockQueueCreator
 import block_factory.RandomBlockCreator
 import block_factory.SimpleBlockQueueCreator
+import com.pablo.tetris.domain.game.Level
 
 object BlockGeneratorFactory {
 

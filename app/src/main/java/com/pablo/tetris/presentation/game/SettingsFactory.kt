@@ -3,7 +3,9 @@ package com.pablo.tetris.presentation.game
 import GameFacade
 import android.content.Context
 import android.content.Intent
-import com.pablo.tetris.domain.game.BlockGeneratorFactory
+import com.pablo.tetris.domain.game.blocks.BlockGeneratorFactory
+import com.pablo.tetris.domain.game.speed.SpeedFactory
+import com.pablo.tetris.domain.game.speed.SpeedStrategy
 import com.pablo.tetris.presentation.common.GAME_INFORMATION
 import com.pablo.tetris.presentation.game.grid.style.Style
 import com.pablo.tetris.presentation.game.grid.style.StyleCreator
@@ -26,6 +28,8 @@ object SettingsFactory {
     fun getStyle(context: Context): StyleCreator {
         return StyleFactory.getStyleCreator(Style.values()[data.themeIndex], context)
     }
+
+    fun getSpeedStrategy() = SpeedFactory.get(data.level)
 
     fun hasMusic() = data.hasMusic
 
