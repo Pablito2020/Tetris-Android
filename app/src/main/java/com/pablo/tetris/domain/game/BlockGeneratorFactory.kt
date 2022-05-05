@@ -1,13 +1,14 @@
 package com.pablo.tetris.domain.game
 
+import block_factory.AllBlockQueueCreator
 import block_factory.RandomBlockCreator
+import block_factory.SimpleBlockQueueCreator
 
 object BlockGeneratorFactory {
 
-    //TODO add more block generators on Low and med
     fun getGenerator(level: Level) = when(level) {
-        Level.LOW -> RandomBlockCreator()
-        Level.MEDIUM -> RandomBlockCreator()
+        Level.LOW -> SimpleBlockQueueCreator()
+        Level.MEDIUM -> AllBlockQueueCreator()
         Level.HIGH -> RandomBlockCreator()
     }
 
