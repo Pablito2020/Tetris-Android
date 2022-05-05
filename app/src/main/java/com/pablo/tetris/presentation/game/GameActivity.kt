@@ -7,14 +7,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.R
 import com.pablo.tetris.databinding.ActivityGameBinding
+import com.pablo.tetris.presentation.common.GAME_RESULT
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.actions.Action
 import com.pablo.tetris.presentation.game.actions.ResumeToastAction
 import com.pablo.tetris.presentation.game.grid.GameAdapter
+import com.pablo.tetris.presentation.game.results.GameResult
 import com.pablo.tetris.presentation.getImageButtons
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 class GameActivity : HideStatusBarActivity(), View.OnClickListener {
@@ -76,7 +79,9 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     private fun finishGame() {
-        val finish = Intent(this, FinishedActivity::class.java)
+        val finish = Intent(this@GameActivity, FinishedActivity::class.java).apply {
+            putExtra(GAME_RESULT, GameResult(score = model.getPoints(), date = Calendar.getInstance().time.toString()))
+        }
         startActivity(finish)
         finish()
     }
