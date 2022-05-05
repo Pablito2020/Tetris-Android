@@ -9,8 +9,9 @@ import com.pablo.tetris.R
 import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
+import com.pablo.tetris.presentation.game.actions.Action
+import com.pablo.tetris.presentation.game.actions.ResumeToastAction
 import com.pablo.tetris.presentation.game.grid.GameAdapter
-import com.pablo.tetris.presentation.game.toast.oneSecondToast
 import com.pablo.tetris.presentation.getImageButtons
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -18,9 +19,10 @@ import kotlinx.coroutines.launch
 
 class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
-    private lateinit var gameViewModel: GameViewModel
+    private lateinit var model: GameViewModel
     private lateinit var binding: ActivityGameBinding
     private lateinit var adapter: GameAdapter
+    private lateinit var resumeAction: Action
     private val factory = SettingsFactory
     private lateinit var moveBlockDown: Job
 
@@ -32,13 +34,14 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         setUpViewModel()
         setUpGridView()
         setUpButtons()
+        setUpResumeAction()
     }
 
     private fun setUpViewModel() {
-        gameViewModel = ViewModelProvider(this).get(GameViewModel::class.java)
-        gameViewModel.setUp(factory.getFacade(), factory.getSpeedStrategy())
-        gameViewModel.setUpMusic(factory.hasMusic(), this)
-        gameViewModel.gameFacade.observe(this) {
+        model = ViewModelProvider(this).get(GameViewModel::class.java)
+        model.setUp(factory.getFacade(), factory.getSpeedStrategy())
+        model.setUpMusic(factory.hasMusic(), this)
+        model.gameFacade.observe(this) {
             if (!it.hasFinished())
                 updateScreen()
             else
@@ -49,23 +52,27 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private fun setUpGridView() {
         val cellColors =
             factory.getStyle(this).getColorCellChooser()
-        adapter = GameAdapter(gameViewModel.getGrid(), cellColors)
+        adapter = GameAdapter(model.getGrid(), cellColors)
         binding.GameGrid.adapter = adapter
     }
 
     private fun setUpButtons() {
         binding.root.getImageButtons().forEach { it.setOnClickListener(this) }
-        binding.DownButton.setOnLongClickListener { gameViewModel.dropBlock();true }
+        binding.DownButton.setOnLongClickListener { model.dropBlock();true }
     }
 
     private fun updateScreen() {
-        adapter.gameCells = gameViewModel.getGrid()
+        adapter.gameCells = model.getGrid()
         adapter.notifyDataSetChanged()
-        binding.PointsText.text = gameViewModel.getPoints()
-        val typeOfBlock = gameViewModel.getNextBlock()
+        binding.PointsText.text = model.getPoints()
+        val typeOfBlock = model.getNextBlock()
         binding.NextBlockImage.setImageResource(
             factory.getStyle(this).getBlockCreator().getImageId(typeOfBlock)
         )
+    }
+
+    private fun setUpResumeAction() {
+        resumeAction = ResumeToastAction(this)
     }
 
     private fun finishGame() {
@@ -75,11 +82,11 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     override fun onClick(p0: View) = when (p0.id) {
-        binding.DownButton.id -> gameViewModel.down()
-        binding.LeftButton.id -> gameViewModel.left()
-        binding.RightButton.id -> gameViewModel.right()
-        binding.RotateLeft.id -> gameViewModel.rotateLeft()
-        binding.RotateRight.id -> gameViewModel.rotateRight()
+        binding.DownButton.id -> model.down()
+        binding.LeftButton.id -> model.left()
+        binding.RightButton.id -> model.right()
+        binding.RotateLeft.id -> model.rotateLeft()
+        binding.RotateRight.id -> model.rotateRight()
         binding.pauseButton.id -> pauseButtonClicked()
         else -> throw UnsupportedOperationException("Unknown button")
     }
@@ -91,52 +98,42 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        if (!gameViewModel.isGameStarted()) {
+        if (!model.isGameStarted()) {
             startGame()
-            gameViewModel.setGameStarted()
+            model.setGameStarted()
         } else {
             binding.pauseButton.setImageResource(R.drawable.play_icon)
         }
     }
 
     private fun startGame() {
-        gameViewModel.startMusic()
-        moveBlockDown = lifecycleScope.launch { gameViewModel.run() }
+        model.startMusic()
+        moveBlockDown = lifecycleScope.launch { model.runGame() }
         binding.pauseButton.setImageResource(R.drawable.pause_icon)
     }
 
     private fun pauseGame() {
-        if (!gameViewModel.isGamePaused()) {
+        if (!model.isGamePaused()) {
             moveBlockDown.cancel()
-            gameViewModel.pauseMusic()
+            model.pauseMusic()
+            model.setGamePaused()
             binding.pauseButton.setImageResource(R.drawable.play_icon)
-            gameViewModel.setGamePaused()
         }
     }
 
     private fun pauseButtonClicked() {
-        if (gameViewModel.isGamePaused()) {
-            waitAndInformAboutResume()
+        if (model.isGamePaused()) {
+            resumeAction.execute()
             resumeGame()
         } else
             pauseGame()
     }
 
     private fun resumeGame() {
-        if (gameViewModel.isGamePaused()) {
+        if (model.isGamePaused()) {
             startGame()
-            gameViewModel.setGameResume()
+            model.setGameResume()
         }
-    }
-
-    private fun waitAndInformAboutResume() {
-        val millisecondsDelay = 1500L
-        val waitingSeconds = 3
-        (waitingSeconds downTo 1).forEach { displayToast(it); Thread.sleep(millisecondsDelay) }
-    }
-
-    private fun displayToast(iteration: Int) {
-        oneSecondToast(this, "${getString(R.string.resumingin)} $iteration")
     }
 
 }

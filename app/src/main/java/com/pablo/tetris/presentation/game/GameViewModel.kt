@@ -15,7 +15,7 @@ class GameViewModel : ViewModel() {
     val gameFacade: MutableLiveData<GameFacade> = MutableLiveData(null)
     private val lengthSong: MutableLiveData<Int> = MutableLiveData(0)
     private val song: MutableLiveData<MediaPlayer> = MutableLiveData(null)
-    val gamePaused: MutableLiveData<Boolean> = MutableLiveData(false)
+    private val gamePaused: MutableLiveData<Boolean> = MutableLiveData(false)
     private val gameOpened: MutableLiveData<Boolean> = MutableLiveData(false)
     private lateinit var speedStrategy: SpeedStrategy
 
@@ -27,7 +27,7 @@ class GameViewModel : ViewModel() {
         this.speedStrategy = speed
     }
 
-    suspend fun run() {
+    suspend fun runGame() {
         while (!gameFacade.value!!.hasFinished()) {
             down()
             delay(speedStrategy.getSpeedInMilliseconds(gameFacade.value!!.getScore()))
