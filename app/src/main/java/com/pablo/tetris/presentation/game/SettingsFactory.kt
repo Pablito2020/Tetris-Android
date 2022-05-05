@@ -12,7 +12,7 @@ import com.pablo.tetris.presentation.game.grid.style.StyleCreator
 import com.pablo.tetris.presentation.game.grid.style.StyleFactory
 import com.pablo.tetris.presentation.settings.SettingsData
 
-object SettingsFactory {
+class SettingsFactory {
 
     private var data: SettingsData? = null
 

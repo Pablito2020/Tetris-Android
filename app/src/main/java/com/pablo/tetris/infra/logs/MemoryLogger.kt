@@ -10,6 +10,8 @@ object MemoryLogger: Logger {
         messages.add(message)
     }
 
-    override fun getLog(): List<String> = messages
+    override fun getLog() = messages
+
+    override fun clear() = messages.clear()
 
 }

@@ -23,7 +23,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private lateinit var binding: ActivityGameBinding
     private lateinit var adapter: GameAdapter
     private lateinit var resumeAction: Action
-    private val factory = SettingsFactory
+    private val factory = SettingsFactory()
     private lateinit var moveBlockDown: Job
 
     override fun onCreate(savedInstanceState: Bundle?) {
