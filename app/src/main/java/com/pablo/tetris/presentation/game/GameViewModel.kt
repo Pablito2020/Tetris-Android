@@ -16,6 +16,7 @@ class GameViewModel : ViewModel() {
     private val lengthSong: MutableLiveData<Int> = MutableLiveData(0)
     private val song: MutableLiveData<MediaPlayer> = MutableLiveData(null)
     val gamePaused: MutableLiveData<Boolean> = MutableLiveData(false)
+    private val gameOpened: MutableLiveData<Boolean> = MutableLiveData(false)
     private lateinit var speedStrategy: SpeedStrategy
 
     fun setUp(gameFacade: GameFacade, speed: SpeedStrategy) {
@@ -106,6 +107,22 @@ class GameViewModel : ViewModel() {
             song.value?.seekTo(lengthSong.value!!)
             song.value?.start()
         }
+    }
+
+    fun isGameStarted() = gameOpened.value!!
+
+    fun setGameStarted() {
+        gameOpened.value = true
+    }
+
+    fun isGamePaused() = gamePaused.value!!
+
+    fun setGamePaused() {
+        gamePaused.value = true
+    }
+
+    fun setGameResume() {
+        gamePaused.value = false
     }
 
 }

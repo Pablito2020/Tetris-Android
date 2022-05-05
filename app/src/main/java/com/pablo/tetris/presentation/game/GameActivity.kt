@@ -56,7 +56,6 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private fun setUpButtons() {
         binding.root.getImageButtons().forEach { it.setOnClickListener(this) }
         binding.DownButton.setOnLongClickListener { gameViewModel.dropBlock();true }
-        binding.pauseButton.setImageResource(getPauseButtonResource())
     }
 
     private fun updateScreen() {
@@ -92,37 +91,43 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        resumeGame()
-    }
-
-    private fun resumeGame() {
-        if (!gameViewModel.gamePaused.value!!) {
-            gameViewModel.startMusic()
-            moveBlockDown = lifecycleScope.launch { gameViewModel.run() }
+        if (!gameViewModel.isGameStarted()) {
+            startGame()
+            gameViewModel.setGameStarted()
+        } else {
+            binding.pauseButton.setImageResource(R.drawable.play_icon)
         }
     }
 
+    private fun startGame() {
+        gameViewModel.startMusic()
+        moveBlockDown = lifecycleScope.launch { gameViewModel.run() }
+        binding.pauseButton.setImageResource(R.drawable.pause_icon)
+    }
+
     private fun pauseGame() {
-        if (!gameViewModel.gamePaused.value!!) {
+        if (!gameViewModel.isGamePaused()) {
             moveBlockDown.cancel()
             gameViewModel.pauseMusic()
+            binding.pauseButton.setImageResource(R.drawable.play_icon)
+            gameViewModel.setGamePaused()
         }
     }
 
     private fun pauseButtonClicked() {
-        if (gameViewModel.gamePaused.value!!) {
-            gameViewModel.gamePaused.value = false
+        if (gameViewModel.isGamePaused()) {
             waitAndInformAboutResume()
             resumeGame()
-        } else {
+        } else
             pauseGame()
-            gameViewModel.gamePaused.value = true
-        }
-        binding.pauseButton.setImageResource(getPauseButtonResource())
     }
 
-    private fun getPauseButtonResource() =
-        if (gameViewModel.gamePaused.value!!) R.drawable.play_icon else R.drawable.pause_icon
+    private fun resumeGame() {
+        if (gameViewModel.isGamePaused()) {
+            startGame()
+            gameViewModel.setGameResume()
+        }
+    }
 
     private fun waitAndInformAboutResume() {
         val millisecondsDelay = 1500L
