@@ -23,6 +23,7 @@ class SettingsActivity : HideStatusBarActivity() {
         setContentView(binding.root)
         setUpModelView()
         setUpComponents()
+        setUpUiObservers()
     }
 
     fun setUpModelView() {
@@ -51,5 +52,16 @@ class SettingsActivity : HideStatusBarActivity() {
         binding.LowLevel.setOnClickListener { viewModel.update(DataValue.Level(Level.LOW)) }
         binding.MediumLevelButton.setOnClickListener { viewModel.update(DataValue.Level(Level.MEDIUM)) }
         binding.HighLevelButton.setOnClickListener { viewModel.update(DataValue.Level(Level.HIGH)) }
+    }
+
+    private fun setUpUiObservers() {
+        viewModel.uiChanged.observe(this) {
+            if (it != null) {
+                when(it) {
+                    UIChange.SPINNER_THEME -> binding.ThemeImage.setImageResource(viewModel.getStyleImageResource())
+                    UIChange.BUTTON_LEVEL -> binding.LevelImage.setImageResource(viewModel.getImageLevelResource())
+                }
+            }
+        }
     }
 }

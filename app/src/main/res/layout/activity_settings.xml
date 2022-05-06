@@ -13,11 +13,13 @@
         android:layout_height="61dp"
         android:hint="@string/name_text"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layoutcheckboxes"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073">
+        app:layout_constraintVertical_bias="0.073"
+        app:layout_constraintVertical_chainStyle="spread">
 
         <!--this is the actual edit text which takes the input-->
         <com.google.android.material.textfield.TextInputEditText
@@ -35,8 +37,9 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dip"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layoutdifficulty"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
         app:layout_constraintVertical_bias="0.141">
@@ -70,108 +73,136 @@
 
     <LinearLayout
         android:id="@+id/layoutdifficulty"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="10dip"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layoutspinner"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutcheckboxes"
         app:layout_constraintVertical_bias="0.17">
 
-        <TextView
-            android:id="@+id/difficulty_text"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/difficulty_setting_text" />
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkedButton="@id/MediumLevelButton"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/LowLevel"
+            <TextView
+                android:id="@+id/difficulty_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:text="@string/LowLevelButton" />
+                android:text="@string/difficulty_setting_text" />
 
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/MediumLevelButton"
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checkedButton="@id/MediumLevelButton"
+                android:minWidth="48dp"
                 android:minHeight="48dp"
-                android:text="@string/MediumLevelButton" />
+                android:orientation="horizontal">
 
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/HighLevelButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:text="@string/HighLevelButton" />
-        </RadioGroup>
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/LowLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:text="@string/LowLevelButton" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/MediumLevelButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:text="@string/MediumLevelButton" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/HighLevelButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:text="@string/HighLevelButton" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/LevelImage"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/mediumicon"
+            android:contentDescription="@string/level_image_description" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layoutspinner"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:baselineAligned="true"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:padding="10dip"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/StartButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutdifficulty"
         app:layout_constraintVertical_bias="0.164">
 
-        <TextView
-            android:id="@+id/theme_text"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
-            android:text="@string/theme_text"
-            app:layout_constraintBottom_toTopOf="@+id/ThemeSpinner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/MusicCheckbox"
-            app:layout_constraintVertical_bias="0.976" />
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/ThemeSpinner"
-            android:layout_width="409dp"
+            <TextView
+                android:id="@+id/theme_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:text="@string/theme_text"
+                app:layout_constraintBottom_toTopOf="@+id/ThemeSpinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/MusicCheckbox"
+                app:layout_constraintVertical_bias="0.976" />
+
+            <Spinner
+                android:id="@+id/ThemeSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/DayAndHourText"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toTopOf="@+id/difficulty_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/theme_text"
+                app:layout_constraintVertical_bias="0.126" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ThemeImage"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/DayAndHourText"
-            android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/difficulty_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/theme_text"
-            app:layout_constraintVertical_bias="0.126" />
+            android:layout_weight="1"
+            android:src="@drawable/tblockneon"
+            android:contentDescription="@string/theme_image_information" />
     </LinearLayout>
 
     <Button
         android:id="@+id/StartButton"
+        style="@style/Widget.Material3.Button.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/start_button"
-        style="@style/Widget.Material3.Button.Icon"
         app:icon="@drawable/start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutspinner"
-        app:layout_constraintVertical_bias="0.384"
-        >
-    </Button>
+        app:layout_constraintVertical_bias="0.384" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
