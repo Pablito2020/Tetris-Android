@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.main.MainActivity"
-    >
+    tools:context=".presentation.main.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="309dp"
         android:layout_height="254dp"
-        app:layout_constraintBottom_toTopOf="@+id/help_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/quit_button"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintVertical_bias="0.496"
         app:srcCompat="@drawable/tetrislogo1997" />
 
     <Button
@@ -24,14 +23,15 @@
         style="@style/Widget.Material3.Button.Icon"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:textSize="18sp"
         android:text="@string/help_button"
+        android:textSize="18sp"
         app:icon="@drawable/help"
-        app:layout_constraintBottom_toTopOf="@+id/start_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/start_button"
+        app:layout_constraintVertical_bias="0.703"
+        app:layout_constraintVertical_chainStyle="spread" />
 
     <Button
         android:id="@+id/start_button"
@@ -41,11 +41,11 @@
         android:text="@string/start_button"
         android:textSize="18sp"
         app:icon="@drawable/start"
-        app:layout_constraintBottom_toTopOf="@+id/quit_button"
+        app:layout_constraintBottom_toTopOf="@+id/help_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/help_button" />
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/quit_button"
+        app:layout_constraintVertical_bias="0.468" />
 
     <Button
         android:id="@+id/quit_button"
@@ -55,10 +55,11 @@
         android:text="@string/quit_button"
         android:textSize="18sp"
         app:icon="@drawable/quit"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/start_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_button" />
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.257" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
