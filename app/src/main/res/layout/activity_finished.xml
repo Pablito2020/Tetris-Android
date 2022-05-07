@@ -9,6 +9,42 @@
     tools:context=".presentation.finished.FinishedActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/scorelayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread">
+
+        <TextView
+            android:id="@+id/result_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/results"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.138"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.044" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            app:srcCompat="@drawable/gameovericon" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/scorelayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <TextView
             android:id="@+id/scoreTextInfo"
@@ -47,13 +83,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.075" />
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:padding="10dp"
-            app:srcCompat="@drawable/gameovericon" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -77,10 +106,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:padding="5dp"
             android:id="@+id/time"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:padding="5dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -105,11 +134,11 @@
             android:textStyle="bold" />
 
         <ScrollView
-            android:padding="5dp"
             android:id="@+id/scroller"
             android:layout_width="fill_parent"
             android:layout_height="100dp"
             android:fillViewport="true"
+            android:padding="5dp"
             android:scrollbars="vertical">
 
             <TextView
@@ -126,7 +155,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/ExitButton"
+        app:layout_constraintBottom_toTopOf="@+id/SendEmailButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +170,6 @@
             android:textStyle="bold" />
 
         <EditText
-            android:padding="5dp"
             android:id="@+id/emailEditText"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -149,7 +177,8 @@
             android:hint="@string/emailHint"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:padding="5dp" />
     </LinearLayout>
 
 
@@ -164,8 +193,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ExitButton"
-        app:layout_constraintVertical_bias="0.228" />
+        app:layout_constraintTop_toBottomOf="@+id/emaillayout" />
 
     <Button
         android:id="@+id/NewGameButton"
@@ -174,12 +202,11 @@
         android:layout_height="wrap_content"
         android:text="@string/newGameButton"
         app:icon="@drawable/gameicon"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ExitButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SendEmailButton"
-        app:layout_constraintVertical_bias="0.158" />
+        app:layout_constraintTop_toBottomOf="@+id/SendEmailButton" />
 
     <Button
         android:id="@+id/ExitButton"
@@ -188,11 +215,10 @@
         android:layout_height="wrap_content"
         android:text="@string/exitButton"
         app:icon="@drawable/quit"
-        app:layout_constraintBottom_toTopOf="@+id/SendEmailButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emaillayout"
-        app:layout_constraintVertical_bias="0.248" />
+        app:layout_constraintTop_toBottomOf="@+id/NewGameButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

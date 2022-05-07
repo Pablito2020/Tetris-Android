@@ -40,4 +40,5 @@
     <string name="other_settings_text">Other:</string>
     <string name="theme_spinner_description">Different theme values</string>
     <string name="settings_info">Settings</string>
+    <string name="results">Results</string>
 </resources>
