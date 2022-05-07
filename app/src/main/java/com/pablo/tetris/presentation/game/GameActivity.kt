@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.pablo.tetris.R
 import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.GAME_RESULT
 import com.pablo.tetris.presentation.common.HideStatusBarActivity

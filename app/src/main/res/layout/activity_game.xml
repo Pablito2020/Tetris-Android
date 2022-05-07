@@ -177,8 +177,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/linearLayout"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.432"
-            app:srcCompat="@drawable/pause_icon" />
+            app:layout_constraintVertical_bias="0.432" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

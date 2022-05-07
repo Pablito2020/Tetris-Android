@@ -8,175 +8,171 @@
 
     <GridView
         android:id="@+id/GameGrid"
-        android:layout_width="305dp"
-        android:layout_height="610dp"
-        android:horizontalSpacing="0dp"
+        android:layout_width="190dp"
+        android:layout_height="380dp"
         android:numColumns="10"
-        android:verticalSpacing="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.056" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.483" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/LeftButton"
+        style="@style/movebuttonspadding"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/LeftButtonDesc"
+        app:backgroundTint="@color/minimum_purple"
+        app:icon="@drawable/left"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/RotateLeft"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.874" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/RotateLeft"
+        style="@style/rotatebuttonspadding"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/RotateLeftDesc"
+        app:backgroundTint="@color/minimum_purple"
+        app:icon="@drawable/rotateleft"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/GameGrid"
+        app:layout_constraintHorizontal_bias="0.841"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.874" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/DownButton"
+        style="@style/movebuttonspadding"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginEnd="240dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/DownButtonDesc"
+        app:backgroundTint="@color/minimum_purple"
+        app:icon="@drawable/down"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.413" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/RightButton"
+        style="@style/movebuttonspadding"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/RightButtonDesc"
+        app:backgroundTint="@color/minimum_purple"
+        app:icon="@drawable/right"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toEndOf="@+id/RotateRight"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/RotateRight"
+        style="@style/rotatebuttonspadding"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/RotateRightDesc"
+        app:backgroundTint="@color/minimum_purple"
+        app:icon="@drawable/rotateright"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.874" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/pauseButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GameGrid">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/PointsTextString"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:text="@string/PointsText"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/RotateLeft"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                style="@style/rotatebuttonspadding"
-                android:contentDescription="@string/RotateLeftDesc"
-                app:icon="@drawable/rotateleft"
-                app:backgroundTint="@color/minimum_purple"
-                app:iconPadding="0dp"
-                app:iconGravity="textStart" />
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/RotateRight"
-                android:layout_width="0dp"
-                style="@style/rotatebuttonspadding"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="@string/RotateRightDesc"
-                app:backgroundTint="@color/minimum_purple"
-                app:icon="@drawable/rotateright"
-                app:iconPadding="0dp"
-                app:iconGravity="textStart" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            >
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/LeftButton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="@string/LeftButtonDesc"
-                style="@style/movebuttonspadding"
-                app:backgroundTint="@color/minimum_purple"
-                app:icon="@drawable/left"
-                app:iconPadding="0dp"
-                app:iconGravity="textStart"
-                />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/DownButton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="@string/DownButtonDesc"
-                style="@style/movebuttonspadding"
-                app:backgroundTint="@color/minimum_purple"
-                app:icon="@drawable/down"
-                app:iconPadding="0dp"
-                app:iconGravity="textStart"
-                />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/RightButton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                style="@style/movebuttonspadding"
-                app:backgroundTint="@color/minimum_purple"
-                android:contentDescription="@string/RightButtonDesc"
-                app:icon="@drawable/right"
-                app:iconPadding="0dp"
-                app:iconGravity="textStart"
-                />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/PointsText"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent" />
 
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/DownButton"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-129dp">
+        app:layout_constraintVertical_bias="0.403">
 
-        <LinearLayout
-            android:id="@+id/linearLayout8"
+
+        <TextView
+            android:id="@+id/nextBlockText"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content"
+            android:text="@string/NextBlock"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/nextBlockText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/NextBlock"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/NextBlockImage"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/NextBlockDesc" />
+    </LinearLayout>
 
-            <ImageView
-                android:id="@+id/NextBlockImage"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:contentDescription="@string/NextBlockDesc" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/pauseButton"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout8"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/PointsTextString"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/PointsText"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/PointsText"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent" />
-        </LinearLayout>
-
-
-        <com.pablo.tetris.presentation.game.PlayPauseView
-            android:id="@+id/pauseButton"
-            android:layout_width="52dp"
-            android:layout_height="43dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.432"
-            app:srcCompat="@drawable/pause_icon" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.pablo.tetris.presentation.game.PlayPauseView
+        android:id="@+id/pauseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/GameGrid"
+        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
