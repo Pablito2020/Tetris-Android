@@ -39,6 +39,7 @@ class FinishedViewModel : ViewModel() {
         if (!gameOverMusicHasPlayed.value) {
             val mediaPlayer = MediaPlayer.create(context, R.raw.tetrisgameover)
             mediaPlayer.start()
+            gameOverMusicHasPlayed.value = true
         }
     }
 
