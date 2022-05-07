@@ -13,10 +13,13 @@ import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.actions.Action
 import com.pablo.tetris.presentation.game.actions.ResumeToastAction
 import com.pablo.tetris.presentation.game.grid.GameAdapter
+import com.pablo.tetris.presentation.game.results.DateGetter
 import com.pablo.tetris.presentation.game.results.GameResult
 import com.pablo.tetris.presentation.getImageButtons
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.text.DateFormat.getDateInstance
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -81,7 +84,10 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private fun finishGame() {
         val finish = Intent(this@GameActivity, FinishedActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            putExtra(GAME_RESULT, GameResult(score = model.getPoints(), date = Calendar.getInstance().time.toString()))
+            putExtra(
+                GAME_RESULT,
+                GameResult(score = model.getPoints(), date = DateGetter.getDate())
+            )
         }
         startActivity(finish)
         finish()
