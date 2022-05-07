@@ -28,7 +28,7 @@
     <string name="MediumLevelButton">Medium</string>
     <string name="HighLevelButton">High</string>
     <string name="pause_info">pause the current status of the game</string>
-    <string name="resumingin">Resuming in:</string>
+    <string name="resumingin">Resuming game...</string>
     <string name="opening_mail">Opening mail app</string>
     <string name="error_opening_mail">Error opening mail app!</string>
     <string name="score">Score:</string>
