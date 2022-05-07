@@ -21,7 +21,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,32 +30,29 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/LeftButton"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/RotateLeft"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:contentDescription="@string/LeftButtonDesc"
-                android:src="@drawable/left" />
+                android:contentDescription="@string/RotateLeftDesc"
+                app:icon="@drawable/rotateleft"
+                app:iconPadding="0dp"
+                app:iconGravity="textStart" />
 
-            <ImageButton
-                android:id="@+id/DownButton"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="@string/DownButtonDesc"
-                android:src="@drawable/down" />
 
-            <ImageButton
-                android:id="@+id/RightButton"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/RotateRight"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:contentDescription="@string/RightButtonDesc"
-                android:src="@drawable/right" />
+                android:contentDescription="@string/RotateRightDesc"
+                app:icon="@drawable/rotateright"
+                app:iconPadding="0dp"
+                app:iconGravity="textStart" />
         </LinearLayout>
 
         <LinearLayout
@@ -63,31 +60,40 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/RotateLeft"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/LeftButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:contentDescription="@string/RotateLeftDesc"
-                android:src="@drawable/rotateleft" />
+                android:contentDescription="@string/LeftButtonDesc"
+                app:icon="@drawable/left"
+                app:iconPadding="0dp"
+                app:iconGravity="textStart"
+                />
 
-            <ImageButton
-                android:id="@+id/pauseButton"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/DownButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:contentDescription="@string/pause_info"
-                app:srcCompat="@drawable/pause_icon" />
+                android:contentDescription="@string/DownButtonDesc"
+                app:icon="@drawable/down"
+                app:iconPadding="0dp"
+                app:iconGravity="textStart"
+                />
 
-
-            <ImageButton
-                android:id="@+id/RotateRight"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/RightButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:contentDescription="@string/RotateRightDesc"
-                android:src="@drawable/rotateright" />
+                android:contentDescription="@string/RightButtonDesc"
+                app:icon="@drawable/right"
+                app:iconPadding="0dp"
+                app:iconGravity="textStart"
+                />
         </LinearLayout>
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -141,6 +147,20 @@
                 android:layout_height="50dp"
                 android:contentDescription="@string/NextBlockDesc" />
         </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/pauseButton"
+            android:layout_width="52dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="64dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/pause_info"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.176"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/pause_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

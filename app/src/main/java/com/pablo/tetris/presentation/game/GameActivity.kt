@@ -15,12 +15,9 @@ import com.pablo.tetris.presentation.game.actions.ResumeToastAction
 import com.pablo.tetris.presentation.game.grid.GameAdapter
 import com.pablo.tetris.presentation.game.results.DateGetter
 import com.pablo.tetris.presentation.game.results.GameResult
-import com.pablo.tetris.presentation.getImageButtons
+import com.pablo.tetris.presentation.getButtons
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.text.DateFormat.getDateInstance
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class GameActivity : HideStatusBarActivity(), View.OnClickListener {
@@ -63,7 +60,8 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     private fun setUpButtons() {
-        binding.root.getImageButtons().forEach { it.setOnClickListener(this) }
+        binding.root.getButtons().forEach { it.setOnClickListener(this) }
+        binding.pauseButton.setOnClickListener(this)
         binding.DownButton.setOnLongClickListener { model.dropBlock();true }
     }
 
