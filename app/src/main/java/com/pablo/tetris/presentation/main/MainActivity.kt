@@ -8,7 +8,9 @@ import android.view.View
 import com.pablo.tetris.databinding.ActivityMainBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.getButtons
+import com.pablo.tetris.presentation.help.HelpActivity
 import com.pablo.tetris.presentation.settings.SettingsActivity
+import java.lang.IllegalArgumentException
 
 class MainActivity : HideStatusBarActivity(), View.OnClickListener {
 
@@ -24,7 +26,9 @@ class MainActivity : HideStatusBarActivity(), View.OnClickListener {
     override fun onClick(p0: View) {
         when (p0.id) {
             binding.startButton.id -> startSettingsActivity()
-            else -> TODO("More buttons need to go here")
+            binding.quitButton.id -> onBackPressed()
+            binding.helpButton.id -> startHelpActivity()
+            else -> throw IllegalArgumentException("Unknown button id: ${p0.id}")
         }
     }
 
@@ -33,6 +37,13 @@ class MainActivity : HideStatusBarActivity(), View.OnClickListener {
             addFlags(FLAG_ACTIVITY_NEW_TASK or FLAG_ACTIVITY_CLEAR_TASK)
         }
         startActivity(game)
+    }
+
+    private fun startHelpActivity() {
+        val help = Intent(this, HelpActivity::class.java).apply {
+            addFlags(FLAG_ACTIVITY_NEW_TASK or FLAG_ACTIVITY_CLEAR_TASK)
+        }
+        startActivity(help)
     }
 
 }

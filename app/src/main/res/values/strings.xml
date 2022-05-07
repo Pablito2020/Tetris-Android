@@ -41,4 +41,7 @@
     <string name="theme_spinner_description">Different theme values</string>
     <string name="settings_info">Settings</string>
     <string name="results">Results</string>
+    <string name="information_text">Information</string>
+    <string name="tetris_explanation">Lorem ipsum</string>
+    <string name="go_back_button">Back</string>
 </resources>
