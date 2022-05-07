@@ -1,11 +1,7 @@
 package com.pablo.tetris.presentation.common
 
-import android.content.Context
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -18,6 +14,7 @@ open class HideStatusBarActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         hideStatusBar()
+        updateUI()
         super.onCreate(savedInstanceState)
     }
 
@@ -41,6 +38,24 @@ open class HideStatusBarActivity : AppCompatActivity() {
             .setPositiveButton(R.string.ok) { _, _ -> finishAffinity();exitProcess(0) }
             .create()
             .show()
+    }
+
+    fun updateUI() {
+        val decorView: View = window.decorView
+        decorView.setOnSystemUiVisibilityChangeListener(object : View.OnSystemUiVisibilityChangeListener {
+            override fun onSystemUiVisibilityChange(visibility: Int) {
+                if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN === 0) {
+                    decorView.setSystemUiVisibility(
+                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                                or View.SYSTEM_UI_FLAG_FULLSCREEN
+                                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                    )
+                }
+            }
+        })
     }
 
 }

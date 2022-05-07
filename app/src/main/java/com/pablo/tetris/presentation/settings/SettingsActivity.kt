@@ -30,7 +30,7 @@ class SettingsActivity : HideStatusBarActivity() {
         setUpUiObservers()
     }
 
-    fun setUpModelView() {
+    private fun setUpModelView() {
         viewModel = ViewModelProvider(this).get(SettingsModel::class.java)
         lifecycleScope.launchWhenCreated {
             viewModel.results.collect {
@@ -46,10 +46,10 @@ class SettingsActivity : HideStatusBarActivity() {
         }
     }
 
-    fun setUpComponents() {
+    private fun setUpComponents() {
         binding.editTextPersonName.addTextChangedListener { viewModel.update(DataValue.Name(it.toString())) }
-        binding.editTextPersonName.setOnEditorActionListener { textView, i, keyEvent ->
-            if (i == EditorInfo.IME_ACTION_DONE) {
+        binding.editTextPersonName.setOnEditorActionListener { _, action, _ ->
+            if (action == EditorInfo.IME_ACTION_DONE) {
                 binding.editTextPersonName.requestFocus(EditText.FOCUS_DOWN)
                 binding.editTextPersonName.clearFocus()
                 hideStatusBar()
@@ -59,6 +59,7 @@ class SettingsActivity : HideStatusBarActivity() {
         binding.CheckBoxGhostBlock.setOnClickListener { viewModel.update(DataValue.HasGhost(binding.CheckBoxGhostBlock.isChecked)) }
         binding.MusicCheckbox.setOnClickListener { viewModel.update(DataValue.HasMusic(binding.MusicCheckbox.isChecked)) }
         binding.StartButton.setOnClickListener { viewModel.collect() }
+        binding.ThemeSpinner.avoidDropdownFocus()
         binding.ThemeSpinner.adapter = Spinner.Adapter.get(this)
         binding.ThemeSpinner.onItemSelectedListener = Spinner(viewModel)
         binding.LowLevel.setOnClickListener { viewModel.update(DataValue.Level(Level.LOW)) }
@@ -69,7 +70,7 @@ class SettingsActivity : HideStatusBarActivity() {
     private fun setUpUiObservers() {
         viewModel.uiChanged.observe(this) {
             if (it != null) {
-                when(it) {
+                when (it) {
                     UIChange.SPINNER_THEME -> binding.ThemeImage.setImageResource(viewModel.getStyleImageResource())
                     UIChange.BUTTON_LEVEL -> binding.LevelImage.setImageResource(viewModel.getImageLevelResource())
                 }
