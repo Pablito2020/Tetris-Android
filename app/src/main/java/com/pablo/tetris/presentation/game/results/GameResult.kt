@@ -14,7 +14,7 @@ object DateGetter {
 
     fun getDate(): String {
         val calendar = Calendar.getInstance()
-        val formatter = SimpleDateFormat(DATE_FORMAT, Locale.ENGLISH)
+        val formatter = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
         return formatter.format(calendar.time)
     }
 

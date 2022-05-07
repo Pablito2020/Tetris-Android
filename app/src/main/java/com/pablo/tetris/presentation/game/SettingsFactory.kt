@@ -21,8 +21,8 @@ class SettingsFactory {
             data = intent.getSerializableExtra(GAME_INFORMATION) as SettingsData
             LoggerGetter.get().add("Name of the player is: ${data!!.name}")
             LoggerGetter.get().add("Level selected is: ${data!!.level.name.lowercase()}")
-            LoggerGetter.get().add("Ghost mode is enabled? -> ${data!!.isGhostBlock}")
-            LoggerGetter.get().add("Music is enabled? -> ${data!!.hasMusic}")
+            LoggerGetter.get().add("Ghost mode is enabled? ${data!!.isGhostBlock}")
+            LoggerGetter.get().add("Music is enabled? ${data!!.hasMusic}")
             LoggerGetter.get()
                 .add("Playing with theme: ${Style.values()[data!!.themeIndex].name.lowercase()}")
         }
