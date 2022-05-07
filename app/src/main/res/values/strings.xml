@@ -42,6 +42,9 @@
     <string name="settings_info">Settings</string>
     <string name="results">Results</string>
     <string name="information_text">Information</string>
-    <string name="tetris_explanation">Lorem ipsum</string>
+    <string name="tetris_explanation">In Tetris, players complete lines by moving differently shaped pieces (tetrominoes), which descend onto the playing field. \n\n
+        The completed lines disappear and grant the player points, and the player can proceed to fill the vacated spaces.\n\n
+        The game ends when the playing field is filled. The longer the player can delay this outcome, the higher their score will be.\n\n
+        </string>
     <string name="go_back_button">Back</string>
 </resources>
