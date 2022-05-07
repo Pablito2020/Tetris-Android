@@ -2,6 +2,10 @@ package com.pablo.tetris.presentation.settings
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -44,6 +48,14 @@ class SettingsActivity : HideStatusBarActivity() {
 
     fun setUpComponents() {
         binding.editTextPersonName.addTextChangedListener { viewModel.update(DataValue.Name(it.toString())) }
+        binding.editTextPersonName.setOnEditorActionListener { textView, i, keyEvent ->
+            if (i == EditorInfo.IME_ACTION_DONE) {
+                binding.editTextPersonName.requestFocus(EditText.FOCUS_DOWN)
+                binding.editTextPersonName.clearFocus()
+                hideStatusBar()
+            }
+            false
+        }
         binding.CheckBoxGhostBlock.setOnClickListener { viewModel.update(DataValue.HasGhost(binding.CheckBoxGhostBlock.isChecked)) }
         binding.MusicCheckbox.setOnClickListener { viewModel.update(DataValue.HasMusic(binding.MusicCheckbox.isChecked)) }
         binding.StartButton.setOnClickListener { viewModel.collect() }

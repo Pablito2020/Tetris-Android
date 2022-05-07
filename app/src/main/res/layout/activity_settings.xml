@@ -25,7 +25,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextPersonName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:maxLines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,8 +135,8 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@drawable/mediumicon"
-            android:contentDescription="@string/level_image_description" />
+            android:contentDescription="@string/level_image_description"
+            android:src="@drawable/mediumicon" />
     </LinearLayout>
 
     <LinearLayout
@@ -187,8 +190,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/tblockneon"
-            android:contentDescription="@string/theme_image_information" />
+            android:contentDescription="@string/theme_image_information"
+            android:src="@drawable/tblockneon" />
     </LinearLayout>
 
     <Button
