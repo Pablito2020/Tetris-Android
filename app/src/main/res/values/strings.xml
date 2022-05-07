@@ -37,4 +37,6 @@
     <string name="quitAppMessage">Do you want to quit Tetris?</string>
     <string name="theme_image_information">An image that shows the T block on the current theme</string>
     <string name="level_image_description">Image that shows the level of difficulty</string>
+    <string name="other_settings_text">Other:</string>
+    <string name="theme_spinner_description">Different theme values</string>
 </resources>
