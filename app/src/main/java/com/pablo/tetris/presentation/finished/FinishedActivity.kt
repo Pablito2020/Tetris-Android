@@ -53,7 +53,7 @@ class FinishedActivity : HideStatusBarActivity() {
 
     private fun setUpComponents() {
         binding.logText.movementMethod = ScrollingMovementMethod()
-        binding.logText.text = LoggerGetter.get().getLog().joinToString(separator = "\n")
+        binding.logText.text = getLogMessage()
         binding.SendEmailButton.setOnClickListener { model.collect() }
         binding.emailEditText.addTextChangedListener { model.update(it.toString()) }
         binding.time.text = gameResult.date
@@ -76,6 +76,6 @@ class FinishedActivity : HideStatusBarActivity() {
         LoggerGetter.get().clear()
     }
 
-    private fun getLogMessage() = LoggerGetter.get().getLog().joinToString(separator = "\n")
+    private fun getLogMessage() = model.result
 
 }

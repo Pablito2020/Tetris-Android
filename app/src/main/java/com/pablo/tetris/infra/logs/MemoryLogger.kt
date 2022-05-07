@@ -28,6 +28,9 @@ object MemoryLogger : Logger {
         return result
     }
 
-    override fun clear() = messages.clear()
+    override fun clear() {
+        messages.clear()
+        movements.clear()
+    }
 
 }

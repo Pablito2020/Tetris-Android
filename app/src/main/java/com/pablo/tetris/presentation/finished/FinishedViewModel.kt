@@ -1,11 +1,13 @@
 package com.pablo.tetris.presentation.finished
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pablo.tetris.domain.user.ValidateEmail
+import com.pablo.tetris.infra.logs.LoggerGetter
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -15,6 +17,7 @@ class FinishedViewModel : ViewModel() {
     private var data by mutableStateOf(FinishedStateData())
     private val resultEventChannel = Channel<FinishedStateData>()
     val results = resultEventChannel.receiveAsFlow()
+    val result by mutableStateOf(LoggerGetter.get().getLog().joinToString(separator = "\n"))
 
     fun update(email: String) {
         this.data = data.copy(email = email)
