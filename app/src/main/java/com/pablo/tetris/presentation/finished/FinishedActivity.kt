@@ -49,6 +49,7 @@ class FinishedActivity : HideStatusBarActivity() {
                 }
             }
         }
+        model.playGameOverMusic(this)
     }
 
     private fun setUpComponents() {
