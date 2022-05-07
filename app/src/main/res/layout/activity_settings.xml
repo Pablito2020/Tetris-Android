@@ -56,10 +56,10 @@
             android:id="@+id/editTextPersonName"
             android:layout_width="match_parent"
             android:layout_height="61dp"
-            app:textInputLayoutFocusedRectEnabled="false"
             android:imeOptions="actionDone"
             android:inputType="text"
-            android:maxLines="1" />
+            android:maxLines="1"
+            app:textInputLayoutFocusedRectEnabled="false" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -162,8 +162,8 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/theme_spinner_description"
-                android:spinnerMode="dropdown"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:spinnerMode="dropdown" />
         </LinearLayout>
 
         <ImageView

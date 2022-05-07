@@ -38,8 +38,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                style="@style/rotatebuttonspadding"
                 android:contentDescription="@string/RotateLeftDesc"
                 app:icon="@drawable/rotateleft"
+                app:backgroundTint="@color/minimum_purple"
                 app:iconPadding="0dp"
                 app:iconGravity="textStart" />
 
@@ -47,9 +49,11 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/RotateRight"
                 android:layout_width="0dp"
+                style="@style/rotatebuttonspadding"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/RotateRightDesc"
+                app:backgroundTint="@color/minimum_purple"
                 app:icon="@drawable/rotateright"
                 app:iconPadding="0dp"
                 app:iconGravity="textStart" />
@@ -58,7 +62,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/LeftButton"
@@ -66,6 +71,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/LeftButtonDesc"
+                style="@style/movebuttonspadding"
+                app:backgroundTint="@color/minimum_purple"
                 app:icon="@drawable/left"
                 app:iconPadding="0dp"
                 app:iconGravity="textStart"
@@ -77,6 +84,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/DownButtonDesc"
+                style="@style/movebuttonspadding"
+                app:backgroundTint="@color/minimum_purple"
                 app:icon="@drawable/down"
                 app:iconPadding="0dp"
                 app:iconGravity="textStart"
@@ -87,6 +96,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                style="@style/movebuttonspadding"
+                app:backgroundTint="@color/minimum_purple"
                 android:contentDescription="@string/RightButtonDesc"
                 app:icon="@drawable/right"
                 app:iconPadding="0dp"
