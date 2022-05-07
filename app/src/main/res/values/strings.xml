@@ -34,7 +34,7 @@
     <string name="score">Score:</string>
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
-    <string name="quitAppMessage">Do you want to quit Tetris?</string>
+    <string name="quitAppMessage">Do you really want to quit Tetris?</string>
     <string name="theme_image_information">An image that shows the T block on the current theme</string>
     <string name="level_image_description">Image that shows the level of difficulty</string>
     <string name="other_settings_text">Other:</string>
@@ -47,4 +47,5 @@
         The game ends when the playing field is filled. The longer the player can delay this outcome, the higher their score will be.\n\n
         </string>
     <string name="go_back_button">Back</string>
+    <string name="warning">Warning!</string>
 </resources>

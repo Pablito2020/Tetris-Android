@@ -33,6 +33,7 @@ open class HideStatusBarActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         AlertDialog.Builder(this)
+            .setTitle(R.string.warning)
             .setMessage(R.string.quitAppMessage)
             .setNegativeButton(R.string.cancel) { _, _ -> hideStatusBar() }
             .setPositiveButton(R.string.ok) { _, _ -> finishAffinity();exitProcess(0) }
