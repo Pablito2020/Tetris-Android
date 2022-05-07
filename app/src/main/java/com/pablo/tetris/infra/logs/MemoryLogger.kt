@@ -23,8 +23,9 @@ object MemoryLogger : Logger {
     }
 
     override fun getLog(): List<String> {
-        messages.addAll(movements.map { "Did a ${it.key} ${it.value} times." })
-        return messages
+        val result = messages.toMutableList()
+        result.addAll(movements.map { "Did a ${it.key} ${it.value} times." })
+        return result
     }
 
     override fun clear() = messages.clear()
