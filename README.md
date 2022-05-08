@@ -1,10 +1,12 @@
-<h1 align="center">Tetris Game for Android 🧱🤖</h1>
-
-This repository contains the source code for the Tetris game for Android.
+<h1 align="center">Tetris Game for Android 🕹️</h1>
+<p align="center">
+Tetris game written in Kotlin for Android devices. The implementation uses the MVVM pattern and clean architecture.
+</p>
 
 ## Summary
 
   - [Dependencies](#dependencies-)
+  - [Video](#video-)
   - [License](#license-)
   - [Contributing](#contributing-)
 
@@ -30,6 +32,9 @@ implementation("me.pablito:tetris:version")
 ```
 
 Once you've done that, download the Tetris jar file from the [github repo](https://github.com/Pablito2020/Tetris) and add it as a dependency via settings/project-structure
+
+## Video 📹
+https://user-images.githubusercontent.com/18640261/167315077-886f9e22-2907-4c2f-801b-1949a02621a8.mp4
 
 ## License 📖
 The project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for more information.
