@@ -36,7 +36,7 @@ class GameViewModel : ViewModel() {
     }
 
     fun left() {
-        if (!gamePaused.value!!) {
+        if (validMovement()) {
             gameFacade.value?.left()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.MOVE_LEFT)
@@ -44,7 +44,7 @@ class GameViewModel : ViewModel() {
     }
 
     fun right() {
-        if (!gamePaused.value!!) {
+        if (validMovement()) {
             gameFacade.value?.right()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.MOVE_RIGHT)
@@ -52,7 +52,7 @@ class GameViewModel : ViewModel() {
     }
 
     fun down() {
-        if (!gamePaused.value!!) {
+        if (validMovement()) {
             gameFacade.value?.down()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.MOVE_DOWN)
@@ -60,7 +60,7 @@ class GameViewModel : ViewModel() {
     }
 
     fun rotateLeft() {
-        if (!gamePaused.value!!) {
+        if (validMovement()) {
             gameFacade.value?.rotateLeft()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.ROTATE_LEFT)
@@ -68,7 +68,7 @@ class GameViewModel : ViewModel() {
     }
 
     fun rotateRight() {
-        if (!gamePaused.value!!) {
+        if (validMovement()) {
             gameFacade.value?.rotateRight()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.ROTATE_RIGHT)
@@ -76,7 +76,7 @@ class GameViewModel : ViewModel() {
     }
 
     fun dropBlock() {
-        if (!gamePaused.value!!) {
+        if (validMovement()) {
             gameFacade.value?.dropBlock()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.DROP_DOWN)
@@ -125,5 +125,7 @@ class GameViewModel : ViewModel() {
     fun setGameResume() {
         gamePaused.value = false
     }
+
+    private fun validMovement() = !gamePaused.value!! && !gameFacade.value!!.hasFinished()
 
 }
