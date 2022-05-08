@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.GAME_RESULT
+import com.pablo.tetris.presentation.common.HAS_MUSIC
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.common.getButtons
 import com.pablo.tetris.presentation.finished.FinishedActivity
@@ -88,6 +89,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
                 GAME_RESULT,
                 GameResult(score = model.getPoints(), date = DateGetter.getDate())
             )
+            putExtra(HAS_MUSIC, factory.hasMusic())
         }
         startActivity(finish)
         finish()

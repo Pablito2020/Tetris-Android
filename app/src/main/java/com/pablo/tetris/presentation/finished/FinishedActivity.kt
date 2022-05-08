@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.databinding.ActivityFinishedBinding
 import com.pablo.tetris.infra.logs.LoggerGetter
 import com.pablo.tetris.presentation.common.GAME_RESULT
+import com.pablo.tetris.presentation.common.HAS_MUSIC
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.sendmail.EmailData
 import com.pablo.tetris.presentation.finished.sendmail.EmailSender
@@ -50,7 +51,8 @@ class FinishedActivity : HideStatusBarActivity() {
                 }
             }
         }
-        model.playGameOverMusic(this)
+        if (intent.getBooleanExtra(HAS_MUSIC, false))
+            model.playGameOverMusic(this)
     }
 
     private fun setUpComponents() {
