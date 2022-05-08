@@ -11,8 +11,9 @@ class EmailSender(private val activity: Activity, private val emailData: EmailDa
 
     @SuppressLint("QueryPermissionsNeeded")
         fun send() {
-        val intent = Intent(Intent.ACTION_SENDTO).apply {
+        val intent = Intent(Intent.ACTION_SEND).apply {
             data = Uri.parse("mailto:")
+            type = "text/plain"
             putExtra(Intent.EXTRA_EMAIL, arrayOf(emailData.destinationEmail))
             putExtra(Intent.EXTRA_SUBJECT, emailData.subject)
             putExtra(Intent.EXTRA_TEXT, emailData.text)
