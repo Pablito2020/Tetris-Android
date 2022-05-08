@@ -28,8 +28,10 @@ class FinishedViewModel : ViewModel() {
     }
 
     fun setUpLog(context: Context) {
-        if (result.value == null)
-            result.value = LoggerGetter.get().getLog(context).joinToString(separator = "\n")
+        if (result.value == null) {
+            val log = LoggerGetter.get().getLog()
+            result.value = log.map { it.asString(context) }.joinToString(separator = "\n")
+        }
     }
 
     fun collect(context: Context) {

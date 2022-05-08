@@ -32,7 +32,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        factory.fromIntent(intent, this)
+        factory.fromIntent(intent)
         setUpViewModel()
         setUpGridView()
         setUpButtons()
@@ -61,7 +61,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private fun setUpButtons() {
         binding.root.getButtons().forEach { it.setOnClickListener(this) }
         binding.pauseButton.setOnClickListener(this)
-        binding.DownButton.setOnLongClickListener { model.dropBlock(this);true }
+        binding.DownButton.setOnLongClickListener { model.dropBlock();true }
     }
 
     private fun updateScreen() {
@@ -91,11 +91,11 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     override fun onClick(p0: View) = when (p0.id) {
-        binding.DownButton.id -> model.down(this)
-        binding.LeftButton.id -> model.left(this)
-        binding.RightButton.id -> model.right(this)
-        binding.RotateLeft.id -> model.rotateLeft(this)
-        binding.RotateRight.id -> model.rotateRight(this)
+        binding.DownButton.id -> model.down()
+        binding.LeftButton.id -> model.left()
+        binding.RightButton.id -> model.right()
+        binding.RotateLeft.id -> model.rotateLeft()
+        binding.RotateRight.id -> model.rotateRight()
         binding.pauseButton.id -> pauseButtonClicked()
         else -> throw UnsupportedOperationException("Unknown button")
     }
@@ -118,7 +118,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     private fun startGame() {
         model.startMusic()
-        moveBlockDown = lifecycleScope.launch { model.runGame(this@GameActivity) }
+        moveBlockDown = lifecycleScope.launch { model.runGame() }
         binding.pauseButton.setState(PlayPauseView.STATE_PLAY)
         binding.pauseButton.fadeIn()
     }

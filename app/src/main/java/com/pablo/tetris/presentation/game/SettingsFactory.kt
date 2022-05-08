@@ -18,32 +18,27 @@ class SettingsFactory {
 
     private var data: SettingsData? = null
 
-    fun fromIntent(intent: Intent, context: Context) {
+    fun fromIntent(intent: Intent) {
         if (data == null) {
             data = intent.getSerializableExtra(GAME_INFORMATION) as SettingsData
             LoggerGetter.get().add(
-                UiText.ResourceString(R.string.player_name_log, data!!.name).asString(context),
-                context
+                UiText.ResourceString(R.string.player_name_log, data!!.name),
             )
             LoggerGetter.get().add(
                 UiText.ResourceString(R.string.level_selected_log, data!!.level.name.lowercase())
-                    .asString(context), context
             )
             LoggerGetter.get().add(
                 UiText.ResourceString(R.string.ghost_mode_log, data!!.isGhostBlock)
-                    .asString(context),
-                context
             )
             LoggerGetter.get().add(
-                UiText.ResourceString(R.string.music_mode_log, data!!.hasMusic).asString(context),
-                context
+                UiText.ResourceString(R.string.music_mode_log, data!!.hasMusic)
             )
             LoggerGetter.get()
                 .add(
                     UiText.ResourceString(
                         R.string.theme_log,
                         Style.values()[data!!.themeIndex].name.lowercase()
-                    ).asString(context), context
+                    )
                 )
         }
     }

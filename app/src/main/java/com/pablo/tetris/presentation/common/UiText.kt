@@ -1,19 +1,18 @@
 package com.pablo.tetris.presentation.common
 
 import android.content.Context
+import androidx.annotation.StringRes
 
 sealed class UiText {
     data class PrimitiveString(val value: String) : UiText()
-    data class ResourceString(val resourceId: Int, var args: Any? = null) : UiText()
+    class ResourceString(@StringRes val resourceId: Int, vararg val args: Any) : UiText()
 
     fun asString(context: Context): String {
         return when (this) {
             is PrimitiveString -> value
             is ResourceString -> {
-                if (this.args == null)
-                    context.getString(resourceId)
-                else
-                    context.getString(resourceId, args)
+                val newArgs = this.args.map { if (it is UiText) it.asString(context) else it }.toTypedArray()
+                context.getString(resourceId, *newArgs)
             }
         }
     }

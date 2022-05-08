@@ -28,58 +28,58 @@ class GameViewModel : ViewModel() {
         this.speedStrategy = speed
     }
 
-    suspend fun runGame(context: Context) {
+    suspend fun runGame() {
         while (!gameFacade.value!!.hasFinished()) {
-            down(context)
+            down()
             delay(speedStrategy.getSpeedInMilliseconds(gameFacade.value!!.getScore()))
         }
     }
 
-    fun left(context: Context) {
+    fun left() {
         if (!gamePaused.value!!) {
             gameFacade.value?.left()
             gameFacade.postValue(gameFacade.value)
-            LoggerGetter.get().add(LoggerConstants.MOVE_LEFT.asString(context), context)
+            LoggerGetter.get().add(LoggerConstants.MOVE_LEFT)
         }
     }
 
-    fun right(context: Context) {
+    fun right() {
         if (!gamePaused.value!!) {
             gameFacade.value?.right()
             gameFacade.postValue(gameFacade.value)
-            LoggerGetter.get().add(LoggerConstants.MOVE_RIGHT.asString(context), context)
+            LoggerGetter.get().add(LoggerConstants.MOVE_RIGHT)
         }
     }
 
-    fun down(context: Context) {
+    fun down() {
         if (!gamePaused.value!!) {
             gameFacade.value?.down()
             gameFacade.postValue(gameFacade.value)
-            LoggerGetter.get().add(LoggerConstants.MOVE_DOWN.asString(context), context)
+            LoggerGetter.get().add(LoggerConstants.MOVE_DOWN)
         }
     }
 
-    fun rotateLeft(context: Context) {
+    fun rotateLeft() {
         if (!gamePaused.value!!) {
             gameFacade.value?.rotateLeft()
             gameFacade.postValue(gameFacade.value)
-            LoggerGetter.get().add(LoggerConstants.ROTATE_LEFT.asString(context), context)
+            LoggerGetter.get().add(LoggerConstants.ROTATE_LEFT)
         }
     }
 
-    fun rotateRight(context: Context) {
+    fun rotateRight() {
         if (!gamePaused.value!!) {
             gameFacade.value?.rotateRight()
             gameFacade.postValue(gameFacade.value)
-            LoggerGetter.get().add(LoggerConstants.ROTATE_RIGHT.asString(context), context)
+            LoggerGetter.get().add(LoggerConstants.ROTATE_RIGHT)
         }
     }
 
-    fun dropBlock(context: Context) {
+    fun dropBlock() {
         if (!gamePaused.value!!) {
             gameFacade.value?.dropBlock()
             gameFacade.postValue(gameFacade.value)
-            LoggerGetter.get().add(LoggerConstants.DROP_DOWN.asString(context), context)
+            LoggerGetter.get().add(LoggerConstants.DROP_DOWN)
         }
     }
 

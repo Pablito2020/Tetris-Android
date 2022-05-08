@@ -59,9 +59,9 @@
     <string name="ghost_mode_log">"Ghost mode is enabled? %s"</string>
     <string name="music_mode_log">"Music is enabled? %s"</string>
     <string name="theme_log">"Playing with theme: %s"</string>
-    <string name="result_movements_log">"Did a: %s %d times"</string>
+    <string name="result_movements_log">Did a: %s %d times</string>
 
-    <string name="error_name_is_empty">"Name cannot be empty</string>
+    <string name="error_name_is_empty">Name cannot be empty</string>
     <string name="error_name_contain_spaces">Name should not contain spaces</string>
     <string name="error_email_empty">email shouldn\'t be blank</string>
     <string name="error_email_not_valid">email isn\'t valid</string>

@@ -1,9 +1,9 @@
 package com.pablo.tetris.domain.game.logs
 
-import android.content.Context
+import com.pablo.tetris.presentation.common.UiText
 
 interface Logger {
-    fun add(message: String, context: Context)
-    fun getLog(context: Context): List<String>
+    fun add(message: UiText)
+    fun getLog(): List<UiText>
     fun clear()
 }

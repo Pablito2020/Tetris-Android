@@ -1,6 +1,5 @@
 package com.pablo.tetris.infra.logs
 
-import android.content.Context
 import com.pablo.tetris.R
 import com.pablo.tetris.domain.game.logs.Logger
 import com.pablo.tetris.infra.logs.LoggerConstants.DROP_DOWN
@@ -9,24 +8,30 @@ import com.pablo.tetris.infra.logs.LoggerConstants.MOVE_LEFT
 import com.pablo.tetris.infra.logs.LoggerConstants.MOVE_RIGHT
 import com.pablo.tetris.infra.logs.LoggerConstants.ROTATE_LEFT
 import com.pablo.tetris.infra.logs.LoggerConstants.ROTATE_RIGHT
+import com.pablo.tetris.presentation.common.UiText
 
 object MemoryLogger : Logger {
 
-    val messages: MutableList<String> = mutableListOf()
-    val movements: MutableMap<String, Int> = mutableMapOf()
+    val messages: MutableList<UiText> = mutableListOf()
+    val movements: MutableMap<UiText, Int> = mutableMapOf()
 
-    override fun add(message: String, context: Context) {
+    override fun add(message: UiText) {
         when (message) {
-            MOVE_DOWN.asString(context), MOVE_LEFT.asString(context), MOVE_RIGHT.asString(context), ROTATE_LEFT.asString(context), ROTATE_RIGHT.asString(context), DROP_DOWN.asString(context) -> {
-                movements[message] = movements.getOrElse(message) { 0 }.plus(1)
-            }
+            MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, ROTATE_LEFT, ROTATE_RIGHT, DROP_DOWN -> movements[message] =
+                movements.getOrElse(message) { 0 }.plus(1)
             else -> messages.add(message)
         }
     }
 
-    override fun getLog(context: Context): List<String> {
+    override fun getLog(): List<UiText> {
         val result = messages.toMutableList()
-        result.addAll(movements.map { context.getString(R.string.result_movements_log, it.key, it.value)})
+        result.addAll(movements.map {
+            UiText.ResourceString(
+                R.string.result_movements_log,
+                it.key,
+                it.value
+            )
+        })
         return result
     }
 
