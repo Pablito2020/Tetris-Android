@@ -111,7 +111,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
             startGame()
             model.setGameStarted()
         } else {
-            binding.pauseButton.setState(PlayPauseView.STATE_PAUSE)
+            binding.pauseButton.setState(State.PAUSE)
             binding.pauseButton.fadeIn()
         }
     }
@@ -119,7 +119,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
     private fun startGame() {
         model.startMusic()
         moveBlockDown = lifecycleScope.launch { model.runGame() }
-        binding.pauseButton.setState(PlayPauseView.STATE_PLAY)
+        binding.pauseButton.setState(State.PLAY)
         binding.pauseButton.fadeIn()
     }
 
@@ -128,7 +128,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
             moveBlockDown.cancel()
             model.pauseMusic()
             model.setGamePaused()
-            binding.pauseButton.setState(PlayPauseView.STATE_PAUSE)
+            binding.pauseButton.setState(State.PAUSE)
             binding.pauseButton.fadeIn()
         }
     }
