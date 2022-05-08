@@ -3,10 +3,12 @@ package com.pablo.tetris.presentation.game
 import GameFacade
 import android.content.Context
 import android.content.Intent
+import com.pablo.tetris.R
 import com.pablo.tetris.domain.game.blocks.BlockGeneratorFactory
 import com.pablo.tetris.domain.game.speed.SpeedFactory
 import com.pablo.tetris.infra.logs.LoggerGetter
 import com.pablo.tetris.presentation.common.GAME_INFORMATION
+import com.pablo.tetris.presentation.common.UiText
 import com.pablo.tetris.presentation.game.grid.style.Style
 import com.pablo.tetris.presentation.game.grid.style.StyleCreator
 import com.pablo.tetris.presentation.game.grid.style.StyleFactory
@@ -16,15 +18,33 @@ class SettingsFactory {
 
     private var data: SettingsData? = null
 
-    fun fromIntent(intent: Intent) {
+    fun fromIntent(intent: Intent, context: Context) {
         if (data == null) {
             data = intent.getSerializableExtra(GAME_INFORMATION) as SettingsData
-            LoggerGetter.get().add("Name of the player is: ${data!!.name}")
-            LoggerGetter.get().add("Level selected is: ${data!!.level.name.lowercase()}")
-            LoggerGetter.get().add("Ghost mode is enabled? ${data!!.isGhostBlock}")
-            LoggerGetter.get().add("Music is enabled? ${data!!.hasMusic}")
+            LoggerGetter.get().add(
+                UiText.ResourceString(R.string.player_name_log, data!!.name).asString(context),
+                context
+            )
+            LoggerGetter.get().add(
+                UiText.ResourceString(R.string.level_selected_log, data!!.level.name.lowercase())
+                    .asString(context), context
+            )
+            LoggerGetter.get().add(
+                UiText.ResourceString(R.string.ghost_mode_log, data!!.isGhostBlock)
+                    .asString(context),
+                context
+            )
+            LoggerGetter.get().add(
+                UiText.ResourceString(R.string.music_mode_log, data!!.hasMusic).asString(context),
+                context
+            )
             LoggerGetter.get()
-                .add("Playing with theme: ${Style.values()[data!!.themeIndex].name.lowercase()}")
+                .add(
+                    UiText.ResourceString(
+                        R.string.theme_log,
+                        Style.values()[data!!.themeIndex].name.lowercase()
+                    ).asString(context), context
+                )
         }
     }
 

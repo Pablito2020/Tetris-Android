@@ -2,6 +2,7 @@ package com.pablo.tetris.presentation.finished
 
 import android.content.Context
 import android.media.MediaPlayer
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -20,10 +21,15 @@ class FinishedViewModel : ViewModel() {
     private val resultEventChannel = Channel<FinishedStateData>()
     private val gameOverMusicHasPlayed = mutableStateOf(false)
     val results = resultEventChannel.receiveAsFlow()
-    val result by mutableStateOf(LoggerGetter.get().getLog().joinToString(separator = "\n"))
+    val result: MutableState<String?> = mutableStateOf(null)
 
     fun update(email: String) {
         this.data = data.copy(email = email)
+    }
+
+    fun setUpLog(context: Context) {
+        if (result.value == null)
+            result.value = LoggerGetter.get().getLog(context).joinToString(separator = "\n")
     }
 
     fun collect() {

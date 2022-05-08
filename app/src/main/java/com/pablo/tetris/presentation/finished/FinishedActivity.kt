@@ -36,6 +36,7 @@ class FinishedActivity : HideStatusBarActivity() {
 
     private fun setUpViewModel() {
         model = ViewModelProvider(this).get(FinishedViewModel::class.java)
+        model.setUpLog(this)
         lifecycleScope.launchWhenCreated {
             model.results.collect {
                 binding.emailEditText.error = it.emailError
@@ -77,6 +78,6 @@ class FinishedActivity : HideStatusBarActivity() {
         LoggerGetter.get().clear()
     }
 
-    private fun getLogMessage() = model.result
+    private fun getLogMessage() = model.result.value!!
 
 }

@@ -28,7 +28,7 @@
     <string name="MediumLevelButton">Medium</string>
     <string name="HighLevelButton">High</string>
     <string name="pause_info">pause the current status of the game</string>
-    <string name="resumingin">Resuming game...</string>
+    <string name="resumingin">Resuming game…</string>
     <string name="opening_mail">Opening mail app</string>
     <string name="error_opening_mail">Error opening mail app!</string>
     <string name="score">Score:</string>
@@ -48,4 +48,16 @@
         </string>
     <string name="go_back_button">Back</string>
     <string name="warning">Warning!</string>
+    <string name="down_movement">"down movement"</string>
+    <string name="left_movement">"left movement"</string>
+    <string name="right_movement">"right movement"</string>
+    <string name="left_rotation">"left rotation"</string>
+    <string name="right_rotation">"right rotation"</string>
+    <string name="drop_down">"down drop"</string>
+    <string name="player_name_log">"Name of the player is: %s"</string>
+    <string name="level_selected_log">"Level selected is: %s"</string>
+    <string name="ghost_mode_log">"Ghost mode is enabled? %s"</string>
+    <string name="music_mode_log">"Music is enabled? %s"</string>
+    <string name="theme_log">"Playing with theme: %s"</string>
+    <string name="result_movements_log">"Did a: %s %d times"</string>
 </resources>
