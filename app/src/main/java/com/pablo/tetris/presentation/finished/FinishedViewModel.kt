@@ -32,12 +32,12 @@ class FinishedViewModel : ViewModel() {
             result.value = LoggerGetter.get().getLog(context).joinToString(separator = "\n")
     }
 
-    fun collect() {
+    fun collect(context: Context) {
         val result = ValidateEmail(data.email).execute()
         data = if (result.success)
             data.copy(emailError = null)
         else
-            data.copy(emailError = result.errorMessage)
+            data.copy(emailError = result.errorMessage!!.asString(context))
         viewModelScope.launch { resultEventChannel.send(data) }
     }
 

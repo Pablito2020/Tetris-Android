@@ -1,5 +1,6 @@
 package com.pablo.tetris.presentation.settings
 
+import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -43,10 +44,10 @@ class SettingsModel: ViewModel() {
         }
     }
 
-    fun collect() {
+    fun collect(context: Context) {
         val nameResult = ValidateName(state.name).execute()
         state = if (!nameResult.success)
-            state.copy(nameError = nameResult.errorMessage)
+            state.copy(nameError = nameResult.errorMessage!!.asString(context))
         else
             state.copy(nameError = null)
         viewModelScope.launch {
