@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:ignore="UseCompoundDrawables">
 
         <TextView
@@ -57,10 +57,10 @@
             android:id="@+id/TetrisExplanationText"
             android:layout_width="500dp"
             android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
             android:padding="8dp"
             android:text="@string/tetris_explanation"
-            android:textSize="18sp"
-            android:justificationMode="inter_word"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/TetrisVideo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

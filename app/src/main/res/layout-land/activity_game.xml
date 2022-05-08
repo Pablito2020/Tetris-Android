@@ -6,37 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".presentation.game.GameActivity">
 
+
     <GridView
         android:id="@+id/GameGrid"
-        android:layout_width="190dp"
-        android:layout_height="380dp"
+        android:layout_width="180dp"
+        android:layout_height="360dp"
         android:numColumns="10"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.483" />
+        app:layout_constraintEnd_toStartOf="@+id/RotateRight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/RotateLeft"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/LeftButton"
         style="@style/movebuttonspadding"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="60dp"
         android:layout_weight="1"
         android:contentDescription="@string/LeftButtonDesc"
         app:backgroundTint="@color/black_buttons"
         app:icon="@drawable/left"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/DownButton"
         app:layout_constraintEnd_toStartOf="@+id/RotateLeft"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.874" />
-
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/DownButton" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/RotateLeft"
@@ -49,20 +45,16 @@
         app:icon="@drawable/rotateleft"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/LeftButton"
         app:layout_constraintEnd_toStartOf="@+id/GameGrid"
-        app:layout_constraintHorizontal_bias="0.841"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.874" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/LeftButton" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/DownButton"
         style="@style/movebuttonspadding"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginEnd="240dp"
         android:layout_weight="1"
         android:contentDescription="@string/DownButtonDesc"
         app:backgroundTint="@color/black_buttons"
@@ -70,11 +62,12 @@
         app:iconGravity="textStart"
         app:iconPadding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintEnd_toStartOf="@+id/LeftButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.413" />
+        app:layout_constraintVertical_bias="0.643" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/RightButton"
@@ -87,13 +80,10 @@
         app:icon="@drawable/right"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/RotateRight"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toEndOf="@+id/RotateRight"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.875" />
-
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/RotateRight" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/RotateRight"
@@ -106,23 +96,22 @@
         app:icon="@drawable/rotateright"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toEndOf="@+id/GameGrid"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.874" />
+        app:layout_constraintBottom_toBottomOf="@+id/RotateLeft"
+        app:layout_constraintEnd_toStartOf="@+id/RightButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/GameGrid" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/pauseButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/RotateRight"
+        app:layout_constraintEnd_toEndOf="@+id/RightButton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintTop_toTopOf="@+id/GameGrid"
+        app:layout_constraintVertical_bias="0.363">
 
         <TextView
             android:id="@+id/PointsTextString"
@@ -140,14 +129,17 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/DownButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.403">
+        app:layout_constraintBottom_toTopOf="@+id/RotateLeft"
+        app:layout_constraintEnd_toStartOf="@+id/GameGrid"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/DownButton"
+        app:layout_constraintTop_toTopOf="@+id/GameGrid"
+        app:layout_constraintVertical_bias="0.452">
 
 
         <TextView
@@ -169,10 +161,12 @@
         android:id="@+id/pauseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/GameGrid"
-        app:layout_constraintHorizontal_bias="0.761"
+        android:layout_marginEnd="68dp"
+        app:layout_constraintBottom_toTopOf="@+id/RotateLeft"
+        app:layout_constraintEnd_toStartOf="@+id/DownButton"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout9"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

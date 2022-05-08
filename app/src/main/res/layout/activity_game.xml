@@ -8,23 +8,25 @@
 
     <GridView
         android:id="@+id/GameGrid"
-        android:layout_width="305dp"
-        android:layout_height="610dp"
+        android:layout_width="275dp"
+        android:layout_height="550dp"
         android:horizontalSpacing="0dp"
         android:numColumns="10"
         android:verticalSpacing="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.056" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <LinearLayout
+        android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GameGrid">
 
@@ -35,74 +37,70 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/RotateLeft"
+                style="@style/rotatebuttonspadding"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                style="@style/rotatebuttonspadding"
                 android:contentDescription="@string/RotateLeftDesc"
-                app:icon="@drawable/rotateleft"
                 app:backgroundTint="@color/black_buttons"
-                app:iconPadding="0dp"
-                app:iconGravity="textStart" />
+                app:icon="@drawable/rotateleft"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp" />
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/RotateRight"
-                android:layout_width="0dp"
                 style="@style/rotatebuttonspadding"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/RotateRightDesc"
                 app:backgroundTint="@color/black_buttons"
                 app:icon="@drawable/rotateright"
-                app:iconPadding="0dp"
-                app:iconGravity="textStart" />
+                app:iconGravity="textStart"
+                app:iconPadding="0dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/LeftButton"
+                style="@style/movebuttonspadding"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/LeftButtonDesc"
-                style="@style/movebuttonspadding"
                 app:backgroundTint="@color/black_buttons"
                 app:icon="@drawable/left"
-                app:iconPadding="0dp"
                 app:iconGravity="textStart"
-                />
+                app:iconPadding="0dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/DownButton"
+                style="@style/movebuttonspadding"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="@string/DownButtonDesc"
-                style="@style/movebuttonspadding"
                 app:backgroundTint="@color/black_buttons"
                 app:icon="@drawable/down"
-                app:iconPadding="0dp"
                 app:iconGravity="textStart"
-                />
+                app:iconPadding="0dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/RightButton"
+                style="@style/movebuttonspadding"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                style="@style/movebuttonspadding"
-                app:backgroundTint="@color/black_buttons"
                 android:contentDescription="@string/RightButtonDesc"
+                app:backgroundTint="@color/black_buttons"
                 app:icon="@drawable/right"
-                app:iconPadding="0dp"
                 app:iconGravity="textStart"
-                />
+                app:iconPadding="0dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -110,9 +108,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/GameGrid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-129dp">
+        app:layout_constraintVertical_chainStyle="spread">
 
         <LinearLayout
             android:id="@+id/linearLayout8"
@@ -136,7 +138,7 @@
             <ImageView
                 android:id="@+id/NextBlockImage"
                 android:layout_width="60dp"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:contentDescription="@string/NextBlockDesc" />
         </LinearLayout>
 
@@ -162,9 +164,9 @@
             <TextView
                 android:id="@+id/PointsText"
                 android:layout_width="wrap_content"
-                android:textSize="25sp"
+                android:layout_height="fill_parent"
                 android:gravity="center"
-                android:layout_height="fill_parent" />
+                android:textSize="25sp" />
         </LinearLayout>
 
 
