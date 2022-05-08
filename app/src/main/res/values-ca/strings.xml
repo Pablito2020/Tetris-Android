@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tetris</string>
+    <string name="help_button">Ajuda</string>
+    <string name="start_button">Inicia</string>
+    <string name="quit_button">Surt</string>
+    <string name="LeftButtonDesc">Mou el bloc a l\'esquerra</string>
+    <string name="DownButtonDesc">Mou el bloc cap a baix</string>
+    <string name="RightButtonDesc">Mou el bloc a la dreta</string>
+    <string name="RotateLeftDesc">Mou el bloc a l\'esquerra</string>
+    <string name="RotateRightDesc">Rota el block cap a la dreta</string>
+    <string name="DayAndHourText">Dia i hora:</string>
+    <string name="valuesOfLogText">Valors de la traça:</string>
+    <string name="emailDestination">Comparteix la puntuació:</string>
+    <string name="sendEmailButton">Envia mail</string>
+    <string name="newGameButton">Nova partida</string>
+    <string name="exitButton">Surt</string>
+    <string name="emailHint">pepgarcia@gmail.com</string>
+    <string name="NextBlock">Següent:</string>
+    <string name="NextBlockDesc">Mostra el següent bloc</string>
+    <string name="PointsText">Puntuació:</string>
+    <string name="checkbox_music">Música</string>
+    <string name="checkbox_ghostblock">Bloc fantasma</string>
+    <string name="theme_text">Tema:</string>
+    <string name="difficulty_setting_text">Dificultat:</string>
+    <string name="name_text">Nom:</string>
+    <string name="hint_name">pepgarcia</string>
+    <string name="LowLevelButton">Baixa</string>
+    <string name="MediumLevelButton">Mitjana</string>
+    <string name="HighLevelButton">Alta</string>
+    <string name="pause_info">Pausa l\'estat actual del joc</string>
+    <string name="resumingin">Reprenent el joc…</string>
+    <string name="opening_mail">Obrint l\'aplicació de mail</string>
+    <string name="error_opening_mail">Hi ha hagut un error obrint l\'app de mail</string>
+    <string name="score">Puntuació:</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel·la</string>
+    <string name="quitAppMessage">Realment vols sortir del Tetris?</string>
+    <string name="theme_image_information">Una imatge que mostra el block de tipus T del tema actual</string>
+    <string name="level_image_description">Una imatge que mostra el nivell de dificultat</string>
+    <string name="other_settings_text">Altres:</string>
+    <string name="theme_spinner_description">Diferents temes</string>
+    <string name="settings_info">Configuració</string>
+    <string name="results">Resultats</string>
+    <string name="information_text">Informació</string>
+    <string name="tetris_explanation">
+        A Tetris, els jugadors completen línies movent peces de diferents formes (tetrominos), que baixen al terreny de joc. \n\n
+         Les línies completades desapareixen i atorguen punts al jugador, i el jugador pot procedir a omplir els espais buits.\n\n
+         El joc acaba quan el terreny de joc s\'omple. Com més temps el jugador pugui retardar aquest resultat, més alta serà la seva puntuació.\n\n
+        </string>
+    <string name="go_back_button">Enrere</string>
+    <string name="warning">Precaució!</string>
+    <string name="down_movement">un moviment de baixada</string>
+    <string name="left_movement">un moviment a l\'esquerra</string>
+    <string name="right_movement">un moviment a la dreta</string>
+    <string name="left_rotation">una rotació a l\'esquerra</string>
+    <string name="right_rotation">una rotació a la dreta</string>
+    <string name="drop_down">una baixada brusca</string>
+    <string name="player_name_log">"El nom del jugador és: %s"</string>
+    <string name="level_selected_log">"El nivell seleccionat és: %s"</string>
+    <string name="ghost_mode_log">"El bloc fantasma es troba habilitat? %s"</string>
+    <string name="music_mode_log">"La música es troba habilitada? %s"</string>
+    <string name="theme_log">"El tema ha estat: %s"</string>
+    <string name="result_movements_log">"Ha realitzat: %s %d vegades"</string>
+
+    <string name="error_name_is_empty">El nom no pot ser buit</string>
+    <string name="error_name_contain_spaces">El nom no pot contenir espais</string>
+    <string name="error_email_empty">El mail no pot ser buit</string>
+    <string name="error_email_not_valid">El mail no és vàlid</string>
+</resources>

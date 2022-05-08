@@ -209,13 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="@string/checkbox_ghostblock"
-                app:layout_constraintBottom_toTopOf="@+id/MusicCheckbox"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-                app:layout_constraintVertical_bias="0.258" />
+                android:text="@string/checkbox_ghostblock" />
 
             <CheckBox
                 android:id="@+id/MusicCheckbox"
