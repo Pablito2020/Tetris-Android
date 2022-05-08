@@ -21,6 +21,24 @@ class SettingsFactory {
     fun fromIntent(intent: Intent) {
         if (data == null) {
             data = intent.getSerializableExtra(GAME_INFORMATION) as SettingsData
+        }
+    }
+
+    fun getFacade(): GameFacade {
+        val generator = BlockGeneratorFactory.getGenerator(data!!.level)
+        return GameFacade(blockGenerator = generator, ghost = data!!.isGhostBlock)
+    }
+
+    fun getStyle(context: Context): StyleCreator {
+        return StyleFactory.getStyleCreator(Style.values()[data!!.themeIndex], context)
+    }
+
+    fun getSpeedStrategy() = SpeedFactory.get(data!!.level)
+
+    fun hasMusic() = data!!.hasMusic
+
+    fun logData() {
+        if (data != null) {
             LoggerGetter.get().add(
                 UiText.ResourceString(R.string.player_name_log, data!!.name),
             )
@@ -42,18 +60,5 @@ class SettingsFactory {
                 )
         }
     }
-
-    fun getFacade(): GameFacade {
-        val generator = BlockGeneratorFactory.getGenerator(data!!.level)
-        return GameFacade(blockGenerator = generator, ghost = data!!.isGhostBlock)
-    }
-
-    fun getStyle(context: Context): StyleCreator {
-        return StyleFactory.getStyleCreator(Style.values()[data!!.themeIndex], context)
-    }
-
-    fun getSpeedStrategy() = SpeedFactory.get(data!!.level)
-
-    fun hasMusic() = data!!.hasMusic
 
 }

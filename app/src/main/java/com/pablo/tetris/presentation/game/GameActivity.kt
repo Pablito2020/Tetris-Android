@@ -41,6 +41,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         setUpGridView()
         setUpButtons()
         setUpResumeAction()
+        setUpLogger()
     }
 
     private fun setUpViewModel() {
@@ -60,6 +61,11 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
             factory.getStyle(this).getColorCellChooser()
         adapter = GameAdapter(model.getGrid(), cellColors)
         binding.GameGrid.adapter = adapter
+    }
+
+    private fun setUpLogger() {
+        if (!model.gameOpened.value!!)
+            factory.logData()
     }
 
     private fun setUpButtons() {

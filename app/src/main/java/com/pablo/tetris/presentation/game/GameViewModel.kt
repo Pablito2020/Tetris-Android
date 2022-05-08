@@ -17,7 +17,7 @@ class GameViewModel : ViewModel() {
     private val lengthSong: MutableLiveData<Int> = MutableLiveData(0)
     private val song: MutableLiveData<MediaPlayer> = MutableLiveData(null)
     private val gamePaused: MutableLiveData<Boolean> = MutableLiveData(false)
-    private val gameOpened: MutableLiveData<Boolean> = MutableLiveData(false)
+    val gameOpened: MutableLiveData<Boolean> = MutableLiveData(false)
     private lateinit var speedStrategy: SpeedStrategy
 
     fun setUp(gameFacade: GameFacade, speed: SpeedStrategy) {
