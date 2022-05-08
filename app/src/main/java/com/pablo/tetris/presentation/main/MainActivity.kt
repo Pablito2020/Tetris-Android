@@ -5,6 +5,7 @@ import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.view.View
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.pablo.tetris.databinding.ActivityMainBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.common.getButtons
@@ -14,8 +15,14 @@ import com.pablo.tetris.presentation.settings.SettingsActivity
 class MainActivity : HideStatusBarActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
+    private val viewModel: MainModel = MainModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen().apply {
+            setKeepOnScreenCondition {
+                viewModel.isLoading.value
+            }
+        }
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

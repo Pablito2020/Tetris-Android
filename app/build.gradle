@@ -45,4 +45,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation("me.pablito:tetris:2.3.0")
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1"
+    implementation "androidx.core:core-splashscreen:1.0.0-beta02"
 }

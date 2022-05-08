@@ -7,7 +7,8 @@
     <color name="teal_700">#718792</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="minimum_purple">#000000</color>
+    <color name="black_buttons">#000000</color>
+    <color name="purple_splashscreen">#AD7FFF</color>
 
     <color name="vibrant_red">#F61707</color>
     <color name="vibrant_blue">#2196f3</color>
