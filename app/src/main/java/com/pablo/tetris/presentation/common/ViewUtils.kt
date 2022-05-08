@@ -1,8 +1,7 @@
-package com.pablo.tetris.presentation
+package com.pablo.tetris.presentation.common
 
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageButton
 import androidx.core.view.children
 
 /**

@@ -8,13 +8,13 @@ import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.GAME_RESULT
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
+import com.pablo.tetris.presentation.common.getButtons
 import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.actions.Action
 import com.pablo.tetris.presentation.game.actions.ResumeToastAction
 import com.pablo.tetris.presentation.game.grid.GameAdapter
 import com.pablo.tetris.presentation.game.results.DateGetter
 import com.pablo.tetris.presentation.game.results.GameResult
-import com.pablo.tetris.presentation.getButtons
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 

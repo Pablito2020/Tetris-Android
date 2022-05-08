@@ -7,10 +7,9 @@ import android.os.Bundle
 import android.view.View
 import com.pablo.tetris.databinding.ActivityMainBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
-import com.pablo.tetris.presentation.getButtons
+import com.pablo.tetris.presentation.common.getButtons
 import com.pablo.tetris.presentation.help.HelpActivity
 import com.pablo.tetris.presentation.settings.SettingsActivity
-import java.lang.IllegalArgumentException
 
 class MainActivity : HideStatusBarActivity(), View.OnClickListener {
 

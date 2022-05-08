@@ -1,5 +1,6 @@
 package com.pablo.tetris.presentation.common
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -14,16 +15,15 @@ open class HideStatusBarActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         hideStatusBar()
-        updateUI()
         super.onCreate(savedInstanceState)
     }
 
     protected fun hideStatusBar() {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        val controllerCompat = WindowInsetsControllerCompat(window, window.decorView)
-        controllerCompat.hide(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.navigationBars())
-        controllerCompat.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        hideNavBar()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+            window.setDecorFitsSystemWindows(false)
+        else
+            olderCompatibilityHiding()
     }
 
     override fun onResume() {
@@ -41,22 +41,28 @@ open class HideStatusBarActivity : AppCompatActivity() {
             .show()
     }
 
-    fun updateUI() {
+    private fun hideNavBar() {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        val controllerCompat = WindowInsetsControllerCompat(window, window.decorView)
+        controllerCompat.hide(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.navigationBars())
+        controllerCompat.systemBarsBehavior =
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+    }
+
+    @Suppress("DEPRECATION")
+    private fun olderCompatibilityHiding() {
         val decorView: View = window.decorView
-        decorView.setOnSystemUiVisibilityChangeListener(object : View.OnSystemUiVisibilityChangeListener {
-            override fun onSystemUiVisibilityChange(visibility: Int) {
-                if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN === 0) {
-                    decorView.setSystemUiVisibility(
-                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                                or View.SYSTEM_UI_FLAG_FULLSCREEN
-                                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                    )
-                }
+        decorView.systemUiVisibility
+        decorView.setOnSystemUiVisibilityChangeListener { visibility ->
+            if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN == 0) {
+                decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        or View.SYSTEM_UI_FLAG_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
             }
-        })
+        }
     }
 
 }
