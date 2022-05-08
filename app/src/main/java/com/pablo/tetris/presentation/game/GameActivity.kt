@@ -15,10 +15,13 @@ import com.pablo.tetris.presentation.game.actions.ResumeToastAction
 import com.pablo.tetris.presentation.game.grid.GameAdapter
 import com.pablo.tetris.presentation.game.results.DateGetter
 import com.pablo.tetris.presentation.game.results.GameResult
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 
+@ExperimentalCoroutinesApi
 class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     private lateinit var model: GameViewModel
@@ -118,7 +121,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
 
     private fun startGame() {
         model.startMusic()
-        moveBlockDown = lifecycleScope.launch { model.runGame() }
+        moveBlockDown = lifecycleScope.launch(start = CoroutineStart.ATOMIC) { model.runGame() }
         binding.pauseButton.setState(State.PLAY)
         binding.pauseButton.fadeIn()
     }
