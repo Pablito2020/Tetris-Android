@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tetris</string>
+    <string name="help_button">Ayuda</string>
+    <string name="start_button">Empezar</string>
+    <string name="quit_button">Salir</string>
+    <string name="LeftButtonDesc">Mover el bloque a la izquierda</string>
+    <string name="DownButtonDesc">Mover el bloque abajo</string>
+    <string name="RightButtonDesc">Mover el bloque a la derecha</string>
+    <string name="RotateLeftDesc">Rotar el bloque a la izquierda</string>
+    <string name="RotateRightDesc">Rotar el bloque a la derecha</string>
+    <string name="DayAndHourText">Día y hora:</string>
+    <string name="valuesOfLogText">Valores de la traza:</string>
+    <string name="emailDestination">Comparte tus resultados:</string>
+    <string name="sendEmailButton">Envia mail</string>
+    <string name="newGameButton">Nueva partida</string>
+    <string name="exitButton">Salir</string>
+    <string name="emailHint">juangarcia@gmail.com</string>
+    <string name="NextBlock">Siguiente:</string>
+    <string name="NextBlockDesc">Muestra el siguiente bloque</string>
+    <string name="PointsText">Puntos:</string>
+    <string name="checkbox_music">Música</string>
+    <string name="checkbox_ghostblock">Bloque fantasma</string>
+    <string name="theme_text">Tema:</string>
+    <string name="difficulty_setting_text">Dificultad:</string>
+    <string name="name_text">Nombre:</string>
+    <string name="hint_name">juangarcia</string>
+    <string name="LowLevelButton">Baja</string>
+    <string name="MediumLevelButton">Media</string>
+    <string name="HighLevelButton">Alta</string>
+    <string name="pause_info">Pausa el estado actual del juego</string>
+    <string name="resumingin">Renaudando partida…</string>
+    <string name="opening_mail">Abriendo la aplicación de mail</string>
+    <string name="error_opening_mail">Hubo un error abriendo la aplicación de correo</string>
+    <string name="score">Puntuación:</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancelar</string>
+    <string name="quitAppMessage">¿Realmente quieres salir de Tetris?</string>
+    <string name="theme_image_information">Una imagen que muestra el bloque de tipo T en el tema actual</string>
+    <string name="level_image_description">Una imagen que muestra el nivel de dificultad</string>
+    <string name="other_settings_text">Otros:</string>
+    <string name="theme_spinner_description">Diferentes temes</string>
+    <string name="settings_info">Ajustes</string>
+    <string name="results">Resultados</string>
+    <string name="information_text">Información</string>
+    <string name="tetris_explanation">
+        En Tetris, los jugadores completan líneas moviendo piezas (tetrominos) de diferentes formas mientras estas descienden al campo de juego. \n\n
+         Las líneas completadas desaparecen y otorgan puntos al jugador, y el jugador puede proceder a llenar los espacios vacíos.\n\n
+         El juego termina cuando se llena el campo de juego. Cuanto más tiempo pueda retrasar el jugador este resultado, mayor será su puntuación.\n\n
+        </string>
+    <string name="go_back_button">Atrás</string>
+    <string name="warning">¡Precaución!</string>
+    <string name="down_movement">"un movimento de bajada"</string>
+    <string name="left_movement">"un desplazamiento a la izquierda"</string>
+    <string name="right_movement">"un desplazamiento a la derecha"</string>
+    <string name="left_rotation">"una rotación a la izquierda"</string>
+    <string name="right_rotation">"una rotación a la derecha"</string>
+    <string name="drop_down">"un movimiento de bajada brusco"</string>
+    <string name="player_name_log">"El nombre del jugador es: %s"</string>
+    <string name="level_selected_log">"El nivel seleccionado es : %s"</string>
+    <string name="ghost_mode_log">"El bloque fantasma está habilitado? %s"</string>
+    <string name="music_mode_log">"La música está habilitada? %s"</string>
+    <string name="theme_log">"El tema escojido ha sido: %s"</string>
+    <string name="result_movements_log">Ha hecho: %s %d veces</string>
+
+    <string name="error_name_is_empty">El nombre no puede ser vacío</string>
+    <string name="error_name_contain_spaces">El nombre no puede contener espacios</string>
+    <string name="error_email_empty">El correo no puede ser vacío</string>
+    <string name="error_email_not_valid">El correo no es válido</string>
+</resources>
