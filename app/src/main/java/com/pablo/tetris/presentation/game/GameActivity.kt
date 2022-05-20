@@ -4,9 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.pablo.tetris.GameFragment
+import com.pablo.tetris.presentation.game.fragments.GameFragment
 import com.pablo.tetris.R
-import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.GAME_RESULT
 import com.pablo.tetris.presentation.common.HAS_MUSIC
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
@@ -25,25 +24,19 @@ import kotlinx.coroutines.launch
 class GameActivity : HideStatusBarActivity() {
 
     private lateinit var model: GameViewModel
-    private lateinit var binding: ActivityGameBinding
     private lateinit var resumeAction: Action
     private val factory = SettingsFactory()
     private lateinit var moveBlockDown: Job
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityGameBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_game)
         factory.fromIntent(intent)
         setUpViewModel()
         setUpResumeAction()
         setUpLogger()
         setUpObserver()
-        val firstFragment = GameFragment(factory)
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragmentContainerView, firstFragment)
-            commit()
-        }
+        setUpFragments()
     }
 
     private fun setUpViewModel() {
@@ -62,6 +55,14 @@ class GameActivity : HideStatusBarActivity() {
         model.pauseButtonClicked.observe(this) {
             if (it)
                 pauseButtonClicked()
+        }
+    }
+
+    private fun setUpFragments() {
+        val gameFragment = GameFragment(factory)
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragmentContainerView, gameFragment)
+            commit()
         }
     }
 

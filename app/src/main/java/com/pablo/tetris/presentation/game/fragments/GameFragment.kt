@@ -1,4 +1,4 @@
-package com.pablo.tetris
+package com.pablo.tetris.presentation.game.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.pablo.tetris.R
 import com.pablo.tetris.presentation.common.getButtons
 import com.pablo.tetris.presentation.game.GameViewModel
 import com.pablo.tetris.presentation.game.PlayPauseView
@@ -18,15 +19,12 @@ class GameFragment(private val factory: SettingsFactory) : Fragment(), View.OnCl
 
     private lateinit var adapter: GameAdapter
     private lateinit var viewModel: GameViewModel
-    private lateinit var my_view: View
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpObservers()
-    }
-
-    override fun onStart() {
-        super.onStart()
+        viewModel = ViewModelProvider(requireActivity()).get(GameViewModel::class.java)
+        setUpGridView()
+        setUpButtons()
         setUpObservers()
     }
 
@@ -34,26 +32,21 @@ class GameFragment(private val factory: SettingsFactory) : Fragment(), View.OnCl
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        my_view = inflater.inflate(R.layout.fragment_game, container, false)
-        viewModel = ViewModelProvider(requireActivity()).get(GameViewModel::class.java)
-        setUpGridView()
-        setUpButtons()
-        return my_view
+        return inflater.inflate(R.layout.fragment_game, container, false)
     }
 
     private fun setUpGridView() {
         val cellColors = factory.getStyle(requireContext()).getColorCellChooser()
         adapter = GameAdapter(viewModel.getGrid(), cellColors)
-        val gameGrid: GridView = my_view.findViewById(R.id.GameGrid)
+        val gameGrid: GridView = requireView().findViewById(R.id.GameGrid)
         gameGrid.adapter = adapter
     }
 
     private fun setUpButtons() {
-        (my_view.rootView as ViewGroup).getButtons().forEach { it.setOnClickListener(this) }
-        val pauseButton: PlayPauseView = my_view.findViewById(R.id.pauseButton)
+        (requireView().rootView as ViewGroup).getButtons().forEach { it.setOnClickListener(this) }
+        val pauseButton: PlayPauseView = requireView().findViewById(R.id.pauseButton)
         pauseButton.setOnClickListener(this)
-        val downButton: Button = my_view.findViewById(R.id.DownButton)
+        val downButton: Button = requireView().findViewById(R.id.DownButton)
         downButton.setOnLongClickListener { viewModel.dropBlock();true }
     }
 
@@ -72,10 +65,10 @@ class GameFragment(private val factory: SettingsFactory) : Fragment(), View.OnCl
     private fun updateScreen() {
         adapter.gameCells = viewModel.getGrid()
         adapter.notifyDataSetChanged()
-        val pointsText: TextView = my_view.findViewById(R.id.PointsText)
+        val pointsText: TextView = requireView().findViewById(R.id.PointsText)
         pointsText.text = viewModel.getPoints()
         val typeOfBlock = viewModel.getNextBlock()
-        val imageNextBlock: ImageView = my_view.findViewById(R.id.NextBlockImage)
+        val imageNextBlock: ImageView = requireView().findViewById(R.id.NextBlockImage)
         imageNextBlock.setImageResource(
             factory.getStyle(requireContext()).getBlockCreator().getImageId(typeOfBlock)
         )
@@ -92,13 +85,13 @@ class GameFragment(private val factory: SettingsFactory) : Fragment(), View.OnCl
     }
 
     private fun showPauseButtonStatus() {
-        val pauseButton: PlayPauseView = my_view.findViewById(R.id.pauseButton)
+        val pauseButton: PlayPauseView = requireView().findViewById(R.id.pauseButton)
         pauseButton.setState(State.PAUSE)
         pauseButton.fadeIn()
     }
 
     private fun showPlayButtonStatus() {
-        val pauseButton: PlayPauseView = my_view.findViewById(R.id.pauseButton)
+        val pauseButton: PlayPauseView = requireView().findViewById(R.id.pauseButton)
         pauseButton.setState(State.PLAY)
         pauseButton.fadeIn()
     }
