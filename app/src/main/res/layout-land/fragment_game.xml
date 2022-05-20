@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.game.fragments.GameFragment">
+
+    <GridView
+        android:id="@+id/GameGrid"
+        android:layout_width="180dp"
+        android:layout_height="360dp"
+        android:numColumns="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/RotateRight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/RotateLeft"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/LeftButton"
+        style="@style/movebuttonspadding"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/LeftButtonDesc"
+        app:backgroundTint="@color/black_buttons"
+        app:icon="@drawable/left"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/DownButton"
+        app:layout_constraintEnd_toStartOf="@+id/RotateLeft"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/DownButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/RotateLeft"
+        style="@style/rotatebuttonspadding"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/RotateLeftDesc"
+        app:backgroundTint="@color/black_buttons"
+        app:icon="@drawable/rotateleft"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/LeftButton"
+        app:layout_constraintEnd_toStartOf="@+id/GameGrid"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/LeftButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/DownButton"
+        style="@style/movebuttonspadding"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/DownButtonDesc"
+        app:backgroundTint="@color/black_buttons"
+        app:icon="@drawable/down"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/LeftButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/RightButton"
+        style="@style/movebuttonspadding"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/RightButtonDesc"
+        app:backgroundTint="@color/black_buttons"
+        app:icon="@drawable/right"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/RotateRight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/RotateRight" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/RotateRight"
+        style="@style/rotatebuttonspadding"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/RotateRightDesc"
+        app:backgroundTint="@color/black_buttons"
+        app:icon="@drawable/rotateright"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/RotateLeft"
+        app:layout_constraintEnd_toStartOf="@+id/RightButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/GameGrid" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/RotateRight"
+        app:layout_constraintEnd_toEndOf="@+id/RightButton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/GameGrid"
+        app:layout_constraintTop_toTopOf="@+id/GameGrid"
+        app:layout_constraintVertical_bias="0.363">
+
+        <TextView
+            android:id="@+id/PointsTextString"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/PointsText"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/PointsText"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/RotateLeft"
+        app:layout_constraintEnd_toStartOf="@+id/GameGrid"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/DownButton"
+        app:layout_constraintTop_toTopOf="@+id/GameGrid"
+        app:layout_constraintVertical_bias="0.452">
+
+
+        <TextView
+            android:id="@+id/nextBlockText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/NextBlock"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/NextBlockImage"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/NextBlockDesc" />
+    </LinearLayout>
+
+    <com.pablo.tetris.presentation.game.PlayPauseView
+        android:id="@+id/pauseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="68dp"
+        app:layout_constraintBottom_toTopOf="@+id/RotateLeft"
+        app:layout_constraintEnd_toStartOf="@+id/DownButton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout9"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

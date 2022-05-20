@@ -13,8 +13,9 @@ import com.pablo.tetris.presentation.game.grid.style.Style
 import com.pablo.tetris.presentation.game.grid.style.StyleCreator
 import com.pablo.tetris.presentation.game.grid.style.StyleFactory
 import com.pablo.tetris.presentation.settings.SettingsData
+import java.io.Serializable
 
-class SettingsFactory {
+class SettingsFactory: Serializable {
 
     private var data: SettingsData? = null
 

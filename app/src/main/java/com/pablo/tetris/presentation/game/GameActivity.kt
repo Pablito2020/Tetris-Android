@@ -59,7 +59,11 @@ class GameActivity : HideStatusBarActivity() {
     }
 
     private fun setUpFragments() {
-        val gameFragment = GameFragment(factory)
+        val gameFragment = GameFragment().apply {
+            arguments = Bundle().apply {
+                putSerializable(GameFragment.SETTINGS_KEY, factory)
+            }
+        }
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragmentContainerView, gameFragment)
             commit()

@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Button
+import android.widget.GridView
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.pablo.tetris.R
@@ -15,10 +18,11 @@ import com.pablo.tetris.presentation.game.SettingsFactory
 import com.pablo.tetris.presentation.game.State
 import com.pablo.tetris.presentation.game.grid.GameAdapter
 
-class GameFragment(private val factory: SettingsFactory) : Fragment(), View.OnClickListener {
+class GameFragment : Fragment(), View.OnClickListener {
 
     private lateinit var adapter: GameAdapter
     private lateinit var viewModel: GameViewModel
+    private lateinit var factory: SettingsFactory
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,6 +36,7 @@ class GameFragment(private val factory: SettingsFactory) : Fragment(), View.OnCl
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        factory = arguments?.getSerializable(SETTINGS_KEY) as SettingsFactory
         return inflater.inflate(R.layout.fragment_game, container, false)
     }
 
@@ -96,5 +101,8 @@ class GameFragment(private val factory: SettingsFactory) : Fragment(), View.OnCl
         pauseButton.fadeIn()
     }
 
+    companion object Dependencies {
+        const val SETTINGS_KEY = "FactorySettings"
+    }
 
 }
