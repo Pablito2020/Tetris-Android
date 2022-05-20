@@ -65,4 +65,6 @@
     <string name="error_name_contain_spaces">Name should not contain spaces</string>
     <string name="error_email_empty">email shouldn\'t be blank</string>
     <string name="error_email_not_valid">email isn\'t valid</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

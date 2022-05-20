@@ -2,18 +2,17 @@ package com.pablo.tetris.presentation.game
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.pablo.tetris.GameFragment
+import com.pablo.tetris.R
 import com.pablo.tetris.databinding.ActivityGameBinding
 import com.pablo.tetris.presentation.common.GAME_RESULT
 import com.pablo.tetris.presentation.common.HAS_MUSIC
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
-import com.pablo.tetris.presentation.common.getButtons
 import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.actions.Action
 import com.pablo.tetris.presentation.game.actions.ResumeToastAction
-import com.pablo.tetris.presentation.game.grid.GameAdapter
 import com.pablo.tetris.presentation.game.results.DateGetter
 import com.pablo.tetris.presentation.game.results.GameResult
 import kotlinx.coroutines.CoroutineStart
@@ -23,11 +22,10 @@ import kotlinx.coroutines.launch
 
 
 @ExperimentalCoroutinesApi
-class GameActivity : HideStatusBarActivity(), View.OnClickListener {
+class GameActivity : HideStatusBarActivity() {
 
     private lateinit var model: GameViewModel
     private lateinit var binding: ActivityGameBinding
-    private lateinit var adapter: GameAdapter
     private lateinit var resumeAction: Action
     private val factory = SettingsFactory()
     private lateinit var moveBlockDown: Job
@@ -38,10 +36,14 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         setContentView(binding.root)
         factory.fromIntent(intent)
         setUpViewModel()
-        setUpGridView()
-        setUpButtons()
         setUpResumeAction()
         setUpLogger()
+        setUpObserver()
+        val firstFragment = GameFragment(factory)
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragmentContainerView, firstFragment)
+            commit()
+        }
     }
 
     private fun setUpViewModel() {
@@ -50,38 +52,22 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         model.setUpMusic(factory.hasMusic(), this)
         model.gameFacade.observe(this) {
             if (!it.hasFinished())
-                updateScreen()
+                model.updateScreen.value = true
             else
                 finishGame()
         }
     }
 
-    private fun setUpGridView() {
-        val cellColors =
-            factory.getStyle(this).getColorCellChooser()
-        adapter = GameAdapter(model.getGrid(), cellColors)
-        binding.GameGrid.adapter = adapter
+    private fun setUpObserver() {
+        model.pauseButtonClicked.observe(this) {
+            if (it)
+                pauseButtonClicked()
+        }
     }
 
     private fun setUpLogger() {
         if (!model.gameOpened.value!!)
             factory.logData()
-    }
-
-    private fun setUpButtons() {
-        binding.root.getButtons().forEach { it.setOnClickListener(this) }
-        binding.pauseButton.setOnClickListener(this)
-        binding.DownButton.setOnLongClickListener { model.dropBlock();true }
-    }
-
-    private fun updateScreen() {
-        adapter.gameCells = model.getGrid()
-        adapter.notifyDataSetChanged()
-        binding.PointsText.text = model.getPoints()
-        val typeOfBlock = model.getNextBlock()
-        binding.NextBlockImage.setImageResource(
-            factory.getStyle(this).getBlockCreator().getImageId(typeOfBlock)
-        )
     }
 
     private fun setUpResumeAction() {
@@ -101,16 +87,6 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
         finish()
     }
 
-    override fun onClick(p0: View) = when (p0.id) {
-        binding.DownButton.id -> model.down()
-        binding.LeftButton.id -> model.left()
-        binding.RightButton.id -> model.right()
-        binding.RotateLeft.id -> model.rotateLeft()
-        binding.RotateRight.id -> model.rotateRight()
-        binding.pauseButton.id -> pauseButtonClicked()
-        else -> throw UnsupportedOperationException("Unknown button")
-    }
-
     override fun onPause() {
         super.onPause()
         pauseGame()
@@ -122,16 +98,14 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
             startGame()
             model.setGameStarted()
         } else {
-            binding.pauseButton.setState(State.PAUSE)
-            binding.pauseButton.fadeIn()
+            model.pauseRotation.value = false
         }
     }
 
     private fun startGame() {
         model.startMusic()
         moveBlockDown = lifecycleScope.launch(start = CoroutineStart.ATOMIC) { model.runGame() }
-        binding.pauseButton.setState(State.PLAY)
-        binding.pauseButton.fadeIn()
+        model.pauseRotation.value = true
     }
 
     private fun pauseGame() {
@@ -139,8 +113,7 @@ class GameActivity : HideStatusBarActivity(), View.OnClickListener {
             moveBlockDown.cancel()
             model.pauseMusic()
             model.setGamePaused()
-            binding.pauseButton.setState(State.PAUSE)
-            binding.pauseButton.fadeIn()
+            model.pauseRotation.value = false
         }
     }
 
