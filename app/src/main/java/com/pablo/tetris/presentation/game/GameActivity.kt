@@ -53,8 +53,10 @@ class GameActivity : HideStatusBarActivity() {
 
     private fun setUpObserver() {
         model.pauseButtonClicked.observe(this) {
-            if (it)
+            if (it) {
                 pauseButtonClicked()
+                model.pauseButtonClicked.value = false
+            }
         }
     }
 
