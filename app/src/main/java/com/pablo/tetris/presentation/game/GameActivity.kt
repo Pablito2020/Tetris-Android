@@ -2,9 +2,11 @@ package com.pablo.tetris.presentation.game
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.FrameLayout
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.pablo.tetris.presentation.game.fragments.GameFragment
+import com.pablo.tetris.LogFragment
 import com.pablo.tetris.R
 import com.pablo.tetris.presentation.common.GAME_RESULT
 import com.pablo.tetris.presentation.common.HAS_MUSIC
@@ -12,6 +14,7 @@ import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.actions.Action
 import com.pablo.tetris.presentation.game.actions.ResumeToastAction
+import com.pablo.tetris.presentation.game.fragments.GameFragment
 import com.pablo.tetris.presentation.game.results.DateGetter
 import com.pablo.tetris.presentation.game.results.GameResult
 import kotlinx.coroutines.CoroutineStart
@@ -69,6 +72,14 @@ class GameActivity : HideStatusBarActivity() {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragmentContainerView, gameFragment)
             commit()
+        }
+        val logFragmentReference = findViewById<FrameLayout>(R.id.LogFragment)
+        if (logFragmentReference != null) {
+            val logFragment = LogFragment()
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.LogFragment, logFragment)
+                commit()
+            }
         }
     }
 
