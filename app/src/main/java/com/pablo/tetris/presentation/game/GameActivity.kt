@@ -3,10 +3,9 @@ package com.pablo.tetris.presentation.game
 import android.content.Intent
 import android.os.Bundle
 import android.widget.FrameLayout
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.pablo.tetris.LogFragment
+import com.pablo.tetris.presentation.game.fragments.LogFragment
 import com.pablo.tetris.R
 import com.pablo.tetris.presentation.common.GAME_RESULT
 import com.pablo.tetris.presentation.common.HAS_MUSIC
