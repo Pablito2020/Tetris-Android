@@ -2,7 +2,6 @@ package com.pablo.tetris.presentation.history
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +29,7 @@ class GameHistorialActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun setUpRecyclerView() {
+        historyViewModel.executeQuery()
         val adapter = PlayerAdapter(historyViewModel, historyViewModel.getPlayers())
         recyclerViewHistory.adapter = adapter
         val manager = LinearLayoutManager(this)
@@ -44,9 +44,7 @@ class GameHistorialActivity : AppCompatActivity() {
 
     private fun setUpAutoComplete() {
         val autoComplete = findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
-        historyViewModel.executeQuery()
         val list: List<String> = historyViewModel.getPlayers().map {p -> p.name}
-        println(list)
         autoComplete.setAdapter(ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, list))
         autoComplete.threshold = 0
     }

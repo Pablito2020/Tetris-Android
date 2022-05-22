@@ -29,6 +29,7 @@ class HistoryViewModel(application: Application) : ViewModel() {
 
     private suspend fun command(command: (PlayerRepository) -> Unit) {
         viewModelScope.launch(Dispatchers.IO){ command.invoke(repository) }.join()
+        executeQuery()
     }
 
     fun executeQuery(query: Query = this.query) {
