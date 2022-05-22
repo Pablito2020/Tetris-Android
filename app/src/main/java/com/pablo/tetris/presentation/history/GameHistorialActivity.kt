@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pablo.tetris.R
 import com.pablo.tetris.infra.database.Player
+import com.pablo.tetris.infra.database.PlayerApplication
+import com.pablo.tetris.presentation.history.commands.DeletePlayerCommand
 import kotlinx.android.synthetic.main.activity_game_historial.*
 import kotlinx.coroutines.runBlocking
 
@@ -14,10 +16,13 @@ class GameHistorialActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_historial)
 
-        val historyViewModel = HistoryViewModel()
-        lateinit var gameHistorial: List<Player>
-        runBlocking { gameHistorial = historyViewModel.getPlayersOrderedByScore(application)}
-        val adapter = PlayerAdapter(gameHistorial)
+        val historyViewModel = HistoryViewModel(application)
+
+        val adapter = PlayerAdapter(historyViewModel)
+        setUpRecyclerView(adapter)
+    }
+
+    private fun setUpRecyclerView(adapter: PlayerAdapter) {
         recyclerViewHistory.adapter = adapter
         val manager = LinearLayoutManager(this)
         recyclerViewHistory.layoutManager = manager

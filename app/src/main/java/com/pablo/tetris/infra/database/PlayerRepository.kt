@@ -15,4 +15,8 @@ class PlayerRepository(private val playerDao: PlayerDao) {
 
     fun deleteAll() = playerDao.deleteAll()
 
+    fun getPlayersThatMatch(search: String) = playerDao.getPlayersThatMatch(search)
+
+    fun deletePlayer(id: Int) = playerDao.deletePlayer(id)
+
 }

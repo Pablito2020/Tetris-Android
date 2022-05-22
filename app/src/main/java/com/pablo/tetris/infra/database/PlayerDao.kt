@@ -18,4 +18,10 @@ interface PlayerDao {
 
     @Query("DELETE FROM player_table")
     fun deleteAll()
+
+    @Query("SELECT * FROM player_table WHERE name LIKE :search")
+    fun getPlayersThatMatch(search: String): List<Player>
+
+    @Query("DELETE FROM player_table WHERE id = :id")
+    fun deletePlayer(id: Int)
 }

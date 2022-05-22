@@ -5,11 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pablo.tetris.R
-import com.pablo.tetris.infra.database.Player
 import kotlinx.android.synthetic.main.item_player_history.view.*
 
 class PlayerAdapter(
-    var players: List<Player>
+    var viewModel: HistoryViewModel
 ) : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
 
     inner class PlayerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
@@ -20,15 +19,17 @@ class PlayerAdapter(
     }
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
+        val players = viewModel.getPlayers()
         holder.itemView.apply {
             textView_player_name.text = players[position].name
             textView_player_points.text = players[position].score.toString()
             textView_date_game.text = players[position].date
             textView_level_game.text = players[position].level
         }
+        holder.itemView.setOnClickListener {
+            viewModel.executeAction(players[position])
+        }
     }
 
-    override fun getItemCount(): Int {
-        return players.size
-    }
+    override fun getItemCount() = viewModel.getPlayers().size
 }
