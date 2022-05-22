@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".presentation.history.GameHistorialActivity"
+            android:windowSoftInputMode="adjustResize|adjustPan|stateHidden"
             android:exported="false" />
         <activity
             android:name=".presentation.help.HelpActivity"

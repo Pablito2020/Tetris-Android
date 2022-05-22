@@ -17,6 +17,7 @@ class HistoryViewModel(application: Application) : ViewModel() {
 
     private val repository = (application as PlayerApplication).repository
     private var query: Query = PlayersOrderedByPointsQuery(this)
+    private var result: List<Player> = listOf()
     val updatedDataBase: MutableLiveData<Boolean> = MutableLiveData(false)
 
     suspend fun query(function: (PlayerRepository) -> List<Player>): List<Player> {
@@ -30,13 +31,14 @@ class HistoryViewModel(application: Application) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO){ command.invoke(repository) }.join()
     }
 
-    fun executeQuery(query: Query) {
+    fun executeQuery(query: Query = this.query) {
         this.query = query
+        this.result = query.get()
         updateDataBaseValue()
     }
 
     fun getPlayers(): List<Player> {
-        return query.get()
+        return result
     }
 
     private fun updateDataBaseValue() {
