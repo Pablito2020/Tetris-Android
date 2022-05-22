@@ -5,6 +5,7 @@
         <EditTextPreference
             app:key="name"
             app:title="@string/name_text"
+            app:defaultValue="@string/name_default"
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
@@ -12,7 +13,7 @@
             app:key="difficulty"
             app:entries="@array/difficulty_entries"
             app:entryValues="@array/difficulty_values"
-            app:defaultValue="medium"
+            app:defaultValue="MEDIUM"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
@@ -34,7 +35,7 @@
             app:key="theme"
             app:entries="@array/theme_entries"
             app:entryValues="@array/theme_values"
-            app:defaultValue="neon"
+            app:defaultValue="NEON"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>

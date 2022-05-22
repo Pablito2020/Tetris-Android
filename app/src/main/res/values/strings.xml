@@ -65,21 +65,11 @@
     <string name="error_name_contain_spaces">Name should not contain spaces</string>
     <string name="error_email_empty">email shouldn\'t be blank</string>
     <string name="error_email_not_valid">email isn\'t valid</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <!-- Preference Titles -->
-    <string name="messages_header" translatable="false">Messages</string>
-    <string name="sync_header" translatable="false">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title" translatable="false">Your signature</string>
-    <string name="reply_title" translatable="false">Default reply action</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title" translatable="false">Sync email periodically</string>
-    <string name="attachment_title" translatable="false">Download incoming attachments</string>
     <string name="ghost_block_mode_on" translatable="false">Don\'t show the shadow of the block</string>
     <string name="ghost_block_mode_off" translatable="false">Show the shadow of the block, so you can see where it will go</string>
     <string name="audio_and_image" translatable="false">Audio and image</string>
-    <string name="player_text">Player:</string>
+    <string name="player_text" translatable="false">Player:</string>
+    <string name="name_default" translatable="false">Default User</string>
 </resources>
