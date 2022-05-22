@@ -1,4 +1,4 @@
-package com.pablo.tetris
+package com.pablo.tetris.presentation.history
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

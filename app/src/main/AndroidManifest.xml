@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".GameHistorialActivity"
+            android:name=".presentation.history.GameHistorialActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.help.HelpActivity"

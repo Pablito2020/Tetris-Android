@@ -1,14 +1,15 @@
-package com.pablo.tetris
+package com.pablo.tetris.presentation.history
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pablo.tetris.R
 import com.pablo.tetris.infra.database.Player
-import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import kotlinx.android.synthetic.main.activity_game_historial.*
 import kotlinx.coroutines.runBlocking
 
-class GameHistorialActivity : HideStatusBarActivity() {
+class GameHistorialActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_historial)

@@ -1,9 +1,10 @@
-package com.pablo.tetris
+package com.pablo.tetris.presentation.history
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.pablo.tetris.R
 import com.pablo.tetris.infra.database.Player
 import kotlinx.android.synthetic.main.item_player_history.view.*
 
