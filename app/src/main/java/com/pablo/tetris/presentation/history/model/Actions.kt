@@ -1,8 +1,10 @@
 package com.pablo.tetris.presentation.history.model
 
+import android.app.Activity
 import com.pablo.tetris.presentation.history.commands.DeletePlayerCommand
 import com.pablo.tetris.presentation.history.queries.PlayersOrderedByDateQuery
 import com.pablo.tetris.presentation.history.queries.PlayersOrderedByPointsQuery
+import com.pablo.tetris.presentation.history.queries.SearchPlayerByName
 
 sealed class Action {
     sealed class Query(val query: com.pablo.tetris.presentation.history.queries.Query): Action() {
@@ -14,6 +16,11 @@ sealed class Action {
         data class SortByDate(
             val viewModel: HistoryViewModel,
         ) : Query(PlayersOrderedByDateQuery(viewModel))
+
+        data class SearchByName(
+            val viewModel: HistoryViewModel,
+            val activity: Activity
+        ) : Query(SearchPlayerByName(viewModel, activity))
 
     }
 

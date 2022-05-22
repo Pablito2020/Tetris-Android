@@ -26,16 +26,16 @@ class GameHistorialActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun setUpRecyclerView() {
-        val adapter = PlayerAdapter(historyViewModel)
+        val adapter = PlayerAdapter(historyViewModel, historyViewModel.getPlayers())
         recyclerViewHistory.adapter = adapter
         val manager = LinearLayoutManager(this)
         recyclerViewHistory.layoutManager = manager
         recyclerViewHistory.addItemDecoration(DividerItemDecoration(recyclerViewHistory.context, manager.orientation))
-        historyViewModel.updatedDataBase.observe(this) { adapter.notifyDataSetChanged() }
+        historyViewModel.updatedDataBase.observe(this) { adapter.players = historyViewModel.getPlayers(); adapter.notifyDataSetChanged() }
     }
 
     private fun setUpSpinner() {
-        chooseActionSpinner.onItemSelectedListener = Spinner(historyViewModel)
+        chooseActionSpinner.onItemSelectedListener = Spinner(historyViewModel, this)
     }
 
 }

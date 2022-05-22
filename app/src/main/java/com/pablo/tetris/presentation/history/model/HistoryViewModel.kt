@@ -34,10 +34,12 @@ class HistoryViewModel(application: Application) : ViewModel() {
 
     fun executeAction(action: Action) {
         when (action) {
-            is Action.Query -> setQueryAction(action)
+            is Action.Query -> {
+                    setQueryAction(action)
+                    updateDataBaseValue()
+            }
             is Action.Command -> setCommandAction(action)
         }
-        updatedDataBase.value = true
     }
 
     private fun setQueryAction(action: Action.Query) {
@@ -48,11 +50,17 @@ class HistoryViewModel(application: Application) : ViewModel() {
         this.command = action.command
     }
 
-    fun getPlayers() = query.get()
+    fun getPlayers(): List<Player> {
+        return query.get()
+    }
 
     fun executeCommand(player: Player) {
         command.execute(player)
-        updatedDataBase.value = true
+        updateDataBaseValue()
+    }
+
+    fun updateDataBaseValue() {
+        updatedDataBase.value = updatedDataBase.value != true
     }
 
 }
