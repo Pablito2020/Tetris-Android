@@ -6,8 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.pablo.tetris.infra.database.Player
 import com.pablo.tetris.infra.database.PlayerApplication
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class HistoryViewModel : ViewModel() {

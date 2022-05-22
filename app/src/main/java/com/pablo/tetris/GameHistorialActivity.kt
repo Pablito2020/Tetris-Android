@@ -1,6 +1,7 @@
 package com.pablo.tetris
 
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pablo.tetris.infra.database.Player
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
@@ -17,6 +18,8 @@ class GameHistorialActivity : HideStatusBarActivity() {
         runBlocking { gameHistorial = historyViewModel.getPlayersOrderedByScore(application)}
         val adapter = PlayerAdapter(gameHistorial)
         recyclerViewHistory.adapter = adapter
-        recyclerViewHistory.layoutManager = LinearLayoutManager(this)
+        val manager = LinearLayoutManager(this)
+        recyclerViewHistory.layoutManager = manager
+        recyclerViewHistory.addItemDecoration(DividerItemDecoration(recyclerViewHistory.context, manager.orientation))
     }
 }

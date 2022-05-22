@@ -22,6 +22,8 @@ class PlayerAdapter(
         holder.itemView.apply {
             textView_player_name.text = players[position].name
             textView_player_points.text = players[position].score.toString()
+            textView_date_game.text = players[position].date
+            textView_level_game.text = players[position].level
         }
     }
 
