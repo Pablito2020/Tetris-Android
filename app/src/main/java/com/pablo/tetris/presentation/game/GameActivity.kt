@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.pablo.tetris.presentation.game.fragments.LogFragment
 import com.pablo.tetris.R
 import com.pablo.tetris.presentation.common.GAME_RESULT
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
@@ -13,13 +12,14 @@ import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.actions.Action
 import com.pablo.tetris.presentation.game.actions.ResumeToastAction
 import com.pablo.tetris.presentation.game.fragments.GameFragment
-import com.pablo.tetris.presentation.game.results.DateGetter
+import com.pablo.tetris.presentation.game.fragments.LogFragment
 import com.pablo.tetris.presentation.game.results.GameResult
 import com.pablo.tetris.presentation.settings.SettingsFactory
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 @ExperimentalCoroutinesApi
@@ -95,7 +95,7 @@ class GameActivity : HideStatusBarActivity() {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             putExtra(
                 GAME_RESULT,
-                GameResult(score = model.getPoints(), date = DateGetter.getDate())
+                GameResult(score = model.getPoints(), date = Date())
             )
         }
         startActivity(finish)

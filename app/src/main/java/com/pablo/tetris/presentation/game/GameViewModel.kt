@@ -97,7 +97,7 @@ class GameViewModel : ViewModel() {
 
     fun getNextBlock() = gameFacade.value!!.getNextBlock()
 
-    fun getPoints() = gameFacade.value!!.getScore().value.toString()
+    fun getPoints() = gameFacade.value!!.getScore().value
 
     fun setUpMusic(hasMusic: Boolean, context: Context) {
         if (hasMusic) {

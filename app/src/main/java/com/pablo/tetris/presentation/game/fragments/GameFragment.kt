@@ -71,7 +71,7 @@ class GameFragment : Fragment(), View.OnClickListener {
         adapter.gameCells = viewModel.getGrid()
         adapter.notifyDataSetChanged()
         val pointsText: TextView = requireView().findViewById(R.id.PointsText)
-        pointsText.text = viewModel.getPoints()
+        pointsText.text = viewModel.getPoints().toString()
         val typeOfBlock = viewModel.getNextBlock()
         val imageNextBlock: ImageView = requireView().findViewById(R.id.NextBlockImage)
         imageNextBlock.setImageResource(
