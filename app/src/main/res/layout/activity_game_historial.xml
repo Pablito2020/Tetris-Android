@@ -18,9 +18,10 @@
         app:layout_constraintVertical_bias="0.912" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/chooseActionSpinner"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
+        android:entries="@array/recycle_view_actions"
         android:layout_marginBottom="52dp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewHistory"
         app:layout_constraintEnd_toEndOf="parent"

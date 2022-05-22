@@ -1,10 +1,11 @@
-package com.pablo.tetris.presentation.history
+package com.pablo.tetris.presentation.history.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pablo.tetris.R
+import com.pablo.tetris.presentation.history.model.HistoryViewModel
 import kotlinx.android.synthetic.main.item_player_history.view.*
 
 class PlayerAdapter(
@@ -27,7 +28,7 @@ class PlayerAdapter(
             textView_level_game.text = players[position].level
         }
         holder.itemView.setOnClickListener {
-            viewModel.executeAction(players[position])
+            viewModel.executeCommand(players[position])
         }
     }
 
