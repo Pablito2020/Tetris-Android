@@ -7,18 +7,16 @@ import androidx.lifecycle.viewModelScope
 import com.pablo.tetris.infra.database.Player
 import com.pablo.tetris.infra.database.PlayerApplication
 import com.pablo.tetris.infra.database.PlayerRepository
-import com.pablo.tetris.presentation.history.commands.Command
-import com.pablo.tetris.presentation.history.commands.EmptyCommand
 import com.pablo.tetris.presentation.history.queries.PlayersOrderedByPointsQuery
 import com.pablo.tetris.presentation.history.queries.Query
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class HistoryViewModel(application: Application) : ViewModel() {
 
     private val repository = (application as PlayerApplication).repository
     private var query: Query = PlayersOrderedByPointsQuery(this)
-    private var command: Command = EmptyCommand()
     val updatedDataBase: MutableLiveData<Boolean> = MutableLiveData(false)
 
     suspend fun query(function: (PlayerRepository) -> List<Player>): List<Player> {
@@ -28,39 +26,28 @@ class HistoryViewModel(application: Application) : ViewModel() {
         return players
     }
 
-    suspend fun command(command: (PlayerRepository) -> Unit) {
+    private suspend fun command(command: (PlayerRepository) -> Unit) {
         viewModelScope.launch(Dispatchers.IO){ command.invoke(repository) }.join()
     }
 
-    fun executeAction(action: Action) {
-        when (action) {
-            is Action.Query -> {
-                    setQueryAction(action)
-                    updateDataBaseValue()
-            }
-            is Action.Command -> setCommandAction(action)
-        }
-    }
-
-    private fun setQueryAction(action: Action.Query) {
-        this.query = action.query
-    }
-
-    private fun setCommandAction(action: Action.Command) {
-        this.command = action.command
+    fun executeQuery(query: Query) {
+        this.query = query
+        updateDataBaseValue()
     }
 
     fun getPlayers(): List<Player> {
         return query.get()
     }
 
-    fun executeCommand(player: Player) {
-        command.execute(player)
-        updateDataBaseValue()
+    private fun updateDataBaseValue() {
+        updatedDataBase.value = updatedDataBase.value != true
     }
 
-    fun updateDataBaseValue() {
-        updatedDataBase.value = updatedDataBase.value != true
+    fun deletePlayer(player: Player) {
+        runBlocking {
+            command { repo -> repo.deletePlayer(player.id) }
+        }
+        updateDataBaseValue()
     }
 
 }

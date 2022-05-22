@@ -27,9 +27,12 @@ class PlayerAdapter(
             textView_player_points.text = players[position].score.toString()
             textView_date_game.text = players[position].date
             textView_level_game.text = players[position].level
+            button_delete_game.setOnClickListener {
+                viewModel.deletePlayer(players[position])
+            }
         }
         holder.itemView.setOnClickListener {
-            viewModel.executeCommand(players[position])
+            println("Clicked item")
         }
     }
 
