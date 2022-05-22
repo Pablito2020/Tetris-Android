@@ -9,10 +9,11 @@ import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.databinding.ActivityFinishedBinding
 import com.pablo.tetris.infra.logs.LoggerGetter
 import com.pablo.tetris.presentation.common.GAME_RESULT
-import com.pablo.tetris.presentation.common.HAS_MUSIC
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.sendmail.EmailData
 import com.pablo.tetris.presentation.finished.sendmail.EmailSender
+import com.pablo.tetris.presentation.game.GameActivity
+import com.pablo.tetris.presentation.game.SettingsFactory
 import com.pablo.tetris.presentation.game.results.GameResult
 import com.pablo.tetris.presentation.settings.SettingsActivity
 import kotlinx.coroutines.flow.collect
@@ -51,7 +52,7 @@ class FinishedActivity : HideStatusBarActivity() {
                 }
             }
         }
-        if (intent.getBooleanExtra(HAS_MUSIC, false))
+        if (SettingsFactory().getSettingsData(this).hasMusic)
             model.playGameOverMusic(this)
     }
 
@@ -67,7 +68,7 @@ class FinishedActivity : HideStatusBarActivity() {
             startActivity(
                 Intent(
                     this,
-                    SettingsActivity::class.java
+                    GameActivity::class.java
                 ).apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 }

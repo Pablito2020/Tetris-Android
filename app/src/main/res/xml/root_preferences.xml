@@ -1,0 +1,42 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/player_text">
+
+        <EditTextPreference
+            app:key="name"
+            app:title="@string/name_text"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:title="@string/difficulty_setting_text"
+            app:key="difficulty"
+            app:entries="@array/difficulty_entries"
+            app:entryValues="@array/difficulty_values"
+            app:defaultValue="medium"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/audio_and_image">
+
+        <SwitchPreferenceCompat
+            app:key="music"
+            app:title="@string/checkbox_music" />
+
+        <SwitchPreferenceCompat
+            app:key="ghost_block"
+            app:summaryOff="@string/ghost_block_mode_off"
+            app:summaryOn="@string/ghost_block_mode_on"
+            app:title="@string/checkbox_ghostblock" />
+
+        <ListPreference
+            app:title="@string/theme_text"
+            app:key="theme"
+            app:entries="@array/theme_entries"
+            app:entryValues="@array/theme_values"
+            app:defaultValue="neon"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

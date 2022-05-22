@@ -41,7 +41,7 @@ class GameFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setUpGridView() {
-        val cellColors = factory.getStyle(requireContext()).getColorCellChooser()
+        val cellColors = factory.getStyleCreator(requireContext()).getColorCellChooser()
         adapter = GameAdapter(viewModel.getGrid(), cellColors)
         val gameGrid: GridView = requireView().findViewById(R.id.GameGrid)
         gameGrid.adapter = adapter
@@ -75,7 +75,7 @@ class GameFragment : Fragment(), View.OnClickListener {
         val typeOfBlock = viewModel.getNextBlock()
         val imageNextBlock: ImageView = requireView().findViewById(R.id.NextBlockImage)
         imageNextBlock.setImageResource(
-            factory.getStyle(requireContext()).getBlockCreator().getImageId(typeOfBlock)
+            factory.getStyleCreator(requireContext()).getBlockCreator().getImageId(typeOfBlock)
         )
     }
 

@@ -8,7 +8,6 @@ import androidx.lifecycle.lifecycleScope
 import com.pablo.tetris.presentation.game.fragments.LogFragment
 import com.pablo.tetris.R
 import com.pablo.tetris.presentation.common.GAME_RESULT
-import com.pablo.tetris.presentation.common.HAS_MUSIC
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.FinishedActivity
 import com.pablo.tetris.presentation.game.actions.Action
@@ -33,7 +32,6 @@ class GameActivity : HideStatusBarActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
-        factory.fromIntent(intent)
         setUpViewModel()
         setUpResumeAction()
         setUpLogger()
@@ -43,8 +41,8 @@ class GameActivity : HideStatusBarActivity() {
 
     private fun setUpViewModel() {
         model = ViewModelProvider(this).get(GameViewModel::class.java)
-        model.setUp(factory.getFacade(), factory.getSpeedStrategy())
-        model.setUpMusic(factory.hasMusic(), this)
+        model.setUp(factory.getFacade(this), factory.getSpeedStrategy(this))
+        model.setUpMusic(factory.getSettingsData(this).hasMusic, this)
         model.gameFacade.observe(this) {
             if (!it.hasFinished())
                 model.updateScreen.value = true
@@ -84,7 +82,7 @@ class GameActivity : HideStatusBarActivity() {
 
     private fun setUpLogger() {
         if (!model.gameOpened.value!!)
-            factory.logData()
+            factory.logData(this)
     }
 
     private fun setUpResumeAction() {
@@ -98,7 +96,6 @@ class GameActivity : HideStatusBarActivity() {
                 GAME_RESULT,
                 GameResult(score = model.getPoints(), date = DateGetter.getDate())
             )
-            putExtra(HAS_MUSIC, factory.hasMusic())
         }
         startActivity(finish)
         finish()
