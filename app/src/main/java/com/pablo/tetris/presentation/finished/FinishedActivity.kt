@@ -13,9 +13,8 @@ import com.pablo.tetris.presentation.common.HideStatusBarActivity
 import com.pablo.tetris.presentation.finished.sendmail.EmailData
 import com.pablo.tetris.presentation.finished.sendmail.EmailSender
 import com.pablo.tetris.presentation.game.GameActivity
-import com.pablo.tetris.presentation.game.SettingsFactory
+import com.pablo.tetris.presentation.settings.SettingsFactory
 import com.pablo.tetris.presentation.game.results.GameResult
-import com.pablo.tetris.presentation.settings.SettingsActivity
 import kotlinx.coroutines.flow.collect
 
 

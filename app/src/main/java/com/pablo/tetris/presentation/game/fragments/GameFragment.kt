@@ -14,7 +14,7 @@ import com.pablo.tetris.R
 import com.pablo.tetris.presentation.common.getButtons
 import com.pablo.tetris.presentation.game.GameViewModel
 import com.pablo.tetris.presentation.game.PlayPauseView
-import com.pablo.tetris.presentation.game.SettingsFactory
+import com.pablo.tetris.presentation.settings.SettingsFactory
 import com.pablo.tetris.presentation.game.State
 import com.pablo.tetris.presentation.game.grid.GameAdapter
 

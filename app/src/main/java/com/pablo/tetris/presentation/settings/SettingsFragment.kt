@@ -1,10 +1,11 @@
-package com.pablo.tetris
+package com.pablo.tetris.presentation.settings
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.pablo.tetris.R
 import com.pablo.tetris.domain.user.ValidateName
 
 class SettingsFragment : PreferenceFragmentCompat() {

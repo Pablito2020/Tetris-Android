@@ -1,4 +1,4 @@
-package com.pablo.tetris.presentation.game
+package com.pablo.tetris.presentation.settings
 
 import GameFacade
 import android.content.Context
@@ -13,7 +13,6 @@ import com.pablo.tetris.presentation.common.UiText
 import com.pablo.tetris.presentation.game.grid.style.Style
 import com.pablo.tetris.presentation.game.grid.style.StyleCreator
 import com.pablo.tetris.presentation.game.grid.style.StyleFactory
-import com.pablo.tetris.presentation.settings.SettingsData
 import java.io.Serializable
 
 class SettingsFactory : Serializable {

@@ -15,6 +15,7 @@ import com.pablo.tetris.presentation.game.actions.ResumeToastAction
 import com.pablo.tetris.presentation.game.fragments.GameFragment
 import com.pablo.tetris.presentation.game.results.DateGetter
 import com.pablo.tetris.presentation.game.results.GameResult
+import com.pablo.tetris.presentation.settings.SettingsFactory
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
