@@ -3,6 +3,7 @@ package com.pablo.tetris.presentation.history
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pablo.tetris.R
