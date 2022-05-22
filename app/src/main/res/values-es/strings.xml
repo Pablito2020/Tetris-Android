@@ -67,4 +67,5 @@
     <string name="error_name_contain_spaces">El nombre no puede contener espacios</string>
     <string name="error_email_empty">El correo no puede ser vacío</string>
     <string name="error_email_not_valid">El correo no es válido</string>
+    <string name="historial">Historial</string>
 </resources>

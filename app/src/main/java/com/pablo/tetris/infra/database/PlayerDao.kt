@@ -7,10 +7,10 @@ import androidx.room.Query
 
 @Dao
 interface PlayerDao {
-    @Query("SELECT * FROM player_table ORDER BY score ASC")
+    @Query("SELECT * FROM player_table ORDER BY score DESC")
     fun getPlayersOrderedByScore(): List<Player>
 
-    @Query("SELECT * FROM player_table ORDER BY date DESC")
+    @Query("SELECT * FROM player_table ORDER BY date ASC")
     fun getPlayersOrderedByDate(): List<Player>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

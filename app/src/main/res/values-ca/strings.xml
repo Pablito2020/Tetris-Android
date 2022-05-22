@@ -67,4 +67,5 @@
     <string name="error_name_contain_spaces">El nom no pot contenir espais</string>
     <string name="error_email_empty">El mail no pot ser buit</string>
     <string name="error_email_not_valid">El mail no és vàlid</string>
+    <string name="historial">Historial</string>
 </resources>
