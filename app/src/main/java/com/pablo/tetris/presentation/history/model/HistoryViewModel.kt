@@ -38,6 +38,10 @@ class HistoryViewModel(application: Application) : ViewModel() {
         updateDataBaseValue()
     }
 
+    fun getAutoCompleteResult(playerName: String): List<Player> {
+        return result.filter { player -> player.name.startsWith(playerName, ignoreCase = true) }
+    }
+
     fun getPlayers(): List<Player> {
         return result
     }
