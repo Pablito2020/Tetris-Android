@@ -12,7 +12,8 @@ import com.pablo.tetris.presentation.history.model.HistoryViewModel
 
 class PlayerAdapter(
     var viewModel: HistoryViewModel,
-    var players: List<Player>
+    var players: List<Player>,
+    val hasLogFragment: Boolean
 ) : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
 
     inner class PlayerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
@@ -33,7 +34,13 @@ class PlayerAdapter(
             }
         }
         holder.itemView.setOnClickListener {
-            println("Clicked item")
+            if (hasLogFragment) {
+                println("Has log\n\n")
+                viewModel.showLogForPlayer(players[position])
+            } else {
+                println("DOes not have log\n\n")
+                // TODO create intent here
+            }
         }
     }
 

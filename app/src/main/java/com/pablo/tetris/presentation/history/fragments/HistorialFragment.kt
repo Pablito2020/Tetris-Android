@@ -9,20 +9,26 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pablo.tetris.R
+import com.pablo.tetris.infra.database.PlayerApplication
+import com.pablo.tetris.presentation.history.GameHistorialActivity
 import com.pablo.tetris.presentation.history.model.HistoryViewModel
 import com.pablo.tetris.presentation.history.view.PlayerAdapter
 import com.pablo.tetris.presentation.history.view.Spinner
+import kotlin.properties.Delegates
 
 @SuppressLint("NotifyDataSetChanged")
 class HistorialFragment : Fragment() {
 
-    private val historyViewModel: HistoryViewModel by lazy {
-        HistoryViewModel(requireActivity().application)
+    private val historyViewModel: HistoryViewModel by viewModels<HistoryViewModel>({activity as GameHistorialActivity }) {
+        HistoryViewModel.HistoryViewModelFactory((activity?.application as PlayerApplication).repository)
     }
+
+    private var hasLogFragment by Delegates.notNull<Boolean>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,7 +39,7 @@ class HistorialFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         historyViewModel.executeQuery()
-        val adapter = PlayerAdapter(historyViewModel, historyViewModel.getPlayers())
+        val adapter = PlayerAdapter(historyViewModel, historyViewModel.getPlayers(), hasLogFragment)
         val recyclerViewHistory = requireView().findViewById<RecyclerView>(R.id.recyclerViewHistory)
         recyclerViewHistory.adapter = adapter
         val manager = LinearLayoutManager(context)
@@ -83,7 +89,12 @@ class HistorialFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        hasLogFragment = arguments?.getSerializable(HAS_LOG_FRAGMENT) as Boolean
         return inflater.inflate(R.layout.fragment_historial, container, false)
+    }
+
+    companion object BundleConstants {
+        const val HAS_LOG_FRAGMENT = "hasLogFragment"
     }
 
 }

@@ -1,11 +1,10 @@
 package com.pablo.tetris.presentation.history.model
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.pablo.tetris.infra.database.Player
-import com.pablo.tetris.infra.database.PlayerApplication
 import com.pablo.tetris.infra.database.PlayerRepository
 import com.pablo.tetris.presentation.history.queries.PlayersOrderedByPointsQuery
 import com.pablo.tetris.presentation.history.queries.Query
@@ -13,22 +12,22 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class HistoryViewModel(application: Application) : ViewModel() {
+class HistoryViewModel(private val repository: PlayerRepository) : ViewModel() {
 
-    private val repository = (application as PlayerApplication).repository
     private var query: Query = PlayersOrderedByPointsQuery(this)
     private var result: List<Player> = listOf()
     val updatedDataBase: MutableLiveData<Boolean> = MutableLiveData(false)
+    val currentLog: MutableLiveData<String> = MutableLiveData("default value")
 
     suspend fun query(function: (PlayerRepository) -> List<Player>): List<Player> {
         lateinit var players: List<Player>
-        val job = viewModelScope.launch(Dispatchers.IO){ players = function.invoke(repository) }
+        val job = viewModelScope.launch(Dispatchers.IO) { players = function.invoke(repository) }
         job.join()
         return players
     }
 
     private suspend fun command(command: (PlayerRepository) -> Unit) {
-        viewModelScope.launch(Dispatchers.IO){ command.invoke(repository) }.join()
+        viewModelScope.launch(Dispatchers.IO) { command.invoke(repository) }.join()
         executeQuery()
     }
 
@@ -55,6 +54,21 @@ class HistoryViewModel(application: Application) : ViewModel() {
             command { repo -> repo.deletePlayer(player.id) }
         }
         updateDataBaseValue()
+    }
+
+    fun showLogForPlayer(player: Player) {
+        currentLog.value = "Str"
+    }
+
+    class HistoryViewModelFactory(private val repository: PlayerRepository) :
+        ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(HistoryViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return HistoryViewModel(repository) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
     }
 
 }
