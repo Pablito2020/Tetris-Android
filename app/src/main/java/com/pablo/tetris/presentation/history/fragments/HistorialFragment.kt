@@ -1,4 +1,4 @@
-package com.pablo.tetris
+package com.pablo.tetris.presentation.history.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.pablo.tetris.R
 import com.pablo.tetris.presentation.history.model.HistoryViewModel
 import com.pablo.tetris.presentation.history.queries.PlayersOrderedByPointsQuery
 import com.pablo.tetris.presentation.history.queries.SearchPlayerByName

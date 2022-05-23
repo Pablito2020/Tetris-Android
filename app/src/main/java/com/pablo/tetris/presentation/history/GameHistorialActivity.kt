@@ -2,7 +2,7 @@ package com.pablo.tetris.presentation.history
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.pablo.tetris.HistorialFragment
+import com.pablo.tetris.presentation.history.fragments.HistorialFragment
 import com.pablo.tetris.R
 
 class GameHistorialActivity : AppCompatActivity() {
