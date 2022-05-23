@@ -4,47 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.history.GameHistorialActivity"
-    >
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewHistory"
-        android:layout_width="414dp"
-        android:layout_height="457dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Spinner
-        android:id="@+id/chooseActionSpinner"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:entries="@array/recycle_view_actions"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewHistory"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+    android:padding="20dp"
+    tools:context=".presentation.history.GameHistorialActivity">
 
     <AutoCompleteTextView
         android:id="@+id/autoCompleteTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:dropDownHeight="200dp"
         android:hint="search"
+        android:minHeight="48dp"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/chooseActionSpinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.353">
+        app:layout_constraintVertical_chainStyle="spread">
 
         <requestFocus />
     </AutoCompleteTextView>
+
+    <Spinner
+        android:id="@+id/chooseActionSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:entries="@array/recycle_view_actions"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewHistory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHistory"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseActionSpinner" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
