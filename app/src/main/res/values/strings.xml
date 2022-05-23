@@ -79,7 +79,6 @@
     <string-array name="recycle_view_actions">
         <item>Show game sorted by points</item>
         <item>Show game sorted by date</item>
-        <item>Search games from an user</item>
     </string-array>
 
 </resources>

@@ -3,11 +3,12 @@ package com.pablo.tetris.presentation.history.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.pablo.tetris.R
 import com.pablo.tetris.infra.database.Player
 import com.pablo.tetris.presentation.history.model.HistoryViewModel
-import kotlinx.android.synthetic.main.item_player_history.view.*
 
 class PlayerAdapter(
     var viewModel: HistoryViewModel,
@@ -23,11 +24,11 @@ class PlayerAdapter(
 
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
         holder.itemView.apply {
-            textView_player_name.text = players[position].name
-            textView_player_points.text = players[position].score.toString()
-            textView_date_game.text = players[position].date
-            textView_level_game.text = players[position].level
-            button_delete_game.setOnClickListener {
+            findViewById<TextView>(R.id.textView_player_name).text = players[position].name
+            findViewById<TextView>(R.id.textView_player_points).text = players[position].score.toString()
+            findViewById<TextView>(R.id.textView_date_game).text = players[position].date
+            findViewById<TextView>(R.id.textView_level_game).text = players[position].level
+            findViewById<Button>(R.id.button_delete_game).setOnClickListener {
                 viewModel.deletePlayer(players[position])
             }
         }
