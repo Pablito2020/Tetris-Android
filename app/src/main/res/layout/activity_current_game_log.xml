@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CurrentGameLogActivity">
+    tools:context=".presentation.history.CurrentGameLogActivity">
 
     <FrameLayout
         android:id="@+id/current_game_log_frame_layout"

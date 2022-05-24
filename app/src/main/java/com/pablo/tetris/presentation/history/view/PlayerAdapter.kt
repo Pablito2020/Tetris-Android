@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.pablo.tetris.CurrentGameLogActivity
+import com.pablo.tetris.presentation.history.CurrentGameLogActivity
 import com.pablo.tetris.R
 import com.pablo.tetris.infra.database.Player
-import com.pablo.tetris.presentation.history.GameHistorialActivity
 import com.pablo.tetris.presentation.history.model.HistoryViewModel
 
 class PlayerAdapter(

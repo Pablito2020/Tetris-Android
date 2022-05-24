@@ -1,7 +1,8 @@
-package com.pablo.tetris
+package com.pablo.tetris.presentation.history
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.pablo.tetris.R
 import com.pablo.tetris.databinding.ActivityCurrentGameLogBinding
 import com.pablo.tetris.presentation.history.fragments.LogHistoryFragment
 

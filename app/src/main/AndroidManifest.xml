@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".CurrentGameLogActivity"
+            android:name=".presentation.history.CurrentGameLogActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.history.GameHistorialActivity"
