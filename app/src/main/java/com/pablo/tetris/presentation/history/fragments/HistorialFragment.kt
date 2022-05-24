@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -98,7 +97,7 @@ class HistorialFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         hasLogFragment = arguments?.getSerializable(HAS_LOG_FRAGMENT) as Boolean
-        return inflater.inflate(R.layout.fragment_historial, container, false)
+        return inflater.inflate(R.layout.fragment_historial_search, container, false)
     }
 
     companion object BundleConstants {

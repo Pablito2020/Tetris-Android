@@ -19,6 +19,9 @@ class CurrentGameLogActivity : AppCompatActivity() {
             replace(R.id.current_game_log_frame_layout, x)
             commit()
         }
+        binding.button.setOnClickListener {
+            finish()
+        }
     }
 
 }

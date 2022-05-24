@@ -75,6 +75,7 @@
     <string name="historial">Historial</string>
     <string name="deleted_player_game" translatable="false">Deleted player game</string>
     <string name="deletion_canceled" translatable="false">Deletion canceled!</string>
+    <string name="delete_game_warning" translatable="false">Are you sure you want to delete the game from %s?</string>
 
     <string-array name="recycle_view_actions">
         <item>Show game sorted by points</item>

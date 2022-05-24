@@ -1,5 +1,6 @@
 package com.pablo.tetris.presentation.history.view
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.pablo.tetris.presentation.history.CurrentGameLogActivity
 import com.pablo.tetris.R
 import com.pablo.tetris.infra.database.Player
 import com.pablo.tetris.presentation.history.model.HistoryViewModel
+import kotlin.system.exitProcess
 
 class PlayerAdapter(
     var viewModel: HistoryViewModel,
@@ -36,7 +39,7 @@ class PlayerAdapter(
             findViewById<TextView>(R.id.textView_date_game).text = players[position].date
             findViewById<TextView>(R.id.textView_level_game).text = players[position].level
             findViewById<Button>(R.id.button_delete_game).setOnClickListener {
-                viewModel.deletePlayer(players[position])
+                showDeleteDialog(players[position])
             }
         }
         holder.itemView.setOnClickListener {
@@ -46,6 +49,16 @@ class PlayerAdapter(
                 context.startActivity(intent)
             }
         }
+    }
+
+    private fun showDeleteDialog(player: Player) {
+        androidx.appcompat.app.AlertDialog.Builder(context)
+            .setTitle(R.string.warning)
+            .setMessage(context.getString(R.string.delete_game_warning, player.name))
+            .setNegativeButton(R.string.cancel) { _, _ -> Toast.makeText(context, R.string.deletion_canceled, Toast.LENGTH_SHORT).show() }
+            .setPositiveButton(R.string.ok) { _, _ -> viewModel.deletePlayer(player); Toast.makeText(context, R.string.deleted_player_game, Toast.LENGTH_SHORT).show() }
+            .create()
+            .show()
     }
 
     override fun getItemCount() = players.size
