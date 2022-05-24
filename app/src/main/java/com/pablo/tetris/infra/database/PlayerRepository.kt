@@ -19,4 +19,6 @@ class PlayerRepository(private val playerDao: PlayerDao) {
 
     fun deletePlayer(id: Int) = playerDao.deletePlayer(id)
 
+    fun getLogForPlayer(id: Int) = playerDao.getLogFromPlayer(id)
+
 }

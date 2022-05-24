@@ -38,17 +38,10 @@ class FinishedActivity : HideStatusBarActivity() {
         }
         setUpViewModel()
         setUpComponents()
+        addResultToDataBase()
     }
 
     private fun setUpViewModel() {
-        val settings = SettingsFactory().getSettingsData(this)
-        val player = Player(
-            name = settings.name,
-            score = gameResult.score,
-            level = settings.level.name,
-            date = DateGetter.getDate(gameResult.date)
-        )
-        model.insert(player)
         model.setUpLog(this)
         lifecycleScope.launchWhenCreated {
             model.results.collect {
@@ -90,6 +83,18 @@ class FinishedActivity : HideStatusBarActivity() {
     override fun onDestroy() {
         super.onDestroy()
         LoggerGetter.get().clear()
+    }
+
+    private fun addResultToDataBase() {
+        val settings = SettingsFactory().getSettingsData(this)
+        val player = Player(
+            name = settings.name,
+            score = gameResult.score,
+            level = settings.level.name,
+            date = DateGetter.getDate(gameResult.date),
+            log = model.result.value!!
+        )
+        model.insert(player)
     }
 
     private fun getLogMessage() = model.result.value!!

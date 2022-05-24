@@ -9,5 +9,6 @@ data class Player(@PrimaryKey(autoGenerate = true) val id: Int = 0,
                   @ColumnInfo(name="name") val name: String,
                   @ColumnInfo(name="score") val score: Int,
                   @ColumnInfo(name="level") val level: String,
-                  @ColumnInfo(name="date") val date: String
+                  @ColumnInfo(name="date") val date: String,
+                  @ColumnInfo(name="log") val log: String
 )

@@ -35,10 +35,9 @@ class PlayerAdapter(
         }
         holder.itemView.setOnClickListener {
             if (hasLogFragment) {
-                println("Has log\n\n")
                 viewModel.showLogForPlayer(players[position])
             } else {
-                println("DOes not have log\n\n")
+                println("Does not have log\n\n")
                 // TODO create intent here
             }
         }

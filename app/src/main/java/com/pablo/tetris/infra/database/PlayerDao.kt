@@ -21,4 +21,7 @@ interface PlayerDao {
 
     @Query("DELETE FROM player_table WHERE id = :id")
     fun deletePlayer(id: Int)
+
+    @Query("SELECT log FROM player_table WHERE id = :id")
+    fun getLogFromPlayer(id: Int): String
 }

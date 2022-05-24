@@ -57,7 +57,9 @@ class HistoryViewModel(private val repository: PlayerRepository) : ViewModel() {
     }
 
     fun showLogForPlayer(player: Player) {
-        currentLog.value = "Str"
+        lateinit var result: String
+        runBlocking {viewModelScope.launch(Dispatchers.IO) { result = repository.getLogForPlayer(player.id) }.join()}
+        currentLog.value = result
     }
 
     class HistoryViewModelFactory(private val repository: PlayerRepository) :
