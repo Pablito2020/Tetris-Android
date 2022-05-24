@@ -77,7 +77,8 @@ class GameActivity : HideStatusBarActivity() {
     }
 
     private fun setUpLogger() {
-        SettingsSingleton.logData(this)
+        if (!model.isGameStarted())
+            SettingsSingleton.logData(this)
     }
 
     private fun setUpResumeAction() {
