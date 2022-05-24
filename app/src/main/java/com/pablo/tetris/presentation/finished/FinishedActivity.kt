@@ -6,6 +6,7 @@ import android.text.method.ScrollingMovementMethod
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.pablo.tetris.R
 import com.pablo.tetris.databinding.ActivityFinishedBinding
 import com.pablo.tetris.infra.database.Player
 import com.pablo.tetris.infra.database.PlayerApplication
@@ -17,6 +18,7 @@ import com.pablo.tetris.presentation.finished.sendmail.EmailSender
 import com.pablo.tetris.presentation.game.GameActivity
 import com.pablo.tetris.presentation.game.results.DateGetter
 import com.pablo.tetris.presentation.game.results.GameResult
+import com.pablo.tetris.presentation.settings.SettingsActivity
 import com.pablo.tetris.presentation.settings.SettingsSingleton
 import kotlinx.coroutines.flow.collect
 
@@ -81,6 +83,15 @@ class FinishedActivity : HideStatusBarActivity() {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 }
             )
+        }
+        binding.toolbar?.inflateMenu(R.menu.settings_menu)
+        binding.toolbar?.setOnMenuItemClickListener {
+            if (it.itemId == R.id.settings) {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                true
+            } else {
+                false
+            }
         }
     }
 
