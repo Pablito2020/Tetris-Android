@@ -3,7 +3,7 @@ package com.pablo.tetris.presentation.history
 import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.pablo.tetris.LogHistoryFragment
+import com.pablo.tetris.presentation.history.fragments.LogHistoryFragment
 import com.pablo.tetris.presentation.history.fragments.HistorialFragment
 import com.pablo.tetris.R
 
