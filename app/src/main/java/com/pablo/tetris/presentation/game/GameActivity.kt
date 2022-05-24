@@ -14,7 +14,7 @@ import com.pablo.tetris.presentation.game.actions.ResumeToastAction
 import com.pablo.tetris.presentation.game.fragments.GameFragment
 import com.pablo.tetris.presentation.game.fragments.LogFragment
 import com.pablo.tetris.presentation.game.results.GameResult
-import com.pablo.tetris.presentation.settings.SettingsFactory
+import com.pablo.tetris.presentation.settings.SettingsSingleton
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
@@ -41,8 +41,8 @@ class GameActivity : HideStatusBarActivity() {
 
     private fun setUpViewModel() {
         model = ViewModelProvider(this).get(GameViewModel::class.java)
-        model.setUp(SettingsFactory.getFacade(this), SettingsFactory.getSpeedStrategy(this))
-        model.setUpMusic(SettingsFactory.getSettingsData(this).hasMusic, this)
+        model.setUp(SettingsSingleton.getFacade(this), SettingsSingleton.getSpeedStrategy(this))
+        model.setUpMusic(SettingsSingleton.getSettingsData(this).hasMusic, this)
         model.gameFacade.observe(this) {
             if (!it.hasFinished())
                 model.updateScreen.value = true
@@ -77,7 +77,7 @@ class GameActivity : HideStatusBarActivity() {
     }
 
     private fun setUpLogger() {
-        SettingsFactory.logData(this)
+        SettingsSingleton.logData(this)
     }
 
     private fun setUpResumeAction() {

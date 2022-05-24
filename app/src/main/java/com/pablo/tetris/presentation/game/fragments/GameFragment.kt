@@ -14,7 +14,7 @@ import com.pablo.tetris.R
 import com.pablo.tetris.presentation.common.getButtons
 import com.pablo.tetris.presentation.game.GameViewModel
 import com.pablo.tetris.presentation.game.PlayPauseView
-import com.pablo.tetris.presentation.settings.SettingsFactory
+import com.pablo.tetris.presentation.settings.SettingsSingleton
 import com.pablo.tetris.presentation.game.State
 import com.pablo.tetris.presentation.game.grid.GameAdapter
 
@@ -39,7 +39,7 @@ class GameFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setUpGridView() {
-        val cellColors = SettingsFactory.getStyleCreator(requireContext()).getColorCellChooser()
+        val cellColors = SettingsSingleton.getStyleCreator(requireContext()).getColorCellChooser()
         adapter = GameAdapter(viewModel.getGrid(), cellColors)
         val gameGrid: GridView = requireView().findViewById(R.id.GameGrid)
         gameGrid.adapter = adapter
@@ -73,7 +73,7 @@ class GameFragment : Fragment(), View.OnClickListener {
         val typeOfBlock = viewModel.getNextBlock()
         val imageNextBlock: ImageView = requireView().findViewById(R.id.NextBlockImage)
         imageNextBlock.setImageResource(
-            SettingsFactory.getStyleCreator(requireContext()).getBlockCreator().getImageId(typeOfBlock)
+            SettingsSingleton.getStyleCreator(requireContext()).getBlockCreator().getImageId(typeOfBlock)
         )
     }
 

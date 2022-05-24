@@ -17,7 +17,7 @@ import com.pablo.tetris.presentation.finished.sendmail.EmailSender
 import com.pablo.tetris.presentation.game.GameActivity
 import com.pablo.tetris.presentation.game.results.DateGetter
 import com.pablo.tetris.presentation.game.results.GameResult
-import com.pablo.tetris.presentation.settings.SettingsFactory
+import com.pablo.tetris.presentation.settings.SettingsSingleton
 import kotlinx.coroutines.flow.collect
 
 
@@ -59,7 +59,7 @@ class FinishedActivity : HideStatusBarActivity() {
                 }
             }
         }
-        if (SettingsFactory.getSettingsData(this).hasMusic)
+        if (SettingsSingleton.getSettingsData(this).hasMusic)
             model.playGameOverMusic(this)
     }
 
@@ -85,7 +85,7 @@ class FinishedActivity : HideStatusBarActivity() {
     }
 
     private fun addResultToDataBase() {
-        val settings = SettingsFactory.getSettingsData(this)
+        val settings = SettingsSingleton.getSettingsData(this)
         val player = Player(
             name = settings.name,
             score = gameResult.score,

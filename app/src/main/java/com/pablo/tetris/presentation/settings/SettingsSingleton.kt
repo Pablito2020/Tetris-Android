@@ -15,7 +15,7 @@ import com.pablo.tetris.presentation.game.grid.style.StyleCreator
 import com.pablo.tetris.presentation.game.grid.style.StyleFactory
 import java.io.Serializable
 
-object SettingsFactory : Serializable {
+object SettingsSingleton : Serializable {
 
     fun getSettingsData(context: Context): SettingsData {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
