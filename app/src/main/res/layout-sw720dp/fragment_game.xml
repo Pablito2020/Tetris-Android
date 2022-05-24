@@ -8,8 +8,8 @@
 
     <GridView
         android:id="@+id/GameGrid"
-        android:layout_width="270dp"
-        android:layout_height="540dp"
+        android:layout_width="350dp"
+        android:layout_height="700dp"
         android:horizontalSpacing="0dp"
         android:numColumns="10"
         android:verticalSpacing="0dp"
@@ -137,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/NextBlock"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -163,7 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/PointsText"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView

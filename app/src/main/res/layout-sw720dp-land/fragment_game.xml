@@ -8,8 +8,8 @@
 
     <GridView
         android:id="@+id/GameGrid"
-        android:layout_width="250dp"
-        android:layout_height="500dp"
+        android:layout_width="300dp"
+        android:layout_height="600dp"
         android:numColumns="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/RotateRight"
@@ -21,8 +21,8 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/RotateRight"
         style="@style/rotatebuttonspadding"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_weight="1"
         android:contentDescription="@string/RotateRightDesc"
         app:backgroundTint="@color/black_buttons"
@@ -37,8 +37,8 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/DownButton"
         style="@style/movebuttonspadding"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_weight="1"
         android:contentDescription="@string/DownButtonDesc"
         app:backgroundTint="@color/black_buttons"
@@ -56,8 +56,8 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/LeftButton"
         style="@style/movebuttonspadding"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_weight="1"
         android:contentDescription="@string/LeftButtonDesc"
         app:backgroundTint="@color/black_buttons"
@@ -72,8 +72,8 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/RotateLeft"
         style="@style/rotatebuttonspadding"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_weight="1"
         android:contentDescription="@string/RotateLeftDesc"
         app:backgroundTint="@color/black_buttons"
@@ -88,8 +88,8 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/RightButton"
         style="@style/movebuttonspadding"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_weight="1"
         android:contentDescription="@string/RightButtonDesc"
         app:backgroundTint="@color/black_buttons"
@@ -118,21 +118,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/PointsText"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/PointsText"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
 
     <com.pablo.tetris.presentation.game.PlayPauseView
         android:id="@+id/pauseButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
         app:layout_constraintEnd_toStartOf="@+id/GameGrid"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,12 +154,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/NextBlock"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/NextBlockImage"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="84dp"
             android:contentDescription="@string/NextBlockDesc" />
     </LinearLayout>
