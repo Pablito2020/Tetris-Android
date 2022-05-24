@@ -9,13 +9,13 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pablo.tetris.R
 import com.pablo.tetris.infra.database.PlayerApplication
-import com.pablo.tetris.presentation.history.GameHistorialActivity
 import com.pablo.tetris.presentation.history.model.HistoryViewModel
 import com.pablo.tetris.presentation.history.view.PlayerAdapter
 import com.pablo.tetris.presentation.history.view.Spinner
@@ -24,14 +24,16 @@ import kotlin.properties.Delegates
 @SuppressLint("NotifyDataSetChanged")
 class HistorialFragment : Fragment() {
 
-    private val historyViewModel: HistoryViewModel by viewModels<HistoryViewModel>({activity as GameHistorialActivity }) {
-        HistoryViewModel.HistoryViewModelFactory((activity?.application as PlayerApplication).repository)
-    }
+    private lateinit var historyViewModel: HistoryViewModel
 
     private var hasLogFragment by Delegates.notNull<Boolean>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        historyViewModel = ViewModelProvider(
+            activity?.application as PlayerApplication,
+            HistoryViewModel.HistoryViewModelFactory((activity?.application as PlayerApplication).repository)
+        ).get(HistoryViewModel::class.java)
         setUpRecyclerView()
         setUpSpinner()
         setUpAutoComplete()
@@ -39,7 +41,12 @@ class HistorialFragment : Fragment() {
 
     private fun setUpRecyclerView() {
         historyViewModel.executeQuery()
-        val adapter = PlayerAdapter(historyViewModel, historyViewModel.getPlayers(), hasLogFragment)
+        val adapter = PlayerAdapter(
+            historyViewModel,
+            historyViewModel.getPlayers(),
+            hasLogFragment,
+            requireContext()
+        )
         val recyclerViewHistory = requireView().findViewById<RecyclerView>(R.id.recyclerViewHistory)
         recyclerViewHistory.adapter = adapter
         val manager = LinearLayoutManager(context)
@@ -51,7 +58,8 @@ class HistorialFragment : Fragment() {
             )
         )
         historyViewModel.updatedDataBase.observe(viewLifecycleOwner) {
-            val autoComplete = requireView().findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
+            val autoComplete =
+                requireView().findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
             val names = autoComplete.text.toString()
             adapter.players = historyViewModel.getAutoCompleteResult(names)
             adapter.notifyDataSetChanged()

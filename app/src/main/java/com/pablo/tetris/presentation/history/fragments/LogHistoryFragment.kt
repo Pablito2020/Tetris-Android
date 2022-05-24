@@ -1,25 +1,28 @@
 package com.pablo.tetris.presentation.history.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.pablo.tetris.R
 import com.pablo.tetris.infra.database.PlayerApplication
-import com.pablo.tetris.presentation.history.GameHistorialActivity
 import com.pablo.tetris.presentation.history.model.HistoryViewModel
 
 class LogHistoryFragment : Fragment() {
 
-    private val historyViewModel: HistoryViewModel by viewModels<HistoryViewModel>({activity as GameHistorialActivity}) {
-        HistoryViewModel.HistoryViewModelFactory((activity?.application as PlayerApplication).repository)
-    }
+    private lateinit var historyViewModel: HistoryViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        historyViewModel = ViewModelProvider(
+            activity?.application as PlayerApplication,
+            HistoryViewModel.HistoryViewModelFactory((activity?.application as PlayerApplication).repository)
+        ).get(HistoryViewModel::class.java)
+        requireView().findViewById<TextView>(R.id.logHistoryTextView).text =
+            historyViewModel.currentLog.value
         historyViewModel.currentLog.observe(viewLifecycleOwner) {
             it?.let {
                 requireView().findViewById<TextView>(R.id.logHistoryTextView).text = it

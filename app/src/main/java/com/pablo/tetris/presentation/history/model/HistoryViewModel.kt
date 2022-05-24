@@ -60,6 +60,7 @@ class HistoryViewModel(private val repository: PlayerRepository) : ViewModel() {
         lateinit var result: String
         runBlocking {viewModelScope.launch(Dispatchers.IO) { result = repository.getLogForPlayer(player.id) }.join()}
         currentLog.value = result
+        println("Changed!\n")
     }
 
     class HistoryViewModelFactory(private val repository: PlayerRepository) :
