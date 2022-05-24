@@ -27,7 +27,6 @@ class GameActivity : HideStatusBarActivity() {
 
     private lateinit var model: GameViewModel
     private lateinit var resumeAction: Action
-    private val factory = SettingsFactory()
     private lateinit var moveBlockDown: Job
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,8 +41,8 @@ class GameActivity : HideStatusBarActivity() {
 
     private fun setUpViewModel() {
         model = ViewModelProvider(this).get(GameViewModel::class.java)
-        model.setUp(factory.getFacade(this), factory.getSpeedStrategy(this))
-        model.setUpMusic(factory.getSettingsData(this).hasMusic, this)
+        model.setUp(SettingsFactory.getFacade(this), SettingsFactory.getSpeedStrategy(this))
+        model.setUpMusic(SettingsFactory.getSettingsData(this).hasMusic, this)
         model.gameFacade.observe(this) {
             if (!it.hasFinished())
                 model.updateScreen.value = true
@@ -62,11 +61,7 @@ class GameActivity : HideStatusBarActivity() {
     }
 
     private fun setUpFragments() {
-        val gameFragment = GameFragment().apply {
-            arguments = Bundle().apply {
-                putSerializable(GameFragment.SETTINGS_KEY, factory)
-            }
-        }
+        val gameFragment = GameFragment()
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragmentContainerView, gameFragment)
             commit()
@@ -82,8 +77,7 @@ class GameActivity : HideStatusBarActivity() {
     }
 
     private fun setUpLogger() {
-        if (!model.gameOpened.value!!)
-            factory.logData(this)
+        SettingsFactory.logData(this)
     }
 
     private fun setUpResumeAction() {

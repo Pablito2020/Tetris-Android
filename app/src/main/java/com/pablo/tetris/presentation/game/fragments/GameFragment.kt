@@ -22,7 +22,6 @@ class GameFragment : Fragment(), View.OnClickListener {
 
     private lateinit var adapter: GameAdapter
     private lateinit var viewModel: GameViewModel
-    private lateinit var factory: SettingsFactory
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,12 +35,11 @@ class GameFragment : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        factory = arguments?.getSerializable(SETTINGS_KEY) as SettingsFactory
         return inflater.inflate(R.layout.fragment_game, container, false)
     }
 
     private fun setUpGridView() {
-        val cellColors = factory.getStyleCreator(requireContext()).getColorCellChooser()
+        val cellColors = SettingsFactory.getStyleCreator(requireContext()).getColorCellChooser()
         adapter = GameAdapter(viewModel.getGrid(), cellColors)
         val gameGrid: GridView = requireView().findViewById(R.id.GameGrid)
         gameGrid.adapter = adapter
@@ -75,7 +73,7 @@ class GameFragment : Fragment(), View.OnClickListener {
         val typeOfBlock = viewModel.getNextBlock()
         val imageNextBlock: ImageView = requireView().findViewById(R.id.NextBlockImage)
         imageNextBlock.setImageResource(
-            factory.getStyleCreator(requireContext()).getBlockCreator().getImageId(typeOfBlock)
+            SettingsFactory.getStyleCreator(requireContext()).getBlockCreator().getImageId(typeOfBlock)
         )
     }
 
@@ -99,10 +97,6 @@ class GameFragment : Fragment(), View.OnClickListener {
         val pauseButton: PlayPauseView = requireView().findViewById(R.id.pauseButton)
         pauseButton.setState(State.PLAY)
         pauseButton.fadeIn()
-    }
-
-    companion object Dependencies {
-        const val SETTINGS_KEY = "FactorySettings"
     }
 
 }

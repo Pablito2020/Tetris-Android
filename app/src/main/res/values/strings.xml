@@ -71,7 +71,7 @@
     <string name="ghost_block_mode_off" translatable="false">Show the shadow of the block, so you can see where it will go</string>
     <string name="audio_and_image" translatable="false">Audio and image</string>
     <string name="player_text" translatable="false">Player:</string>
-    <string name="name_default" translatable="false">Default User</string>
+    <string name="name_default" translatable="false">DefaultPlayer</string>
     <string name="historial">Historial</string>
     <string name="deleted_player_game" translatable="false">Deleted player game</string>
     <string name="deletion_canceled" translatable="false">Deletion canceled!</string>

@@ -25,7 +25,10 @@ class FinishedActivity : HideStatusBarActivity() {
 
     private lateinit var binding: ActivityFinishedBinding
     private val model: FinishedViewModel by lazy {
-        ViewModelProvider(this, PlayerViewModelFactory((application as PlayerApplication).repository)).get(FinishedViewModel::class.java)
+        ViewModelProvider(
+            this,
+            PlayerViewModelFactory((application as PlayerApplication).repository)
+        ).get(FinishedViewModel::class.java)
     }
     private lateinit var gameResult: GameResult
 
@@ -56,7 +59,7 @@ class FinishedActivity : HideStatusBarActivity() {
                 }
             }
         }
-        if (SettingsFactory().getSettingsData(this).hasMusic)
+        if (SettingsFactory.getSettingsData(this).hasMusic)
             model.playGameOverMusic(this)
     }
 
@@ -69,6 +72,7 @@ class FinishedActivity : HideStatusBarActivity() {
         binding.score.text = gameResult.score.toString()
         binding.ExitButton.setOnClickListener { onBackPressed() }
         binding.NewGameButton.setOnClickListener {
+            LoggerGetter.get().clear()
             startActivity(
                 Intent(
                     this,
@@ -80,13 +84,8 @@ class FinishedActivity : HideStatusBarActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        LoggerGetter.get().clear()
-    }
-
     private fun addResultToDataBase() {
-        val settings = SettingsFactory().getSettingsData(this)
+        val settings = SettingsFactory.getSettingsData(this)
         val player = Player(
             name = settings.name,
             score = gameResult.score,

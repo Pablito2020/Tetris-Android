@@ -22,13 +22,15 @@
 
         <SwitchPreferenceCompat
             app:key="music"
-            app:title="@string/checkbox_music" />
+            app:title="@string/checkbox_music"
+            app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="ghost_block"
             app:summaryOff="@string/ghost_block_mode_off"
             app:summaryOn="@string/ghost_block_mode_on"
-            app:title="@string/checkbox_ghostblock" />
+            app:title="@string/checkbox_ghostblock"
+            app:defaultValue="true"/>
 
         <ListPreference
             app:title="@string/theme_text"

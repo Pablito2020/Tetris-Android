@@ -15,9 +15,7 @@ import com.pablo.tetris.presentation.game.grid.style.StyleCreator
 import com.pablo.tetris.presentation.game.grid.style.StyleFactory
 import java.io.Serializable
 
-class SettingsFactory : Serializable {
-
-    private var initiated = false
+object SettingsFactory : Serializable {
 
     fun getSettingsData(context: Context): SettingsData {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -62,26 +60,23 @@ class SettingsFactory : Serializable {
     }
 
     fun logData(context: Context) {
-        if (!initiated) {
-            val settings = getSettingsData(context)
-            LoggerGetter.get().add(
-                UiText.ResourceString(R.string.player_name_log, settings.name),
+        val settings = getSettingsData(context)
+        LoggerGetter.get().add(
+            UiText.ResourceString(R.string.player_name_log, settings.name),
+        )
+        LoggerGetter.get().add(
+            UiText.ResourceString(R.string.level_selected_log, settings.level.name)
+        )
+        LoggerGetter.get().add(
+            UiText.ResourceString(R.string.ghost_mode_log, settings.isGhostBlock)
+        )
+        LoggerGetter.get().add(
+            UiText.ResourceString(R.string.music_mode_log, settings.hasMusic)
+        )
+        LoggerGetter.get()
+            .add(
+                UiText.ResourceString(R.string.theme_log, settings.style.name)
             )
-            LoggerGetter.get().add(
-                UiText.ResourceString(R.string.level_selected_log, settings.level.name)
-            )
-            LoggerGetter.get().add(
-                UiText.ResourceString(R.string.ghost_mode_log, settings.isGhostBlock)
-            )
-            LoggerGetter.get().add(
-                UiText.ResourceString(R.string.music_mode_log, settings.hasMusic)
-            )
-            LoggerGetter.get()
-                .add(
-                    UiText.ResourceString(R.string.theme_log, settings.style.name)
-                )
-            initiated = true
-        }
     }
 
 }
