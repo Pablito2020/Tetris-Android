@@ -79,4 +79,10 @@
     <string name="error_name_length_is_out_of_bounds">El nom és massa llarg!</string>
     <string name="error_name_has_to_be_one_line">El nom ha de càpiguer en una línea</string>
     <string name="search">cerca</string>
+
+    <string-array name="recycle_view_actions">
+        <item>Mostra les partides ordenades per punts</item>
+        <item>Mostra les partides ordenades per data</item>
+    </string-array>
+
 </resources>

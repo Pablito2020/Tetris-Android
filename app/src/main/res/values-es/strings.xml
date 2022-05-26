@@ -79,4 +79,10 @@
     <string name="error_name_length_is_out_of_bounds">El nombre es demasiado largo</string>
     <string name="error_name_has_to_be_one_line">El nombre debe ser de una línea</string>
     <string name="search">busca</string>
+
+    <string-array name="recycle_view_actions">
+        <item>Muestra las partidas ordenadas por puntos</item>
+        <item>Muestra las partidas ordenadas por fecha</item>
+    </string-array>
+
 </resources>
