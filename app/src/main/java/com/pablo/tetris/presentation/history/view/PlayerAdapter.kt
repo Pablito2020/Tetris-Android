@@ -1,25 +1,25 @@
 package com.pablo.tetris.presentation.history.view
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.pablo.tetris.presentation.history.CurrentGameLogActivity
 import com.pablo.tetris.R
 import com.pablo.tetris.infra.database.Player
+import com.pablo.tetris.presentation.history.CurrentGameLogActivity
 import com.pablo.tetris.presentation.history.model.HistoryViewModel
-import kotlin.system.exitProcess
+
 
 class PlayerAdapter(
     var viewModel: HistoryViewModel,
     var players: List<Player>,
-    val hasLogFragment: Boolean,
+    private val hasLogFragment: Boolean,
     val context: Context
 ) : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
 
@@ -48,6 +48,17 @@ class PlayerAdapter(
                 val intent = Intent(context.applicationContext, CurrentGameLogActivity::class.java)
                 context.startActivity(intent)
             }
+        }
+        holder.itemView.setOnLongClickListener {
+            val popupMenu = PopupMenu(context, holder.itemView)
+            popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.getMenu())
+            popupMenu.setOnMenuItemClickListener {
+                    this.players = viewModel.getAutoCompleteResult(players[position].name)
+                    notifyDataSetChanged()
+                    true
+                }
+            popupMenu.show()
+            true
         }
     }
 
