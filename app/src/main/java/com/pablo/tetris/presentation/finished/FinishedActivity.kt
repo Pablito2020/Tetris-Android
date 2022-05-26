@@ -1,6 +1,7 @@
 package com.pablo.tetris.presentation.finished
 
 import android.content.Intent
+import android.icu.util.TimeUnit
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import androidx.core.widget.addTextChangedListener
@@ -21,6 +22,11 @@ import com.pablo.tetris.presentation.game.results.GameResult
 import com.pablo.tetris.presentation.settings.SettingsActivity
 import com.pablo.tetris.presentation.settings.SettingsSingleton
 import kotlinx.coroutines.flow.collect
+import nl.dionsegijn.konfetti.core.Party
+import nl.dionsegijn.konfetti.core.Position
+import nl.dionsegijn.konfetti.core.emitter.Emitter
+import nl.dionsegijn.konfetti.xml.KonfettiView
+import java.util.concurrent.TimeUnit.MILLISECONDS
 
 
 class FinishedActivity : HideStatusBarActivity() {
@@ -43,6 +49,8 @@ class FinishedActivity : HideStatusBarActivity() {
         }
         setUpViewModel()
         setUpComponents()
+        if (model.hasToShowConfetti(SettingsSingleton.getSettingsData(this).name, gameResult.score))
+            showKonfetty()
         addResultToDataBase()
     }
 
@@ -108,5 +116,18 @@ class FinishedActivity : HideStatusBarActivity() {
     }
 
     private fun getLogMessage() = model.result.value!!
+
+    private fun showKonfetty() {
+        val party = Party(
+            speed = 0f,
+            maxSpeed = 30f,
+            damping = 0.9f,
+            spread = 360,
+            colors = listOf(0xfce18a, 0xff726d, 0xf4306d, 0xb48def),
+            emitter = Emitter(duration = 100, MILLISECONDS).max(100),
+            position = Position.Relative(0.5, 0.3)
+        )
+        findViewById<KonfettiView>(R.id.konfettiView).start(party)
+    }
 
 }

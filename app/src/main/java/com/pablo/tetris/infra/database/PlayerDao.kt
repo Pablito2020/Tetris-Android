@@ -24,4 +24,8 @@ interface PlayerDao {
 
     @Query("SELECT log FROM player_table WHERE id = :id")
     fun getLogFromPlayer(id: Int): String
+
+    @Query("SELECT * FROM player_table WHERE id = :id")
+    fun getPlayer(id: Int): Player?
+
 }

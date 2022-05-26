@@ -18,6 +18,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.properties.Delegates
 
 class FinishedViewModel(private val repository: PlayerRepository) : ViewModel() {
 
@@ -57,6 +59,20 @@ class FinishedViewModel(private val repository: PlayerRepository) : ViewModel() 
 
     fun insert(player: Player) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(player)
+    }
+
+    fun hasToShowConfetti(name: String, score: Int): Boolean {
+        lateinit var playerThatMatchName: List<Player>
+        runBlocking {
+            viewModelScope.launch(Dispatchers.IO) {
+                playerThatMatchName = repository.getPlayersThatMatch(name)
+            }.join()
+        }
+        try {
+            return playerThatMatchName.maxOf { it.score } < score
+        } catch (e: NoSuchElementException) {
+            return true;
+        }
     }
 
 }

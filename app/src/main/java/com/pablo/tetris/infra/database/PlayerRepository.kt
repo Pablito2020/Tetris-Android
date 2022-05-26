@@ -21,4 +21,6 @@ class PlayerRepository(private val playerDao: PlayerDao) {
 
     fun getLogForPlayer(id: Int) = playerDao.getLogFromPlayer(id)
 
+    fun getPlayer(id: Int): Player? = playerDao.getPlayer(id)
+
 }
