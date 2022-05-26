@@ -68,4 +68,15 @@
     <string name="error_email_empty">El mail no pot ser buit</string>
     <string name="error_email_not_valid">El mail no és vàlid</string>
     <string name="historial">Historial</string>
+    <string name="ghost_block_mode_on">No mostris la sombra del bloc</string>
+    <string name="ghost_block_mode_off">Mostra la sombra del block, per tal de saber on caurà</string>
+    <string name="audio_and_image">Imatge i audio</string>
+    <string name="player_text">Jugador</string>
+    <string name="name_default">Jugador1</string>
+    <string name="deleted_player_game">Partida eliminada de l\'historial!</string>
+    <string name="deletion_canceled">Acció d\'eliminar cancelada!</string>
+    <string name="delete_game_warning">Estàs segur que vols eliminar la partida del jugador %s?</string>
+    <string name="error_name_length_is_out_of_bounds">El nom és massa llarg!</string>
+    <string name="error_name_has_to_be_one_line">El nom ha de càpiguer en una línea</string>
+    <string name="search">cerca</string>
 </resources>

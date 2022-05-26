@@ -68,4 +68,15 @@
     <string name="error_email_empty">El correo no puede ser vacío</string>
     <string name="error_email_not_valid">El correo no es válido</string>
     <string name="historial">Historial</string>
+    <string name="ghost_block_mode_on">No muestres la sombra del bloque</string>
+    <string name="ghost_block_mode_off">Muestra la sombra del bloque, para saber donde caerá</string>
+    <string name="audio_and_image">Imágen y audio</string>
+    <string name="player_text">Jugador</string>
+    <string name="name_default">Jugador1</string>
+    <string name="deleted_player_game">Partida eliminada</string>
+    <string name="deletion_canceled">Acción de eliminar cancelada</string>
+    <string name="delete_game_warning">Estás seguro que quieres eliminar la partida del jugador %s?</string>
+    <string name="error_name_length_is_out_of_bounds">El nombre es demasiado largo</string>
+    <string name="error_name_has_to_be_one_line">El nombre debe ser de una línea</string>
+    <string name="search">busca</string>
 </resources>

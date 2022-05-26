@@ -12,7 +12,7 @@
         android:id="@+id/autoCompleteTextView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="search"
+        android:hint="@string/search"
         android:minHeight="48dp"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/chooseActionSpinner"
