@@ -29,7 +29,7 @@ class LogFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_log_game, container, false)
+        return inflater.inflate(R.layout.fragment_log, container, false)
     }
 
 }
