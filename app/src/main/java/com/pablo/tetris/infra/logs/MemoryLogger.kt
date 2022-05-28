@@ -12,8 +12,8 @@ import com.pablo.tetris.presentation.common.UiText
 
 object MemoryLogger : Logger {
 
-    val messages: MutableList<UiText> = mutableListOf()
-    val movements: MutableMap<UiText, Int> = mutableMapOf()
+    private val messages: MutableList<UiText> = mutableListOf()
+    private val movements: MutableMap<UiText, Int> = mutableMapOf()
 
     override fun add(message: UiText) {
         when (message) {

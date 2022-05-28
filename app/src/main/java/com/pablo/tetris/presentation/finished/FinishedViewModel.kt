@@ -19,7 +19,6 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlin.properties.Delegates
 
 class FinishedViewModel(private val repository: PlayerRepository) : ViewModel() {
 
@@ -36,7 +35,7 @@ class FinishedViewModel(private val repository: PlayerRepository) : ViewModel() 
     fun setUpLog(context: Context) {
         if (result.value == null) {
             val log = LoggerGetter.get().getLog()
-            result.value = log.map { it.asString(context) }.joinToString(separator = "\n")
+            result.value = log.joinToString(separator = "\n") { it.asString(context) }
         }
     }
 
@@ -68,10 +67,10 @@ class FinishedViewModel(private val repository: PlayerRepository) : ViewModel() 
                 playerThatMatchName = repository.getPlayersThatMatch(name)
             }.join()
         }
-        try {
-            return playerThatMatchName.maxOf { it.score } < score
+        return try {
+            playerThatMatchName.maxOf { it.score } < score
         } catch (e: NoSuchElementException) {
-            return true;
+            true
         }
     }
 

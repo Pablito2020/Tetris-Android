@@ -22,10 +22,13 @@ import com.pablo.tetris.presentation.game.actions.ResumeToastAction
 import com.pablo.tetris.presentation.game.grid.GameAdapter
 import com.pablo.tetris.presentation.game.results.GameResult
 import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.util.*
 
+@Suppress("OPT_IN_IS_NOT_ENABLED")
+@OptIn(ExperimentalCoroutinesApi::class)
 class GameFragment : Fragment(), View.OnClickListener {
 
     private lateinit var adapter: GameAdapter

@@ -5,7 +5,9 @@ import com.pablo.tetris.presentation.common.UiText
 
 class ValidateName(private val name: String): Validator {
 
-    val MAX_LENGTH = 20
+    companion object {
+        private const val MAX_LENGTH = 20
+    }
 
     override fun execute(): ValidationResult {
         if (name.isBlank())

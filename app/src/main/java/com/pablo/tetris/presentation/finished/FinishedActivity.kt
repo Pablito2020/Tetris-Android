@@ -1,7 +1,6 @@
 package com.pablo.tetris.presentation.finished
 
 import android.content.Intent
-import android.icu.util.TimeUnit
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import androidx.core.widget.addTextChangedListener
@@ -50,7 +49,7 @@ class FinishedActivity : HideStatusBarActivity() {
         setUpViewModel()
         setUpComponents()
         if (model.hasToShowConfetti(SettingsSingleton.getSettingsData(this).name, gameResult.score))
-            showKonfetty()
+            showConfetti()
         addResultToDataBase()
     }
 
@@ -92,8 +91,8 @@ class FinishedActivity : HideStatusBarActivity() {
                 }
             )
         }
-        binding.toolbar?.inflateMenu(R.menu.settings_menu)
-        binding.toolbar?.setOnMenuItemClickListener {
+        binding.toolbar.inflateMenu(R.menu.settings_menu)
+        binding.toolbar.setOnMenuItemClickListener {
             if (it.itemId == R.id.settings) {
                 startActivity(Intent(this, SettingsActivity::class.java))
                 true
@@ -117,7 +116,7 @@ class FinishedActivity : HideStatusBarActivity() {
 
     private fun getLogMessage() = model.result.value!!
 
-    private fun showKonfetty() {
+    private fun showConfetti() {
         val party = Party(
             speed = 0f,
             maxSpeed = 30f,

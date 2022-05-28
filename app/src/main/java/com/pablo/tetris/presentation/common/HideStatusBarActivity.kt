@@ -18,7 +18,7 @@ open class HideStatusBarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
     }
 
-    protected fun hideStatusBar() {
+    private fun hideStatusBar() {
         hideNavBar()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
             window.setDecorFitsSystemWindows(false)
