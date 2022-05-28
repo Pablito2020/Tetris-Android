@@ -5,8 +5,8 @@
     </string-array>
 
     <string-array name="theme_values">
-        <item>NEON</item>
-        <item>SATURATED</item>
+        <item>@string/neon_key</item>
+        <item>@string/saturated_key</item>
     </string-array>
 
 
@@ -17,8 +17,8 @@
     </string-array>
 
     <string-array name="difficulty_values">
-        <item>LOW</item>
-        <item>MEDIUM</item>
-        <item>HIGH</item>
+        <item>@string/low_key</item>
+        <item>@string/medium_key</item>
+        <item>@string/high_key</item>
     </string-array>
 </resources>

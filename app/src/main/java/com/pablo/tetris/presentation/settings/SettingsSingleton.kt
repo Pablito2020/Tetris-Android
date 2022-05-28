@@ -19,21 +19,13 @@ object SettingsSingleton : Serializable {
 
     fun getSettingsData(context: Context): SettingsData {
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-        val name = preferences.getString("name", "default user")
-        val isGhost = preferences.getBoolean("ghost_block", true)
-        val hasMusic = preferences.getBoolean("music", true)
-        val difficultyString = preferences.getString("difficulty", "")
-        val themeString = preferences.getString("theme", "")
-        val level = try {
-            Level.valueOf(difficultyString!!)
-        } catch (IllegalArgumentException: Exception) {
-            Level.MEDIUM
-        }
-        val theme = try {
-            Style.valueOf(themeString!!)
-        } catch (IllegalArgumentException: Exception) {
-            Style.NEON
-        }
+        val name = preferences.getString(context.getString(R.string.key_name), context.getString(R.string.name_default))
+        val isGhost = preferences.getBoolean(context.getString(R.string.key_ghost), true)
+        val hasMusic = preferences.getBoolean(context.getString(R.string.key_music), true)
+        val difficultyString = preferences.getString(context.getString(R.string.key_difficulty), context.getString(R.string.medium_key))
+        val themeString = preferences.getString(context.getString(R.string.key_theme), context.getString(R.string.neon_key))
+        val level = Level.valueOf(difficultyString!!)
+        val theme = Style.valueOf(themeString!!)
         return SettingsData(
             name = name!!,
             isGhostBlock = isGhost,

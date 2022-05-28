@@ -1,0 +1,14 @@
+<resources>
+
+        <string-array name="theme_entries">
+            <item>Neó</item>
+            <item>Saturat</item>
+        </string-array>
+
+        <string-array name="difficulty_entries">
+            <item>Baix</item>
+            <item>Mitjà</item>
+            <item>Alt</item>
+        </string-array>
+
+</resources>

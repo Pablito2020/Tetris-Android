@@ -3,7 +3,7 @@
     <PreferenceCategory app:title="@string/player_text">
 
         <EditTextPreference
-            app:key="name"
+            app:key="@string/key_name"
             app:icon="@drawable/ic_baseline_person_24"
             app:title="@string/name_text"
             app:defaultValue="@string/name_default"
@@ -11,11 +11,11 @@
 
         <ListPreference
             app:title="@string/difficulty_setting_text"
-            app:key="difficulty"
+            app:key="@string/key_difficulty"
             app:icon="@drawable/ic_baseline_speed_24"
             app:entries="@array/difficulty_entries"
             app:entryValues="@array/difficulty_values"
-            app:defaultValue="MEDIUM"
+            app:defaultValue="@string/medium_key"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
@@ -23,13 +23,13 @@
     <PreferenceCategory app:title="@string/audio_and_image">
 
         <SwitchPreferenceCompat
-            app:key="music"
+            app:key="@string/key_music"
             app:title="@string/checkbox_music"
             app:icon="@drawable/ic_baseline_music_note_24"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
-            app:key="ghost_block"
+            app:key="@string/key_ghost"
             app:summaryOff="@string/ghost_block_mode_off"
             app:summaryOn="@string/ghost_block_mode_on"
             app:title="@string/checkbox_ghostblock"
@@ -38,11 +38,11 @@
 
         <ListPreference
             app:title="@string/theme_text"
-            app:key="theme"
+            app:key="@string/key_theme"
             app:entries="@array/theme_entries"
             app:entryValues="@array/theme_values"
             app:icon="@drawable/ic_baseline_style_24"
-            app:defaultValue="NEON"
+            app:defaultValue="@string/neon_key"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>

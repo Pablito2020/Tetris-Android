@@ -1,0 +1,13 @@
+<resources>
+    <string-array name="theme_entries">
+        <item>Neon</item>
+        <item>Saturado</item>
+    </string-array>
+
+    <string-array name="difficulty_entries">
+        <item>Bajo</item>
+        <item>Medio</item>
+        <item>Alto</item>
+    </string-array>
+
+</resources>

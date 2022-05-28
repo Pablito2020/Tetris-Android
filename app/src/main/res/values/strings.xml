@@ -83,6 +83,17 @@
     <string name="please_click_item">Please, click on an item for see the log</string>
     <string name="no_items_in_database">There are no items on database, can\'t show the log!</string>
 
+    <string name="key_name" translatable="false">name</string>
+    <string name="key_difficulty" translatable="false">difficulty</string>
+    <string name="key_music" translatable="false">music</string>
+    <string name="key_ghost" translatable="false">ghost_block</string>
+    <string name="key_theme" translatable="false">theme</string>
+    <string name="low_key" translatable="false">LOW</string>
+    <string name="medium_key" translatable="false">MEDIUM</string>
+    <string name="high_key" translatable="false">HIGH</string>
+    <string name="neon_key" translatable="false">NEON</string>
+    <string name="saturated_key" translatable="false">SATURATED</string>
+
     <string-array name="recycle_view_actions">
         <item>Show game sorted by points</item>
         <item>Show game sorted by date</item>
