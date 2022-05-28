@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".presentation.settings.SettingsActivity">
 
-    <FrameLayout
+    <fragment
         android:id = "@+id/fragment_settings"
+        class = "com.pablo.tetris.presentation.settings.SettingsFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         app:layout_constraintBottom_toBottomOf="parent"
