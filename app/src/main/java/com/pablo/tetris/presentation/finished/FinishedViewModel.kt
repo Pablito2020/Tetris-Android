@@ -7,15 +7,21 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.pablo.tetris.R
 import com.pablo.tetris.domain.user.ValidateEmail
+import com.pablo.tetris.infra.database.Player
+import com.pablo.tetris.infra.database.PlayerRepository
 import com.pablo.tetris.infra.logs.LoggerGetter
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlin.properties.Delegates
 
-class FinishedViewModel : ViewModel() {
+class FinishedViewModel(private val repository: PlayerRepository) : ViewModel() {
 
     private var data by mutableStateOf(FinishedStateData())
     private val resultEventChannel = Channel<FinishedStateData>()
@@ -51,4 +57,32 @@ class FinishedViewModel : ViewModel() {
         }
     }
 
+    fun insert(player: Player) = viewModelScope.launch(Dispatchers.IO) {
+        repository.insert(player)
+    }
+
+    fun hasToShowConfetti(name: String, score: Int): Boolean {
+        lateinit var playerThatMatchName: List<Player>
+        runBlocking {
+            viewModelScope.launch(Dispatchers.IO) {
+                playerThatMatchName = repository.getPlayersThatMatch(name)
+            }.join()
+        }
+        try {
+            return playerThatMatchName.maxOf { it.score } < score
+        } catch (e: NoSuchElementException) {
+            return true;
+        }
+    }
+
+}
+
+class PlayerViewModelFactory(private val repository: PlayerRepository) : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(FinishedViewModel::class.java)) {
+            @Suppress("UNCHECKED_CAST")
+            return FinishedViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
 }

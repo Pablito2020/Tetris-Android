@@ -65,6 +65,26 @@
     <string name="error_name_contain_spaces">Name should not contain spaces</string>
     <string name="error_email_empty">email shouldn\'t be blank</string>
     <string name="error_email_not_valid">email isn\'t valid</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Sync Preferences -->
+    <string name="ghost_block_mode_on" >Don\'t show the shadow of the block</string>
+    <string name="ghost_block_mode_off" >Show the shadow of the block, so you can see where it will go</string>
+    <string name="audio_and_image" >Audio and image</string>
+    <string name="player_text" >Player:</string>
+    <string name="name_default" >Player1</string>
+    <string name="historial">Historial</string>
+    <string name="deleted_player_game" >Deleted player game</string>
+    <string name="deletion_canceled" >Deletion canceled!</string>
+    <string name="delete_game_warning" >Are you sure you want to delete the game from %s?</string>
+    <string name="error_name_length_is_out_of_bounds" >Name is too large!</string>
+    <string name="error_name_has_to_be_one_line" >Name has to be one line</string>
+    <string name="search">search</string>
+    <string name="filter_by_name">Filter by name</string>
+    <string name="please_click_item">Please, click on an item for see the log</string>
+    <string name="no_items_in_database">There are no items on database, can\'t show the log!</string>
+
+    <string-array name="recycle_view_actions">
+        <item>Show game sorted by points</item>
+        <item>Show game sorted by date</item>
+    </string-array>
 </resources>

@@ -17,10 +17,8 @@ class GameViewModel : ViewModel() {
     private val lengthSong: MutableLiveData<Int> = MutableLiveData(0)
     private val song: MutableLiveData<MediaPlayer> = MutableLiveData(null)
     private val gamePaused: MutableLiveData<Boolean> = MutableLiveData(false)
-    val gameOpened: MutableLiveData<Boolean> = MutableLiveData(false)
-    val pauseButtonClicked: MutableLiveData<Boolean> = MutableLiveData(false)
-    val pauseRotation: MutableLiveData<Boolean> = MutableLiveData(false)
-    val updateScreen: MutableLiveData<Boolean> = MutableLiveData(false)
+    private val gameOpened: MutableLiveData<Boolean> = MutableLiveData(false)
+    val updatedLog: MutableLiveData<Boolean> = MutableLiveData(false)
     private lateinit var speedStrategy: SpeedStrategy
 
     fun setUp(gameFacade: GameFacade, speed: SpeedStrategy) {
@@ -43,6 +41,7 @@ class GameViewModel : ViewModel() {
             gameFacade.value?.left()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.MOVE_LEFT)
+            updatedLog.value = true
         }
     }
 
@@ -51,6 +50,7 @@ class GameViewModel : ViewModel() {
             gameFacade.value?.right()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.MOVE_RIGHT)
+            updatedLog.value = true
         }
     }
 
@@ -59,6 +59,7 @@ class GameViewModel : ViewModel() {
             gameFacade.value?.down()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.MOVE_DOWN)
+            updatedLog.value = true
         }
     }
 
@@ -67,6 +68,7 @@ class GameViewModel : ViewModel() {
             gameFacade.value?.rotateLeft()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.ROTATE_LEFT)
+            updatedLog.value = true
         }
     }
 
@@ -75,6 +77,7 @@ class GameViewModel : ViewModel() {
             gameFacade.value?.rotateRight()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.ROTATE_RIGHT)
+            updatedLog.value = true
         }
     }
 
@@ -83,6 +86,7 @@ class GameViewModel : ViewModel() {
             gameFacade.value?.dropBlock()
             gameFacade.postValue(gameFacade.value)
             LoggerGetter.get().add(LoggerConstants.DROP_DOWN)
+            updatedLog.value = true
         }
     }
 
@@ -90,7 +94,7 @@ class GameViewModel : ViewModel() {
 
     fun getNextBlock() = gameFacade.value!!.getNextBlock()
 
-    fun getPoints() = gameFacade.value!!.getScore().value.toString()
+    fun getPoints() = gameFacade.value!!.getScore().value
 
     fun setUpMusic(hasMusic: Boolean, context: Context) {
         if (hasMusic) {

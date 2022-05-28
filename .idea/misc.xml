@@ -4,16 +4,45 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.39791666666666664" />
+        <entry key="app/src/main/res/layout-land/activity_current_game_log.xml" value="0.33" />
+        <entry key="app/src/main/res/layout-land/activity_finished.xml" value="0.3745190252244549" />
         <entry key="app/src/main/res/layout-land/activity_game.xml" value="0.25" />
+        <entry key="app/src/main/res/layout-land/activity_game_historial.xml" value="0.5953446732318711" />
+        <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout-land/activity_settings.xml" value="0.5953446732318711" />
+        <entry key="app/src/main/res/layout-land/fragment_game.xml" value="0.18" />
+        <entry key="app/src/main/res/layout-land/fragment_log_history.xml" value="0.33" />
         <entry key="app/src/main/res/layout-land/grid_item_image_small.xml" value="0.265625" />
+        <entry key="app/src/main/res/layout-sw600dp-land/activity_finished.xml" value="0.6745098039215687" />
+        <entry key="app/src/main/res/layout-sw600dp-land/fragment_game.xml" value="0.2" />
+        <entry key="app/src/main/res/layout-sw600dp/activity_finished.xml" value="0.5" />
+        <entry key="app/src/main/res/layout-sw600dp/activity_game.xml" value="0.17369791666666667" />
+        <entry key="app/src/main/res/layout-sw600dp/fragment_game.xml" value="0.17369791666666667" />
+        <entry key="app/src/main/res/layout-sw720dp-land/fragment_game.xml" value="0.27358490566037735" />
+        <entry key="app/src/main/res/layout-sw720dp/activity_finished.xml" value="0.17369791666666667" />
+        <entry key="app/src/main/res/layout-sw720dp/activity_game.xml" value="0.17369791666666667" />
+        <entry key="app/src/main/res/layout-sw720dp/fragment_game.xml" value="0.17369791666666667" />
+        <entry key="app/src/main/res/layout-xxxhdpi/fragment_game.xml" value="0.2851646002565199" />
+        <entry key="app/src/main/res/layout/activity_current_game_log.xml" value="0.28430953398888414" />
         <entry key="app/src/main/res/layout/activity_finished.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_game.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_game_historial.xml" value="0.28430953398888414" />
+        <entry key="app/src/main/res/layout/activity_help.xml" value="0.2851646002565199" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.36302083333333335" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/content_current_game_log.xml" value="0.28430953398888414" />
         <entry key="app/src/main/res/layout/fragment_game.xml" value="0.27219202898550726" />
+        <entry key="app/src/main/res/layout/fragment_historial.xml" value="0.28430953398888414" />
+        <entry key="app/src/main/res/layout/fragment_historial_search.xml" value="0.2851646002565199" />
+        <entry key="app/src/main/res/layout/fragment_log.xml" value="0.28430953398888414" />
+        <entry key="app/src/main/res/layout/fragment_log_game.xml" value="0.2851646002565199" />
+        <entry key="app/src/main/res/layout/fragment_log_history.xml" value="0.28430953398888414" />
         <entry key="app/src/main/res/layout/grid_item.xml" value="0.14920906370243694" />
         <entry key="app/src/main/res/layout/grid_item_image.xml" value="0.3640625" />
+        <entry key="app/src/main/res/layout/item_player_history.xml" value="0.28430953398888414" />
+        <entry key="app/src/main/res/menu/settings_menu.xml" value="0.28430953398888414" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.194" />
+        <entry key="app/src/main/res/xml/root_preferences.xml" value="0.28430953398888414" />
       </map>
     </option>
   </component>

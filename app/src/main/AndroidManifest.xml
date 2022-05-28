@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pablo.tetris">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <application
-        android:name=".presentation.common.TetrisThemeApp"
+        android:name=".infra.database.PlayerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".presentation.history.CurrentGameLogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.history.GameHistorialActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
         <activity
             android:name=".presentation.help.HelpActivity"
             android:exported="false" />
@@ -24,8 +30,8 @@
             android:exported="false" />
         <activity
             android:name=".presentation.main.MainActivity"
-            android:theme="@style/Theme.App.Starting"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

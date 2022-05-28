@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:padding="20dp"
+    android:background = "@color/small_gray">
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView_player_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player1"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_player_points" />
+
+        <TextView
+            android:id="@+id/textView_player_points"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="300"
+            android:gravity="right"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:orientation="vertical"
+            android:padding = "10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="10dp">
+
+            <TextView
+                android:id="@+id/textView_date_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24 of October of 1999" />
+
+            <TextView
+                android:id="@+id/textView_level_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Difficult"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_delete_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            app:backgroundTint="@color/vibrant_red"
+            app:icon="@android:drawable/ic_delete"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

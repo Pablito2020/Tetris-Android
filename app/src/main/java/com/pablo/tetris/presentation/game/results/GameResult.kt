@@ -5,17 +5,16 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 data class GameResult(
-    val score: String,
-    val date: String
+    val score: Int,
+    val date: Date
 ) : Serializable
 
 object DateGetter {
     private const val DATE_FORMAT = "EEEE, dd-MMM-yyyy hh-mm-ss a"
 
-    fun getDate(): String {
-        val calendar = Calendar.getInstance()
+    fun getDate(date: Date): String {
         val formatter = SimpleDateFormat(DATE_FORMAT, Locale.getDefault())
-        return formatter.format(calendar.time)
+        return formatter.format(date)
     }
 
 }

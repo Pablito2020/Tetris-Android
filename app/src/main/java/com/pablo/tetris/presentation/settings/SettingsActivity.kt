@@ -1,78 +1,22 @@
 package com.pablo.tetris.presentation.settings
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.inputmethod.EditorInfo
-import android.widget.EditText
-import androidx.core.widget.addTextChangedListener
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
+import androidx.appcompat.app.AppCompatActivity
+import com.pablo.tetris.R
 import com.pablo.tetris.databinding.ActivitySettingsBinding
-import com.pablo.tetris.domain.game.Level
-import com.pablo.tetris.presentation.common.GAME_INFORMATION
-import com.pablo.tetris.presentation.common.HideStatusBarActivity
-import com.pablo.tetris.presentation.game.GameActivity
-import kotlinx.coroutines.flow.collect
 
-class SettingsActivity : HideStatusBarActivity() {
+class SettingsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
-    private lateinit var viewModel: SettingsModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setUpModelView()
-        setUpComponents()
-        setUpUiObservers()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_settings, SettingsFragment())
+            .commit()
     }
 
-    private fun setUpModelView() {
-        viewModel = ViewModelProvider(this).get(SettingsModel::class.java)
-        lifecycleScope.launchWhenCreated {
-            viewModel.results.collect {
-                binding.editTextPersonName.error = it.nameError
-                if (it.nameError == null) {
-                    val intent = Intent(this@SettingsActivity, GameActivity::class.java).apply {
-                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                        putExtra(GAME_INFORMATION, it)
-                    }
-                    startActivity(intent)
-                }
-            }
-        }
-    }
-
-    private fun setUpComponents() {
-        binding.editTextPersonName.addTextChangedListener { viewModel.update(DataValue.Name(it.toString())) }
-        binding.editTextPersonName.setOnEditorActionListener { _, action, _ ->
-            if (action == EditorInfo.IME_ACTION_DONE) {
-                binding.editTextPersonName.requestFocus(EditText.FOCUS_DOWN)
-                binding.editTextPersonName.clearFocus()
-                hideStatusBar()
-            }
-            false
-        }
-        binding.CheckBoxGhostBlock.setOnClickListener { viewModel.update(DataValue.HasGhost(binding.CheckBoxGhostBlock.isChecked)) }
-        binding.MusicCheckbox.setOnClickListener { viewModel.update(DataValue.HasMusic(binding.MusicCheckbox.isChecked)) }
-        binding.StartButton.setOnClickListener { viewModel.collect(this) }
-        binding.ThemeSpinner.avoidDropdownFocus()
-        binding.ThemeSpinner.adapter = Spinner.Adapter.get(this)
-        binding.ThemeSpinner.onItemSelectedListener = Spinner(viewModel)
-        binding.LowLevel.setOnClickListener { viewModel.update(DataValue.Level(Level.LOW)) }
-        binding.MediumLevelButton.setOnClickListener { viewModel.update(DataValue.Level(Level.MEDIUM)) }
-        binding.HighLevelButton.setOnClickListener { viewModel.update(DataValue.Level(Level.HIGH)) }
-    }
-
-    private fun setUpUiObservers() {
-        viewModel.uiChanged.observe(this) {
-            if (it != null) {
-                when (it) {
-                    UIChange.SPINNER_THEME -> binding.ThemeImage.setImageResource(viewModel.getStyleImageResource())
-                    UIChange.BUTTON_LEVEL -> binding.LevelImage.setImageResource(viewModel.getImageLevelResource())
-                }
-            }
-        }
-    }
 }
