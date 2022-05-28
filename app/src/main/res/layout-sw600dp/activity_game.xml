@@ -16,13 +16,15 @@
         app:layout_constraintTop_toTopOf="parent"
         android:baselineAligned="false">
 
-        <FrameLayout
+        <fragment
+            class="com.pablo.tetris.presentation.game.fragments.GameFragment"
             android:id="@+id/fragmentContainerView"
             android:layout_weight="0.4"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
 
-        <FrameLayout
+        <fragment
+            class="com.pablo.tetris.presentation.game.fragments.LogFragment"
             android:id="@+id/LogFragment"
             android:layout_weight="1"
             android:layout_width="fill_parent"
