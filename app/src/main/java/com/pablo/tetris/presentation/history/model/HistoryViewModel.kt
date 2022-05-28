@@ -49,11 +49,13 @@ class HistoryViewModel(private val repository: PlayerRepository) : ViewModel() {
         updatedDataBase.value = updatedDataBase.value != true
     }
 
-    fun deletePlayer(player: Player) {
+    fun deletePlayer(player: Player, messageLogNoPlayers: String = "") {
         runBlocking {
             command { repo -> repo.deletePlayer(player.id) }
         }
         updateDataBaseValue()
+        if (this.query.get().isEmpty())
+            currentLog.value = messageLogNoPlayers
     }
 
     fun showLogForPlayer(player: Player) {
@@ -62,9 +64,12 @@ class HistoryViewModel(private val repository: PlayerRepository) : ViewModel() {
         currentLog.value = result
     }
 
-    fun setDefaultLogValue(string: String) {
+    fun setDefaultLogValue(hasItemsText: String, noItemsText: String) {
         if (currentLog.value == null) {
-            currentLog.value = string
+            if (this.query.get().isEmpty())
+                currentLog.value = noItemsText
+            else
+                currentLog.value = hasItemsText
         }
     }
 

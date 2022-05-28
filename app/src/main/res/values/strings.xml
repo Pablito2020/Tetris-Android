@@ -81,6 +81,7 @@
     <string name="search">search</string>
     <string name="filter_by_name">Filter by name</string>
     <string name="please_click_item">Please, click on an item for see the log</string>
+    <string name="no_items_in_database">There are no items on database, can\'t show the log!</string>
 
     <string-array name="recycle_view_actions">
         <item>Show game sorted by points</item>

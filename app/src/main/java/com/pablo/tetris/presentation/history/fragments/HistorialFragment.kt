@@ -74,7 +74,8 @@ class HistorialFragment : Fragment() {
 
     private fun setUpRecyclerViewObserver() {
         historyViewModel.updatedDataBase.observe(viewLifecycleOwner) {
-            val autoComplete = requireView().findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
+            val autoComplete =
+                requireView().findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
             val names = autoComplete.text.toString()
             adapter.players = historyViewModel.getAutoCompleteResult(names)
             adapter.notifyDataSetChanged()
@@ -124,8 +125,19 @@ class HistorialFragment : Fragment() {
         androidx.appcompat.app.AlertDialog.Builder(requireContext())
             .setTitle(R.string.warning)
             .setMessage(requireContext().getString(R.string.delete_game_warning, player.name))
-            .setNegativeButton(R.string.cancel) { _, _ -> Toast.makeText(context, R.string.deletion_canceled, Toast.LENGTH_SHORT).show() }
-            .setPositiveButton(R.string.ok) { _, _ -> historyViewModel.deletePlayer(player); Toast.makeText(context, R.string.deleted_player_game, Toast.LENGTH_SHORT).show() }
+            .setNegativeButton(R.string.cancel) { _, _ ->
+                Toast.makeText(
+                    context,
+                    R.string.deletion_canceled,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            .setPositiveButton(R.string.ok) { _, _ ->
+                historyViewModel.deletePlayer(
+                    player,
+                    messageLogNoPlayers = requireContext().getString(R.string.no_items_in_database)
+                ); Toast.makeText(context, R.string.deleted_player_game, Toast.LENGTH_SHORT).show()
+            }
             .create()
             .show()
     }
@@ -133,7 +145,8 @@ class HistorialFragment : Fragment() {
     private fun showLogForPlayer(player: Player) {
         historyViewModel.showLogForPlayer(player)
         if (!hasLogFragment) {
-            val intent = Intent(requireContext().applicationContext, CurrentGameLogActivity::class.java)
+            val intent =
+                Intent(requireContext().applicationContext, CurrentGameLogActivity::class.java)
             requireContext().startActivity(intent)
         }
     }
@@ -142,7 +155,8 @@ class HistorialFragment : Fragment() {
         val popupMenu = PopupMenu(requireContext(), root)
         popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
         popupMenu.setOnMenuItemClickListener {
-            val autoComplete = requireView().findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
+            val autoComplete =
+                requireView().findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
             autoComplete.setText(player.name)
             autoComplete.clearFocus()
             true
