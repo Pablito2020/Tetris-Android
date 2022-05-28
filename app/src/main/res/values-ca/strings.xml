@@ -85,5 +85,7 @@
         <item>Mostra les partides ordenades per data</item>
     </string-array>
     <string name="filter_by_name">Filtra pel nom</string>
+    <string name="no_items_in_database">No hi han items a la base de dades, no es pot mostrar el log!</string>
+    <string name="please_click_item">Siusplau, fes clic a un item per veure el log</string>
 
 </resources>

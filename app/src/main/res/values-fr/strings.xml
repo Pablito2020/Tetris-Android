@@ -79,4 +79,11 @@
     <string name="error_name_has_to_be_one_line">Le nom doit se mettre dans une ligne</string>
     <string name="search">cherche</string>
     <string name="filter_by_name">Filtre par le nom</string>
+    <string name="no_items_in_database">Il n\'y a aucun élément dans la base de données, impossible d\'afficher le joeur !</string>
+    <string name="please_click_item">Veuillez cliquer sur un élément pour voir le joeur</string>
+
+    <string-array name="recycle_view_actions">
+        <item>Afficher les éléments triés par points</item>
+        <item>Affiche les éléments triés par date</item>
+    </string-array>
 </resources>

@@ -85,5 +85,7 @@
         <item>Muestra las partidas ordenadas por fecha</item>
     </string-array>
     <string name="filter_by_name">Fitrar por nombre</string>
+    <string name="please_click_item">Porfavor, haz clic en un item para ver el log</string>
+    <string name="no_items_in_database">No hay contenido en la base de datos, ¡No se puede mostrar el log!</string>
 
 </resources>
