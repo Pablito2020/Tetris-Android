@@ -84,5 +84,6 @@
         <item>Muestra las partidas ordenadas por puntos</item>
         <item>Muestra las partidas ordenadas por fecha</item>
     </string-array>
+    <string name="filter_by_name">Fitrar por nombre</string>
 
 </resources>

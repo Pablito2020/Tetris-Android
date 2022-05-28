@@ -79,6 +79,8 @@
     <string name="error_name_length_is_out_of_bounds" >Name is too large!</string>
     <string name="error_name_has_to_be_one_line" >Name has to be one line</string>
     <string name="search">search</string>
+    <string name="filter_by_name">Filter by name</string>
+    <string name="please_click_item">Please, click on an item for see the log</string>
 
     <string-array name="recycle_view_actions">
         <item>Show game sorted by points</item>

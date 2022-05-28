@@ -17,7 +17,7 @@ class HistoryViewModel(private val repository: PlayerRepository) : ViewModel() {
     private var query: Query = PlayersOrderedByPointsQuery(this)
     private var result: List<Player> = listOf()
     val updatedDataBase: MutableLiveData<Boolean> = MutableLiveData(false)
-    val currentLog: MutableLiveData<String> = MutableLiveData("default value")
+    val currentLog: MutableLiveData<String> = MutableLiveData(null)
 
     suspend fun query(function: (PlayerRepository) -> List<Player>): List<Player> {
         lateinit var players: List<Player>
@@ -60,6 +60,12 @@ class HistoryViewModel(private val repository: PlayerRepository) : ViewModel() {
         lateinit var result: String
         runBlocking {viewModelScope.launch(Dispatchers.IO) { result = repository.getLogForPlayer(player.id) }.join()}
         currentLog.value = result
+    }
+
+    fun setDefaultLogValue(string: String) {
+        if (currentLog.value == null) {
+            currentLog.value = string
+        }
     }
 
     class HistoryViewModelFactory(private val repository: PlayerRepository) :

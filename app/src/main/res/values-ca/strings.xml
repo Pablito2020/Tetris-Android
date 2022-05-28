@@ -69,7 +69,7 @@
     <string name="error_email_not_valid">El mail no és vàlid</string>
     <string name="historial">Historial</string>
     <string name="ghost_block_mode_on">No mostris la sombra del bloc</string>
-    <string name="ghost_block_mode_off">Mostra la sombra del block, per tal de saber on caurà</string>
+    <string name="ghost_block_mode_off">Mostra la sombra del bloc, per tal de saber on caurà</string>
     <string name="audio_and_image">Imatge i audio</string>
     <string name="player_text">Jugador</string>
     <string name="name_default">Jugador1</string>
@@ -84,5 +84,6 @@
         <item>Mostra les partides ordenades per punts</item>
         <item>Mostra les partides ordenades per data</item>
     </string-array>
+    <string name="filter_by_name">Filtra pel nom</string>
 
 </resources>

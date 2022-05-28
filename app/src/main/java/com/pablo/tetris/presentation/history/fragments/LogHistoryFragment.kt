@@ -21,6 +21,7 @@ class LogHistoryFragment : Fragment() {
             activity?.application as PlayerApplication,
             HistoryViewModel.HistoryViewModelFactory((activity?.application as PlayerApplication).repository)
         ).get(HistoryViewModel::class.java)
+        historyViewModel.setDefaultLogValue(requireContext().getString(R.string.please_click_item))
         requireView().findViewById<TextView>(R.id.logHistoryTextView).text =
             historyViewModel.currentLog.value
         historyViewModel.currentLog.observe(viewLifecycleOwner) {
