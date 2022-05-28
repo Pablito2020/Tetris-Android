@@ -6,13 +6,15 @@ Tetris game written in Kotlin for Android devices. The implementation uses the M
 ## Summary
 
   - [Dependencies](#dependencies-)
-  - [Video](#video-)
+  - [Preview](#preview-)
   - [License](#license-)
   - [Contributing](#contributing-)
 
 ## Dependencies 📦:
 This project depends on my own tetris logic, that can be found here:
  - [Tetris Library for Kotlin](https://github.com/Pablito2020/Tetris)
+And the konfetti library for a more motivational finish 😇:
+ - [Konfetti library for android](https://github.com/DanielMartinus/Konfetti)
 
 The default gradle configuration get's the Tetris jar from the github packages **using my own credentials that are exported as environment variables**. So, if you try to run the project it should fail because it can't find the jar.
 
@@ -33,8 +35,8 @@ implementation("me.pablito:tetris:version")
 
 Once you've done that, download the Tetris jar file from the [github repo](https://github.com/Pablito2020/Tetris) and add it as a dependency via settings/project-structure
 
-## Video 📹
-https://user-images.githubusercontent.com/18640261/167315077-886f9e22-2907-4c2f-801b-1949a02621a8.mp4
+## Preview 📹
+![tetris-example](https://user-images.githubusercontent.com/18640261/170821575-a6abe1f3-3d65-4ba7-ad77-9202c236d285.gif)
 
 ## License 📖
 The project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for more information.
