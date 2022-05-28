@@ -22,11 +22,11 @@ class LogHistoryFragment : Fragment() {
             HistoryViewModel.HistoryViewModelFactory((activity?.application as PlayerApplication).repository)
         ).get(HistoryViewModel::class.java)
         historyViewModel.setDefaultLogValue(requireContext().getString(R.string.please_click_item))
-        requireView().findViewById<TextView>(R.id.logHistoryTextView).text =
+        requireView().findViewById<TextView>(R.id.logTextFragment).text =
             historyViewModel.currentLog.value
         historyViewModel.currentLog.observe(viewLifecycleOwner) {
             it?.let {
-                requireView().findViewById<TextView>(R.id.logHistoryTextView).text = it
+                requireView().findViewById<TextView>(R.id.logTextFragment).text = it
             }
         }
     }
@@ -35,7 +35,7 @@ class LogHistoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_log_history, container, false)
+        return inflater.inflate(R.layout.fragment_log_game, container, false)
     }
 
 }
