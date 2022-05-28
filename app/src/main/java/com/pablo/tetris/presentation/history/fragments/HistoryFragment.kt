@@ -25,12 +25,26 @@ import com.pablo.tetris.presentation.history.view.PlayerAdapter
 import com.pablo.tetris.presentation.history.view.Spinner
 import kotlin.properties.Delegates
 
+const val AUTOCOMPLETE_THRESHOLD = 0
+
 @SuppressLint("NotifyDataSetChanged")
-class HistorialFragment : Fragment() {
+class HistoryFragment : Fragment() {
 
     private lateinit var historyViewModel: HistoryViewModel
     private var hasLogFragment by Delegates.notNull<Boolean>()
     private lateinit var adapter: PlayerAdapter
+
+    companion object BundleConstants {
+        const val HAS_LOG_FRAGMENT = "hasLogFragment"
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        hasLogFragment = arguments?.getSerializable(HAS_LOG_FRAGMENT) as Boolean
+        return inflater.inflate(R.layout.fragment_historial_search, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -100,25 +114,13 @@ class HistorialFragment : Fragment() {
                 list
             )
         )
-        autoComplete.threshold = 0
+        autoComplete.threshold = AUTOCOMPLETE_THRESHOLD
         autoComplete.addTextChangedListener {
             val adapter =
                 requireView().findViewById<RecyclerView>(R.id.recyclerViewHistory).adapter as PlayerAdapter
             adapter.players = historyViewModel.getAutoCompleteResult(it.toString())
             adapter.notifyDataSetChanged()
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        hasLogFragment = arguments?.getSerializable(HAS_LOG_FRAGMENT) as Boolean
-        return inflater.inflate(R.layout.fragment_historial_search, container, false)
-    }
-
-    companion object BundleConstants {
-        const val HAS_LOG_FRAGMENT = "hasLogFragment"
     }
 
     private fun deletePlayer(player: Player) {

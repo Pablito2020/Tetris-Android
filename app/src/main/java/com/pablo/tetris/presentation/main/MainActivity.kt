@@ -6,7 +6,7 @@ import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import android.view.View
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.pablo.tetris.presentation.history.GameHistorialActivity
+import com.pablo.tetris.presentation.history.GameHistoryActivity
 import com.pablo.tetris.R
 import com.pablo.tetris.databinding.ActivityMainBinding
 import com.pablo.tetris.presentation.common.HideStatusBarActivity
@@ -66,7 +66,7 @@ class MainActivity : HideStatusBarActivity(), View.OnClickListener {
     }
 
     private fun startHistoryActivity() {
-        val help = Intent(this, GameHistorialActivity::class.java)
+        val help = Intent(this, GameHistoryActivity::class.java)
         startActivity(help)
     }
 

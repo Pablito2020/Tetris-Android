@@ -14,9 +14,8 @@ class CurrentGameLogActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCurrentGameLogBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val x = LogHistoryFragment()
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.current_game_log_frame_layout, x)
+            replace(R.id.current_game_log_frame_layout, LogHistoryFragment())
             commit()
         }
         binding.button.setOnClickListener {

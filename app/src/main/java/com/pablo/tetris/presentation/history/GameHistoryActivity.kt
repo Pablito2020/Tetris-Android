@@ -4,18 +4,18 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.pablo.tetris.presentation.history.fragments.LogHistoryFragment
-import com.pablo.tetris.presentation.history.fragments.HistorialFragment
+import com.pablo.tetris.presentation.history.fragments.HistoryFragment
 import com.pablo.tetris.R
 
-class GameHistorialActivity : AppCompatActivity() {
+class GameHistoryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_historial)
         val hasLogFragment = (findViewById<FrameLayout>(R.id.logFragmentHistorial) != null)
-        val history = HistorialFragment().apply {
+        val history = HistoryFragment().apply {
             arguments = Bundle().apply {
-                putBoolean(HistorialFragment.HAS_LOG_FRAGMENT, hasLogFragment)
+                putBoolean(HistoryFragment.HAS_LOG_FRAGMENT, hasLogFragment)
             }
         }
         supportFragmentManager.beginTransaction().apply {

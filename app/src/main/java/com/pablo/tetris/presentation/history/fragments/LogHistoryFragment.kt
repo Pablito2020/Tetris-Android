@@ -17,18 +17,9 @@ class LogHistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        historyViewModel = ViewModelProvider(
-            activity?.application as PlayerApplication,
-            HistoryViewModel.HistoryViewModelFactory((activity?.application as PlayerApplication).repository)
-        ).get(HistoryViewModel::class.java)
-        historyViewModel.setDefaultLogValue(hasItemsText=requireContext().getString(R.string.please_click_item), noItemsText=requireContext().getString(R.string.no_items_in_database))
-        requireView().findViewById<TextView>(R.id.logTextFragment).text =
-            historyViewModel.currentLog.value
-        historyViewModel.currentLog.observe(viewLifecycleOwner) {
-            it?.let {
-                requireView().findViewById<TextView>(R.id.logTextFragment).text = it
-            }
-        }
+        setUpViewModel()
+        setUpLogText()
+        observeChangesOnLog()
     }
 
     override fun onCreateView(
@@ -36,6 +27,27 @@ class LogHistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_log, container, false)
+    }
+
+    private fun setUpViewModel() {
+        historyViewModel = ViewModelProvider(
+            activity?.application as PlayerApplication,
+            HistoryViewModel.HistoryViewModelFactory((activity?.application as PlayerApplication).repository)
+        ).get(HistoryViewModel::class.java)
+    }
+
+    private fun setUpLogText() {
+        historyViewModel.setDefaultLogValue(hasItemsText=requireContext().getString(R.string.please_click_item), noItemsText=requireContext().getString(R.string.no_items_in_database))
+        requireView().findViewById<TextView>(R.id.logTextFragment).text =
+            historyViewModel.currentLog.value
+    }
+
+    private fun observeChangesOnLog() {
+        historyViewModel.currentLog.observe(viewLifecycleOwner) {
+            it?.let {
+                requireView().findViewById<TextView>(R.id.logTextFragment).text = it
+            }
+        }
     }
 
 }

@@ -13,7 +13,7 @@
             android:name=".presentation.history.CurrentGameLogActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.history.GameHistorialActivity"
+            android:name=".presentation.history.GameHistoryActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize|adjustPan|stateHidden" />
         <activity
