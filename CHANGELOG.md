@@ -2,6 +2,68 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/Pablito2020/tetris-android/compare/v1.1.0...v1.2.0) (2022-05-29)
+
+
+### Features
+
+* **finish:** add 10 inches tablet layout ([9e85c72](https://github.com/Pablito2020/tetris-android/commit/9e85c72184d6d2b64c67c1c5421db10f750c474f))
+* **finish:** add konfetti in tablets and landscape ([c7a082e](https://github.com/Pablito2020/tetris-android/commit/c7a082e0ec75b32d7dea1be84c5722fd206b64aa))
+* **finish:** add konfetti when user has a new high score ([4352e2a](https://github.com/Pablito2020/tetris-android/commit/4352e2a38a492927fb63db736e22daae49817c61))
+* **finish:** add tablet layout ([8abd07f](https://github.com/Pablito2020/tetris-android/commit/8abd07f05dda9e9706cfcb604355c6846275107b))
+* **finish:** prettier horizontal layout ([6ebbfa9](https://github.com/Pablito2020/tetris-android/commit/6ebbfa992161af5b245823fe7156ddb742a1e57b))
+* **fragments:** game layout is now a fragment ([6f4b98e](https://github.com/Pablito2020/tetris-android/commit/6f4b98e6cc95a5bb35eb8ff47ff2e2544e26412d))
+* **fragments:** game layout is now a fragment ([1051656](https://github.com/Pablito2020/tetris-android/commit/1051656b9441033824533ec2ec1ade0c934eca6b))
+* **game:** add 8 inches tablet fragment ([a8b7aa4](https://github.com/Pablito2020/tetris-android/commit/a8b7aa4ff251bb2a4bc22e7f6764e7d3c128be25))
+* **game:** add log on tablet ([69d9b3b](https://github.com/Pablito2020/tetris-android/commit/69d9b3b6f970bc336441a9002e42bdc49b2d5387))
+* **game:** add support for tablets ([afe3855](https://github.com/Pablito2020/tetris-android/commit/afe3855c2b9bf2a8b5ab276d4b1494fc6ad5e191))
+* **game:** add tablet game fragment ([9a0807c](https://github.com/Pablito2020/tetris-android/commit/9a0807c77d5fda3d859eaadf90e82ad92011fbf9))
+* **game:** make log bigger on tablets ([6efdccc](https://github.com/Pablito2020/tetris-android/commit/6efdcccd81de6f8e5eac4ee18f25dac928f53967))
+* **help:** improve layout for tablets ([282dc55](https://github.com/Pablito2020/tetris-android/commit/282dc557b741e447b3e330a5e86f7183e91050df))
+* **historial:** show date and level ([44d30e3](https://github.com/Pablito2020/tetris-android/commit/44d30e3cc0f607fed39673372a0bef67aec9bfcf))
+* **historial:** show historial of games ([2109512](https://github.com/Pablito2020/tetris-android/commit/2109512311500365344930f13b171c4eceb76f35))
+* **historial:** show no elements on database error ([b2813db](https://github.com/Pablito2020/tetris-android/commit/b2813dbe320fcdc1d7d8bd904fdf6d268fa9df97))
+* **historial:** translate default log ([a7bba93](https://github.com/Pablito2020/tetris-android/commit/a7bba93a5b1a453c5ae0024b20c4483a8ca8c7be))
+* **history:** add activity for more settings info ([f0ee49f](https://github.com/Pablito2020/tetris-android/commit/f0ee49f6c570abfacaa9ea4bf63cf6d5e7de6a96))
+* **history:** add autocomplete ([2127605](https://github.com/Pablito2020/tetris-android/commit/21276052ebad8b0f6e279ccb1b6c94a4c5a1de45))
+* **history:** add betta log fragment ([549914d](https://github.com/Pablito2020/tetris-android/commit/549914d462ad7aae0ef0df7cab7b0266661070af))
+* **history:** add delete button ([de53906](https://github.com/Pablito2020/tetris-android/commit/de539065ad5c853ed2b0d8665ac3febe3b94f0d2))
+* **history:** add log on horizontal layout ([a66b6dd](https://github.com/Pablito2020/tetris-android/commit/a66b6dd819a60589fc3e96c6417e8536c8c0ad1b))
+* **history:** add onLongClickListener on card ([811e6cc](https://github.com/Pablito2020/tetris-android/commit/811e6ccf336d8034811abcd3b72f29e229647a2c))
+* **history:** add tablet layout ([676ca86](https://github.com/Pablito2020/tetris-android/commit/676ca868574cbde524eda3505ccbb4ecb60826e8))
+* **history:** better layout ([0b10cdf](https://github.com/Pablito2020/tetris-android/commit/0b10cdf97c858a23253f0af0edf625fff7218e0d))
+* **history:** better layout ([a29ed7d](https://github.com/Pablito2020/tetris-android/commit/a29ed7d7d42553464909902dedb0835b6b16ccc5))
+* **history:** delete search on spinner, add it to autocomplete ([4acef8e](https://github.com/Pablito2020/tetris-android/commit/4acef8e88ef690c35e2c5b09d3c07f5d91fc7213))
+* **history:** prettier log fragment ([b746eb6](https://github.com/Pablito2020/tetris-android/commit/b746eb6059541da92f4c7695fa3f15d13178d733))
+* **history:** search by name ([14c0455](https://github.com/Pablito2020/tetris-android/commit/14c0455e9cb87f9b03b2f8bb8f9bd58274c672f3))
+* **history:** use fragment instead of activity ([b290920](https://github.com/Pablito2020/tetris-android/commit/b2909200a55c4d254c60b3d268f2f8373226885d))
+* improve build.gradle ([aabbe3b](https://github.com/Pablito2020/tetris-android/commit/aabbe3b043657a5705347fd42b8aba0ebeecf37a))
+* improve main and finish layouts for tablets ([d582565](https://github.com/Pablito2020/tetris-android/commit/d5825653ab97156011edc2e350bb1861a9c17f07))
+* **lang:** add french remaining translations ([e79a441](https://github.com/Pablito2020/tetris-android/commit/e79a4411f56c21217feabfa29e5c0956e13a78fc))
+* **lang:** add search translations on en, fr and ca ([4b6c274](https://github.com/Pablito2020/tetris-android/commit/4b6c274614832fdcaec207a4dcc1d9178b6295ce))
+* **languages:** add ca and es translation on historial ([af27a80](https://github.com/Pablito2020/tetris-android/commit/af27a80100fd6a3cfd3a66b475a420501ecd879d))
+* **languages:** improve ca an es translations ([ae639f1](https://github.com/Pablito2020/tetris-android/commit/ae639f1e90da4b045cc61ce776b381e787652edc))
+* **main:** prettier history button ([aee0f07](https://github.com/Pablito2020/tetris-android/commit/aee0f079e1092a3133d399266350d65de47ffea8))
+* **main:** prettier horizontal layout ([2a147cb](https://github.com/Pablito2020/tetris-android/commit/2a147cbfed6486b41dba8374518068997069b166))
+* **room:** add database ([bacd915](https://github.com/Pablito2020/tetris-android/commit/bacd915974e6c2048dab6415d252dc37ceec7232))
+* **settings:** add button to finished activity ([7f884b1](https://github.com/Pablito2020/tetris-android/commit/7f884b1dd3f33a0af4771ec8c30f537ff0ba50ea))
+* **settings:** add icons ([db75d94](https://github.com/Pablito2020/tetris-android/commit/db75d94d4ca82c8e71a738204ec67416cb9b167b))
+* **settings:** add name validation ([4b6ca55](https://github.com/Pablito2020/tetris-android/commit/4b6ca55be93096965eece177507494b5a05b690a))
+* **settings:** don't use magic variables ([ef8c6d2](https://github.com/Pablito2020/tetris-android/commit/ef8c6d2de684e6e53e58f899fb6e257c565f0402))
+* **settings:** implement settings as a fragment ([4444455](https://github.com/Pablito2020/tetris-android/commit/4444455b20dba3cbe2b7efe9508f60ee3503075c))
+
+
+### Bug Fixes
+
+* android oreo music devices ([c846026](https://github.com/Pablito2020/tetris-android/commit/c846026971a9d656e9c45de0e2b3a1132974f99f))
+* **game:** fragment error on constructor ([2dbe37a](https://github.com/Pablito2020/tetris-android/commit/2dbe37a459785c208cc9db0a799338b7d0992f45))
+* **game:** pause when there is a screen rotation ([efd7109](https://github.com/Pablito2020/tetris-android/commit/efd7109d26a57edb9ddab845b45df3cb875c1941))
+* **game:** repeated log ([9ff4c1d](https://github.com/Pablito2020/tetris-android/commit/9ff4c1d1cfd9f10292ee0ce3e5d81cb150cb8eba))
+* **history:** delete unnused fragment ([7a654fa](https://github.com/Pablito2020/tetris-android/commit/7a654fa1d85954c4e195dfd858381e8e07350c81))
+* **history:** incremental search ([e3c4e08](https://github.com/Pablito2020/tetris-android/commit/e3c4e08c065aacc35226b5f71c9dc54f22391483))
+* **history:** update delete values ([44df546](https://github.com/Pablito2020/tetris-android/commit/44df546cbb41125a101f7ca8f8d5ccc54b967fa6))
+* **log:** second new game saves the settings parameters ([0c2abd9](https://github.com/Pablito2020/tetris-android/commit/0c2abd9d5ec1f85fb75e431b17e7d7b7cec7aed6))
+
 ## 1.1.0 (2022-05-08)
 
 
